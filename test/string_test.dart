@@ -5,7 +5,7 @@ void main() {
   test(('Removing extra spaces'), () {
     const val = '  String           to    test ';
 
-    final res = UpdateAppText.MakeTextCorrect(val);
+    final res = AppText.upperFirstLetterAndDeleteExtraSpaces(val);
     expect(res, 'String to test');
   });
 }

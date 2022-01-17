@@ -1,13 +1,12 @@
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 
 class MyAvatarView extends StatelessWidget {
-  String? pickImageUrl;
-  double radius;
+  final String? pickImageUrl;
+  final double radius;
 
-  MyAvatarView({
+  const MyAvatarView({
     Key? key,
     required this.pickImageUrl,
     required this.radius,
@@ -15,8 +14,6 @@ class MyAvatarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AssetImage assetImage = const AssetImage('assets/picture/car.png');
-    Image car = Image(image: assetImage);
     return Container(
       height: radius * 2,
       width: radius * 2,
@@ -24,12 +21,17 @@ class MyAvatarView extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
         image: pickImageUrl == ''
             ? const DecorationImage(
-                image: AssetImage('assets/picture/car.png'), fit: BoxFit.cover)
+                image: AssetImage('assets/picture/car.png'),
+                fit: BoxFit.cover,
+              )
             : DecorationImage(
                 image: FileImage(
-                  File(pickImageUrl!),
+                  File(
+                    pickImageUrl!,
+                  ),
                 ),
-                fit: BoxFit.cover),
+                fit: BoxFit.cover,
+              ),
       ),
     );
   }

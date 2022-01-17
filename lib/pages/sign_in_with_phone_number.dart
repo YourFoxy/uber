@@ -1,30 +1,29 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:uber/domain/auth.dart';
-import 'package:uber/pages/code_page.dart';
-import 'package:uber/scripts/user_data.dart';
+import 'package:uber/bloc/bloc/sign_in_with_phone_page_bloc.dart';
+import 'package:uber/bloc/event/sign_in_with_phone_page_event.dart';
+import 'package:uber/bloc/state/sign_in_with_phone_page_state.dart';
 import 'package:uber/scripts/widgets.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/button_widget.dart';
 import 'package:uber/widgets/text_field_widget.dart';
-import 'package:uber/widgets/toast_widget.dart';
 
 class SignInWithPhonePage extends StatefulWidget {
-  bool isRegister;
-  SignInWithPhonePage({Key? key, required this.isRegister}) : super(key: key);
+  final bool isRegister;
+
+  const SignInWithPhonePage({
+    Key? key,
+    required this.isRegister,
+  }) : super(key: key);
 
   @override
-  _SignInWithPhonePageState createState() =>
-      _SignInWithPhonePageState(isRegister: isRegister);
+  _SignInWithPhonePageState createState() => _SignInWithPhonePageState();
 }
 
 class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
-  bool isRegister;
-  _SignInWithPhonePageState({required this.isRegister});
-  TextEditingController _numberController = TextEditingController();
+  final TextEditingController _numberController = TextEditingController();
 
   late FToast fToast;
 
@@ -45,84 +44,60 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.orange,
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              const SizedBox(
-                height: 200,
+    return BlocProvider(
+      create: (context) => SignInWithPhonePageBloc(),
+      child: BlocBuilder<SignInWithPhonePageBloc, SignInWithPhonePageState>(
+        builder: (context, state) {
+          final _bloc = BlocProvider.of<SignInWithPhonePageBloc>(context);
+
+          if (state is NumberPhoneState) {
+            Future.delayed(Duration.zero, () async {
+              Widgets.toast(state.phoneNumberState);
+            });
+          }
+          return Scaffold(
+            backgroundColor: AppColors.orange,
+            body: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    const SizedBox(
+                      height: 200,
+                    ),
+                    AppLargeText(
+                      text: widget.isRegister ? 'Register' : 'LogIn',
+                      color: AppColors.plum,
+                      size: 40.0,
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    TextFieldWidget(
+                      controller: _numberController,
+                      hintText: 'Number',
+                      isNumber: true,
+                    ),
+                    ButtonWidget(
+                      text: 'Send code',
+                      textColor: AppColors.orange,
+                      buttonColor: AppColors.plum,
+                      onTap: () => () {
+                        _bloc.add(
+                          SendCodeEvent(
+                            phoneNumber: _numberController.text,
+                            isRegister: widget.isRegister,
+                            context: context,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
-              _text(),
-              const SizedBox(
-                height: 10.0,
-              ),
-              _numberField(),
-              _sendCodeButton(),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
-    );
-  }
-
-  void _signIn(String text) {
-    Auth.SignIn(_numberController.text);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => CodePage(
-          textButton: text,
-          isRegister: isRegister,
-          phoneNumber: _numberController.text,
-        ),
-      ),
-    );
-  }
-
-  Widget _sendCodeButton() {
-    return ButtonWidget(
-      text: 'Send code',
-      textColor: AppColors.orange,
-      buttonColor: AppColors.plum,
-      onTap: () => () {
-        numberCheck();
-      },
-    );
-  }
-
-  void numberCheck() async {
-    bool _phoneNumberExists =
-        await UserData.CheckPhoneNumberInDatabase(_numberController.text);
-    if (_numberController.text.length < 19) {
-      Widgets.Toast('Please enter the number correctly');
-    } else {
-      if (isRegister) {
-        _phoneNumberExists
-            ? Widgets.Toast("A user with the same number already exists!")
-            : _signIn('Register');
-      } else {
-        !_phoneNumberExists
-            ? Widgets.Toast('There is no user with this number!')
-            : _signIn('logIn');
-      }
-    }
-  }
-
-  Widget _numberField() {
-    return TextFieldWidget(
-      controller: _numberController,
-      hintText: 'Number',
-      isNumber: true,
-    );
-  }
-
-  Widget _text() {
-    return AppLargeText(
-      text: isRegister ? 'Register' : 'LogIn',
-      color: AppColors.plum,
-      size: 40.0,
     );
   }
 }

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/app_text.dart';
-
 import 'app_large_text.dart';
 
 class ButtonWidget extends StatefulWidget {
-  String text;
+  final String text;
   final Function onTap;
   final Color buttonColor;
   final Color textColor;
-  ButtonWidget(
+
+  const ButtonWidget(
       {Key? key,
       required this.text,
       required this.onTap,
@@ -18,34 +17,22 @@ class ButtonWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  _ButtonWidgetState createState() => _ButtonWidgetState(
-      text: text, onTap: onTap, buttonColor: buttonColor, textColor: textColor);
+  _ButtonWidgetState createState() => _ButtonWidgetState();
 }
 
 class _ButtonWidgetState extends State<ButtonWidget> {
-  String text;
-  final Function onTap;
-  final Color buttonColor;
-  final Color textColor;
-
-  _ButtonWidgetState(
-      {required this.text,
-      required this.onTap,
-      required this.buttonColor,
-      required this.textColor});
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: InkWell(
-        onTap: onTap(),
+        onTap: widget.onTap(),
         child: Container(
           height: 75.0,
           width: 300,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30.0),
-            color: buttonColor,
+            color: widget.buttonColor,
             boxShadow: const [
               BoxShadow(
                 offset: Offset(0, 12),
@@ -57,8 +44,8 @@ class _ButtonWidgetState extends State<ButtonWidget> {
           ),
           child: Center(
             child: AppLargeText(
-              text: text,
-              color: textColor,
+              text: widget.text,
+              color: widget.textColor,
             ),
           ),
         ),

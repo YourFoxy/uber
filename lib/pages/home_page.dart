@@ -4,22 +4,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-
-import 'package:uber/scripts/image.dart';
+import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/text.dart';
+import 'package:uber/scripts/user_data.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/app_text.dart';
 import 'package:uber/widgets/avatar_widget.dart';
 import 'package:uber/widgets/drawer_widget.dart';
 import 'package:uber/widgets/place_for_card_widget.dart';
-import 'package:uber/widgets/text_field_widget.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:path_provider/path_provider.dart';
-import 'dart:async';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -27,17 +23,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String pickImageUrl = '';
-  final String _currentUserNumber = UpdateAppText.ConvertNumber(
-      '${FirebaseAuth.instance.currentUser!.phoneNumber}');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.plum,
-      drawer: DrawerMenu(),
+      drawer: const DrawerMenu(),
       appBar: AppBar(
         backgroundColor: AppColors.plum,
-        iconTheme: IconThemeData(color: AppColors.orange),
-        title: AppLargeText(
+        iconTheme: const IconThemeData(color: AppColors.orange),
+        title: const AppLargeText(
           text: '',
         ),
       ),
@@ -45,35 +40,9 @@ class _HomePageState extends State<HomePage> {
         child: Center(
           child: Column(
             children: <Widget>[
-              _head(),
-              PlaceForCardWidget(),
-              PlaceForCardWidget(),
-              AvatarWidget(
-                function: (String url) async {
-                  setState(() {
-                    pickImageUrl = url;
-                  });
-                },
-                pickImageUrl: pickImageUrl,
-              ),
-              AppLargeText(
-                text: UpdateAppText.ConvertNumber(
-                    '${FirebaseAuth.instance.currentUser!.phoneNumber}'),
-                color: AppColors.orange,
-                size: 30.0,
-              ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              InkWell(
-                splashColor: Colors.black12,
-                highlightColor: Colors.black12,
-                onTap: _exit,
-                child: AppText(
-                  text: 'Exit',
-                  color: AppColors.orange,
-                ),
-              ),
+              _buildHead(),
+              const PlaceForCardWidget(),
+              const PlaceForCardWidget(),
             ],
           ),
         ),
@@ -81,7 +50,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _head() {
+  Widget _buildHead() {
     return Container(
       height: 300,
       width: double.infinity,
@@ -93,57 +62,14 @@ class _HomePageState extends State<HomePage> {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _avatar(),
-          _buildNicknameAndCity(context),
-          _number(),
+          AppLargeText(
+            text: UserData.currentUserPhoneNumber,
+            color: AppColors.orange,
+          ),
         ],
       ),
     );
-  }
-
-  Widget _avatar() {
-    return AvatarWidget(
-      function: (String url) async {
-        setState(() {
-          pickImageUrl = url;
-        });
-      },
-      pickImageUrl: pickImageUrl,
-      backgroundColor: AppColors.orange,
-    );
-  }
-
-  Widget _number() {
-    return AppLargeText(
-      text: _currentUserNumber,
-      color: AppColors.orange,
-    );
-  }
-
-  Widget _buildNicknameAndCity(BuildContext context) {
-    return FutureBuilder<DocumentSnapshot>(
-        future: FirebaseFirestore.instance
-            .collection('Users')
-            .doc(_currentUserNumber)
-            .get(),
-        builder: (context, snapshot) {
-          var _userNickname = snapshot.data;
-          return AppLargeText(
-            text: '${_userNickname!['Nickname']}, ${_userNickname['City']}',
-            color: AppColors.orange,
-          );
-        });
-  }
-
-  void _exit() async {
-    try {
-      await FirebaseStorage.instance
-          .ref()
-          .child('/avatars/{FirebaseAuth.instance.currentUser!.phoneNumber}')
-          .putFile(File(pickImageUrl));
-    } catch (e) {
-      print('///${e}');
-    }
   }
 }

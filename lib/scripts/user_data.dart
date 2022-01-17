@@ -1,45 +1,49 @@
 import 'dart:io';
-
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:uber/domain/auth.dart';
+import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/text.dart';
 
 class UserData {
-  static final fStorage = FirebaseStorage.instance;
-  static void AddCurrentUserInformation(String phoneNumber) async {
+  static final String currentUserPhoneNumber =
+      AppText.convertNumber('${Auth.fAuth.currentUser!.phoneNumber}');
+
+  static void addCurrentUserInformation(String phoneNumber) async {
     await Auth.fbd
-        .collection('Users')
+        .collection(collectionNameWithUsers)
         .doc(phoneNumber)
         .set({'Nickname': 'User', 'City': '-'});
   }
 
-  static Future<void> UpdateCurrentUserInformation(
-      String phoneNumber, String nickname, String city) async {
-    await Auth.fbd.collection('Users').doc(phoneNumber).update({
-      'Nickname': UpdateAppText.MakeTextCorrect(nickname),
-      'City': UpdateAppText.MakeTextCorrect(city),
+  static Future<void> updateCurrentUserInformation(
+    String phoneNumber,
+    String nickname,
+    String city,
+  ) async {
+    await Auth.fbd.collection(collectionNameWithUsers).doc(phoneNumber).update({
+      'Nickname': AppText.upperFirstLetterAndDeleteExtraSpaces(nickname),
+      'City': AppText.upperFirstLetterAndDeleteExtraSpaces(city),
     });
   }
 
-  static Future<bool> CheckPhoneNumberInDatabase(String phoneNumber) async {
+  static Future<bool> checkPhoneNumberInDatabase(String phoneNumber) async {
     bool _phoneNumberExists = false;
-    await Auth.fbd.collection('Users').get().then(
+    await Auth.fbd.collection(collectionNameWithUsers).get().then(
       (snapshot) {
-        snapshot.docs.forEach(
-          (element) {
-            if (element.id == phoneNumber) {
-              _phoneNumberExists = true;
-            }
-          },
-        );
+        for (var element in snapshot.docs) {
+          if (element.id == phoneNumber) {
+            _phoneNumberExists = true;
+          }
+        }
       },
     );
     return _phoneNumberExists;
   }
 
-  static void SaveCurrentUserPhoto(
-      String pickImageUrl, String phoneNumber) async {
-    await fStorage
+  static void saveCurrentUserPhoto(
+    String pickImageUrl,
+    String phoneNumber,
+  ) async {
+    await Auth.fStorage
         .ref()
         .child('/avatars/$phoneNumber')
         .putFile(File(pickImageUrl));

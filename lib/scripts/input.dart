@@ -4,11 +4,14 @@ import 'package:flutter/widgets.dart';
 class NumberTextInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     final int newTextLength = newValue.text.length;
     int selectionIndex = newValue.selection.end;
     int usedSubstringIndex = 0;
-    final StringBuffer newText = new StringBuffer();
+    final StringBuffer newText = StringBuffer();
+
     if (newTextLength >= 1) {
       newText.write('+');
       if (newValue.selection.end >= 1) selectionIndex++;
@@ -29,12 +32,19 @@ class NumberTextInputFormatter extends TextInputFormatter {
       newText.write(newValue.text.substring(8, usedSubstringIndex = 10) + '-');
       if (newValue.selection.end >= 10) selectionIndex += 1;
     }
-    // Dump the rest.
-    if (newTextLength >= usedSubstringIndex)
-      newText.write(newValue.text.substring(usedSubstringIndex));
+
+    if (newTextLength >= usedSubstringIndex) {
+      newText.write(
+        newValue.text.substring(
+          usedSubstringIndex,
+        ),
+      );
+    }
     return TextEditingValue(
       text: newText.toString(),
-      selection: TextSelection.collapsed(offset: selectionIndex),
+      selection: TextSelection.collapsed(
+        offset: selectionIndex,
+      ),
     );
   }
 }
@@ -47,7 +57,7 @@ class RemoveAllExtraSpacesTextFormatter extends TextInputFormatter {
 
     String _newText = '';
 
-    final StringBuffer newText = new StringBuffer();
+    final StringBuffer newText = StringBuffer();
 
     final reg = RegExp(r' +');
     if (reg.hasMatch(newValue.text)) {
@@ -62,7 +72,9 @@ class RemoveAllExtraSpacesTextFormatter extends TextInputFormatter {
 
     return TextEditingValue(
       text: newText.toString(),
-      selection: TextSelection.collapsed(offset: selectionIndex),
+      selection: TextSelection.collapsed(
+        offset: selectionIndex,
+      ),
     );
   }
 }

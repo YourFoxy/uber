@@ -7,11 +7,13 @@ class PlaceForCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       height: 170,
       width: double.infinity,
       decoration: BoxDecoration(
-          color: AppColors.plum2, borderRadius: BorderRadius.circular(30)),
+        color: AppColors.plum2,
+        borderRadius: BorderRadius.circular(30),
+      ),
     );
   }
 }

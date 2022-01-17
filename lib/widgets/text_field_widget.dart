@@ -1,14 +1,16 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:uber/scripts/input.dart';
 import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/app_text.dart';
 
 class TextFieldWidget extends StatelessWidget {
-  bool isNumber;
-  final hintText;
-  TextEditingController controller;
-  TextFieldWidget(
+  final bool isNumber;
+  final String hintText;
+  final TextEditingController controller;
+
+  const TextFieldWidget(
       {Key? key,
       required this.hintText,
       this.isNumber = false,
@@ -39,12 +41,10 @@ class TextFieldWidget extends StatelessWidget {
           keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
           inputFormatters: isNumber
               ? [
-                  //FilteringTextInputFormatter.allow(RegExp('[+  0-9]')),
                   WhitelistingTextInputFormatter.digitsOnly,
                   NumberTextInputFormatter(),
                 ]
               : [
-                  // FilteringTextInputFormatter.allow(RegExp(r'[^  ]')),
                   FilteringTextInputFormatter.singleLineFormatter,
                   RemoveAllExtraSpacesTextFormatter(),
                 ],
@@ -56,9 +56,10 @@ class TextFieldWidget extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: const TextStyle(
-                color: AppColors.orange,
-                fontSize: 25.0,
-                fontFamily: 'BebasNeue'),
+              color: AppColors.orange,
+              fontSize: 25.0,
+              fontFamily: 'BebasNeue',
+            ),
             border: InputBorder.none,
             counterText: '',
           ),
