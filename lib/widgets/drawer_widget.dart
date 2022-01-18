@@ -19,14 +19,7 @@ class DrawerMenu extends StatelessWidget {
       child: BlocBuilder<DrawerWidgetBloc, DrawerWidgetState>(
         builder: (context, state) {
           final _bloc = BlocProvider.of<DrawerWidgetBloc>(context);
-          if (state is ExceptionExitState) {
-            Future.delayed(
-              Duration.zero,
-              () async {
-                Widgets.toast(state.exception);
-              },
-            );
-          }
+
           return Drawer(
             backgroundColor: AppColors.plum2,
             child: ListView(

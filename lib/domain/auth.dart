@@ -2,10 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:uber/pages/register_user_information_page.dart';
 import 'package:uber/pages/home_page.dart';
+import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/user_data.dart';
 import 'package:uber/scripts/widgets.dart';
+import 'package:uber/service/toast_service.dart';
 
 class Auth {
   static final FirebaseAuth fAuth = FirebaseAuth.instance;
@@ -53,14 +56,14 @@ class Auth {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const HomePage(),
+                builder: (context) => HomePage(),
               ),
             );
           }
         },
       );
     } catch (e) {
-      Widgets.toast("Incorrect code");
+      GetIt.instance.get<ToastService>().showGeneralErrorToast(incorrectCode);
     }
   }
 }

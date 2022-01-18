@@ -30,14 +30,6 @@ class _AvatarWidgetState extends State<AvatarWidget> {
       child: BlocBuilder<AvatarWidgetBloc, AvatarWidgetState>(
         builder: (context, state) {
           final _bloc = BlocProvider.of<AvatarWidgetBloc>(context);
-          if (state is AvatarUrlState) {
-            Future.delayed(
-              Duration.zero,
-              () async {
-                widget.function(state.url);
-              },
-            );
-          }
           return Container(
             margin: const EdgeInsets.all(20),
             child: Stack(
@@ -52,6 +44,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                     _bloc.add(
                       SetAvatarEvent(
                         url: await Avatar.pickImage(),
+                        function: widget.function,
                       ),
                     );
                   },

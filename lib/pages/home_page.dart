@@ -23,7 +23,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String pickImageUrl = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

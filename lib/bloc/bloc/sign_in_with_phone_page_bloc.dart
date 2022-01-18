@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:uber/bloc/event/sign_in_with_phone_page_event.dart';
 import 'package:uber/bloc/state/sign_in_with_phone_page_state.dart';
 import 'package:uber/domain/auth.dart';
 import 'package:uber/pages/code_page.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/user_data.dart';
+import 'package:uber/scripts/widgets.dart';
+import 'package:uber/service/toast_service.dart';
 
 class SignInWithPhonePageBloc
     extends Bloc<SignInWithPhonePageEvent, SignInWithPhonePageState> {
@@ -16,15 +19,14 @@ class SignInWithPhonePageBloc
             await UserData.checkPhoneNumberInDatabase(event.phoneNumber);
 
         if (event.phoneNumber.length < 19) {
-          emit(
-            NumberPhoneState(phoneNumberState: shortNumber),
-          );
+          GetIt.instance.get<ToastService>().showGeneralErrorToast(shortNumber);
         } else {
           if (event.isRegister) {
             if (_phoneNumberExists) {
-              emit(
-                NumberPhoneState(phoneNumberState: numberIsInDatabase),
-              );
+              GetIt.instance
+                  .get<ToastService>()
+                  .showGeneralErrorToast(numberIsInDatabase);
+              ;
             } else {
               Auth.signIn(event.phoneNumber);
               Navigator.push(
@@ -39,9 +41,9 @@ class SignInWithPhonePageBloc
             }
           } else {
             if (!_phoneNumberExists) {
-              emit(
-                NumberPhoneState(phoneNumberState: noNumberInDatabase),
-              );
+              GetIt.instance
+                  .get<ToastService>()
+                  .showGeneralErrorToast(noNumberInDatabase);
             } else {
               Auth.signIn(event.phoneNumber);
               Navigator.push(

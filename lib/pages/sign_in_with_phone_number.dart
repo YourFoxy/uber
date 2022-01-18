@@ -50,11 +50,6 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
         builder: (context, state) {
           final _bloc = BlocProvider.of<SignInWithPhonePageBloc>(context);
 
-          if (state is NumberPhoneState) {
-            Future.delayed(Duration.zero, () async {
-              Widgets.toast(state.phoneNumberState);
-            });
-          }
           return Scaffold(
             backgroundColor: AppColors.orange,
             body: SingleChildScrollView(

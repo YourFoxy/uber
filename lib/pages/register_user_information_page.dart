@@ -15,7 +15,6 @@ import 'package:uber/widgets/text_field_widget.dart';
 
 class RegisterUserInformationPage extends StatefulWidget {
   final String phoneNumber;
-
   const RegisterUserInformationPage({Key? key, required this.phoneNumber})
       : super(key: key);
 
