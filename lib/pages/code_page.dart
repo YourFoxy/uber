@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/bloc/code_page_bloc.dart';
-import 'package:uber/bloc/event/code_page_event.dart';
-import 'package:uber/bloc/state/code_page_state.dart';
+import 'package:uber/bloc/code_page/code_page_bloc.dart';
+import 'package:uber/bloc/code_page/code_page_event.dart';
+import 'package:uber/bloc/code_page/code_page_state.dart';
 import 'package:uber/domain/auth.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
@@ -25,6 +25,13 @@ class CodePage extends StatefulWidget {
 
 class _CodePageState extends State<CodePage> {
   final TextEditingController _smsCodeController = TextEditingController();
+  late final _bloc;
+
+  @override
+  void didChangeDependencies() {
+    _bloc = BlocProvider.of<CodePageBloc>;
+    super.didChangeDependencies();
+  }
 
   @override
   void dispose() {
@@ -38,7 +45,6 @@ class _CodePageState extends State<CodePage> {
       create: (context) => CodePageBloc(),
       child: BlocBuilder<CodePageBloc, CodePageState>(
         builder: (context, state) {
-          final _bloc = BlocProvider.of<CodePageBloc>(context);
           return Scaffold(
             backgroundColor: AppColors.orange,
             body: SingleChildScrollView(
@@ -62,11 +68,11 @@ class _CodePageState extends State<CodePage> {
                     ButtonWidget(
                       text: widget.isRegister ? 'Register' : 'LogIn',
                       onTap: () => () {
-                        _bloc.add(
+                        _bloc(context).add(
                           SignInEvent(
                             smsCode: _smsCodeController.text,
                             context: context,
-                            isRegister: widget.isRegister,
+                            //isRegister: widget.isRegister,
                             phoneNumber: widget.phoneNumber,
                           ),
                         );

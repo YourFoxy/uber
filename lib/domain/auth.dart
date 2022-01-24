@@ -30,7 +30,7 @@ class Auth {
 
   static void verificationID(
     String smsCode,
-    bool isRegister,
+    //bool isRegister,
     BuildContext context,
     String phoneNumber,
   ) async {
@@ -38,30 +38,32 @@ class Auth {
       verificationId: _verificationID,
       smsCode: smsCode,
     );
+    late bool _isRegister;
 
     try {
       await fAuth.signInWithCredential(phoneAuthCredential).then(
         (value) {
-          if (isRegister) {
-            UserData.addCurrentUserInformation(phoneNumber);
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => RegisterUserInformationPage(
-                  phoneNumber: phoneNumber,
-                ),
-              ),
-            );
-          } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomePage(),
-              ),
-            );
-          }
+          _isRegister = value.additionalUserInfo!.isNewUser;
         },
       );
+      if (_isRegister) {
+        UserData.addCurrentUserInformation(phoneNumber);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RegisterUserInformationPage(
+              phoneNumber: phoneNumber,
+            ),
+          ),
+        );
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(),
+          ),
+        );
+      }
     } catch (e) {
       GetIt.instance.get<ToastService>().showGeneralErrorToast(incorrectCode);
     }

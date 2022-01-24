@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/bloc/register_user_information_page_bloc.dart';
-import 'package:uber/bloc/event/register_user_information_page_event.dart';
-import 'package:uber/bloc/state/register_user_information_page_state.dart';
+import 'package:uber/bloc/code_page/code_page_bloc.dart';
+import 'package:uber/bloc/register_user_information_page/register_user_information_page_bloc.dart';
+import 'package:uber/bloc/register_user_information_page/register_user_information_page_event.dart';
+import 'package:uber/bloc/register_user_information_page/register_user_information_page_state.dart';
 import 'package:uber/pages/home_page.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/user_data.dart';
@@ -28,7 +29,15 @@ class _RegisterUserInformationPageState
   final TextEditingController _nicknameController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
 
-  String pickImageUrl = '';
+  String _pickImageUrl = '';
+
+  late final _bloc;
+
+  @override
+  void didChangeDependencies() {
+    _bloc = BlocProvider.of<RegisterUserInformationPageBloc>;
+    super.didChangeDependencies();
+  }
 
   @override
   void dispose() {
@@ -44,8 +53,6 @@ class _RegisterUserInformationPageState
       child: BlocBuilder<RegisterUserInformationPageBloc,
           RegisterUserInformationPageState>(
         builder: (context, state) {
-          final _bloc =
-              BlocProvider.of<RegisterUserInformationPageBloc>(context);
           return Scaffold(
             backgroundColor: AppColors.orange,
             body: SingleChildScrollView(
@@ -63,7 +70,7 @@ class _RegisterUserInformationPageState
                     AvatarWidget(
                       function: (String url) async {
                         setState(() {
-                          pickImageUrl = url;
+                          _pickImageUrl = url;
                         });
                       },
                     ),
@@ -78,13 +85,13 @@ class _RegisterUserInformationPageState
                     ButtonWidget(
                       text: 'Next',
                       onTap: () => () {
-                        _bloc.add(
+                        _bloc(context).add(
                           AddUserInformationEvent(
                             city: _cityController.text,
                             context: context,
                             nickname: _nicknameController.text,
                             phoneNumber: widget.phoneNumber,
-                            pickImageUrl: pickImageUrl,
+                            pickImageUrl: _pickImageUrl,
                           ),
                         );
                       },

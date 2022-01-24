@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
-import 'package:uber/bloc/bloc/sign_in_with_phone_page_bloc.dart';
-import 'package:uber/bloc/event/sign_in_with_phone_page_event.dart';
-import 'package:uber/bloc/state/sign_in_with_phone_page_state.dart';
+import 'package:uber/bloc/code_page/code_page_bloc.dart';
+import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_bloc.dart';
+import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_event.dart';
+import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_state.dart';
 import 'package:uber/scripts/widgets.dart';
 import 'package:uber/service/toast_service.dart';
 import 'package:uber/style/colors.dart';
@@ -25,9 +26,16 @@ class SignInWithPhonePage extends StatefulWidget {
 }
 
 class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
-  final TextEditingController _numberController = TextEditingController();
-
   late FToast fToast;
+
+  final TextEditingController _numberController = TextEditingController();
+  late final _bloc;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _bloc = BlocProvider.of<SignInWithPhonePageBloc>;
+  }
 
   @override
   void initState() {
@@ -50,8 +58,6 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
       create: (context) => GetIt.instance.get<SignInWithPhonePageBloc>(),
       child: BlocBuilder<SignInWithPhonePageBloc, SignInWithPhonePageState>(
         builder: (context, state) {
-          final _bloc = BlocProvider.of<SignInWithPhonePageBloc>(context);
-
           return Scaffold(
             backgroundColor: AppColors.orange,
             body: SingleChildScrollView(
@@ -79,7 +85,7 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
                       textColor: AppColors.orange,
                       buttonColor: AppColors.plum,
                       onTap: () => () {
-                        _bloc.add(
+                        _bloc(context).add(
                           SendCodeEvent(
                             phoneNumber: _numberController.text,
                             isRegister: widget.isRegister,

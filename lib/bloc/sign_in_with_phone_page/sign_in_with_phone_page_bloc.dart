@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:uber/bloc/event/sign_in_with_phone_page_event.dart';
-import 'package:uber/bloc/state/sign_in_with_phone_page_state.dart';
+import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_event.dart';
+import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_state.dart';
 import 'package:uber/domain/auth.dart';
 import 'package:uber/pages/code_page.dart';
 import 'package:uber/scripts/const.dart';

@@ -1,16 +1,8 @@
 import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/scripts/text.dart';
 import 'package:uber/scripts/user_data.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
-import 'package:uber/widgets/app_text.dart';
-import 'package:uber/widgets/avatar_widget.dart';
 import 'package:uber/widgets/drawer_widget.dart';
 import 'package:uber/widgets/place_for_card_widget.dart';
 

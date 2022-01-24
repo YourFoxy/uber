@@ -10,9 +10,9 @@ import 'package:uber/pages/sign_in_with_phone_number.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/service/toast_service.dart';
 
-import 'bloc/bloc/avatar_widget_bloc.dart';
-import 'bloc/bloc/drawer_widget_bloc.dart';
-import 'bloc/bloc/sign_in_with_phone_page_bloc.dart';
+import 'bloc/avatar_widget/avatar_widget_bloc.dart';
+import 'bloc/drawer_widget/drawer_widget_bloc.dart';
+import 'bloc/sign_in_with_phone_page/sign_in_with_phone_page_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
