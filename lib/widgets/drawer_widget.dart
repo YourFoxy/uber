@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:uber/bloc/bloc/drawer_widget_bloc.dart';
 import 'package:uber/bloc/event/drawer_widget_event.dart';
 import 'package:uber/bloc/state/drawer_widget_state.dart';
@@ -15,7 +16,7 @@ class DrawerMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DrawerWidgetBloc(),
+      create: (context) => GetIt.instance.get<DrawerWidgetBloc>(),
       child: BlocBuilder<DrawerWidgetBloc, DrawerWidgetState>(
         builder: (context, state) {
           final _bloc = BlocProvider.of<DrawerWidgetBloc>(context);

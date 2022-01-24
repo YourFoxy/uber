@@ -10,15 +10,29 @@ import 'package:uber/pages/sign_in_with_phone_number.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/service/toast_service.dart';
 
+import 'bloc/bloc/avatar_widget_bloc.dart';
+import 'bloc/bloc/drawer_widget_bloc.dart';
 import 'bloc/bloc/sign_in_with_phone_page_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
   await Firebase.initializeApp();
   GetIt.instance.registerSingleton(ToastService());
+
+  registerBlocsFactory();
   runApp(const MyApp());
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+}
+
+void registerBlocsFactory() {
+  final GetIt _getIt = GetIt.instance;
+  final ToastService _toastService = GetIt.instance.get<ToastService>();
+
+  _getIt.registerFactory<SignInWithPhonePageBloc>(
+      () => SignInWithPhonePageBloc(toastService: _toastService));
+
+  _getIt.registerFactory<DrawerWidgetBloc>(
+      () => DrawerWidgetBloc(toastService: _toastService));
 }
 
 class MyApp extends StatelessWidget {
@@ -38,11 +52,11 @@ class MyApp extends StatelessWidget {
               isRegister: true,
             ),
         loginOrRegisterPage: (_) => const LoginOrRegister(),
-        homePage: (_) => HomePage(),
+        homePage: (_) => const HomePage(),
       },
       home: FirebaseAuth.instance.currentUser == null
           ? const LoginOrRegister()
-          : HomePage(),
+          : const HomePage(),
     );
   }
 }

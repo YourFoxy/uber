@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get_it/get_it.dart';
 import 'package:uber/bloc/bloc/sign_in_with_phone_page_bloc.dart';
 import 'package:uber/bloc/event/sign_in_with_phone_page_event.dart';
 import 'package:uber/bloc/state/sign_in_with_phone_page_state.dart';
 import 'package:uber/scripts/widgets.dart';
+import 'package:uber/service/toast_service.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/button_widget.dart';
@@ -45,7 +47,7 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SignInWithPhonePageBloc(),
+      create: (context) => GetIt.instance.get<SignInWithPhonePageBloc>(),
       child: BlocBuilder<SignInWithPhonePageBloc, SignInWithPhonePageState>(
         builder: (context, state) {
           final _bloc = BlocProvider.of<SignInWithPhonePageBloc>(context);

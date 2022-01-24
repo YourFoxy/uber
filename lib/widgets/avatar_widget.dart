@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:uber/bloc/bloc/avatar_widget_bloc.dart';
 import 'package:uber/bloc/event/avatar_widget_event.dart';
 import 'package:uber/bloc/state/avatar_widget_state.dart';

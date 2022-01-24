@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,7 +36,6 @@ class TextFieldWidget extends StatelessWidget {
           textAlign: TextAlign.center,
           cursorColor: AppColors.orange,
           maxLength: 19,
-          // maxLengthEnforced: false,
           controller: controller,
           keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
           inputFormatters: isNumber

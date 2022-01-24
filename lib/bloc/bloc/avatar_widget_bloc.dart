@@ -9,8 +9,6 @@ class AvatarWidgetBloc extends Bloc<AvatarWidgetEvent, AvatarWidgetState> {
   AvatarWidgetBloc() : super(WidgetInitState()) {
     on<SetAvatarEvent>(
       (event, emit) {
-        GetIt.instance.get<ToastService>().showGeneralErrorToast(event.url);
-
         event.function(event.url);
         emit(AvatarUrlState(url: event.url));
       },

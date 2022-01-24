@@ -9,7 +9,8 @@ import 'package:uber/scripts/widgets.dart';
 import 'package:uber/service/toast_service.dart';
 
 class DrawerWidgetBloc extends Bloc<DrawerWidgetEvent, DrawerWidgetState> {
-  DrawerWidgetBloc() : super(WidgetInitialState()) {
+  ToastService toastService;
+  DrawerWidgetBloc({required this.toastService}) : super(WidgetInitialState()) {
     on<ExitEvent>(
       (event, emit) async {
         try {
@@ -19,9 +20,7 @@ class DrawerWidgetBloc extends Bloc<DrawerWidgetEvent, DrawerWidgetState> {
             },
           );
         } catch (e) {
-          GetIt.instance
-              .get<ToastService>()
-              .showGeneralErrorToast(e.toString());
+          toastService.showGeneralErrorToast(e.toString());
         }
       },
     );

@@ -12,21 +12,20 @@ import 'package:uber/service/toast_service.dart';
 
 class SignInWithPhonePageBloc
     extends Bloc<SignInWithPhonePageEvent, SignInWithPhonePageState> {
-  SignInWithPhonePageBloc() : super(PageInitialState()) {
+  ToastService toastService;
+  SignInWithPhonePageBloc({required this.toastService})
+      : super(PageInitialState()) {
     on<SendCodeEvent>(
       (event, emit) async {
         bool _phoneNumberExists =
             await UserData.checkPhoneNumberInDatabase(event.phoneNumber);
 
         if (event.phoneNumber.length < 19) {
-          GetIt.instance.get<ToastService>().showGeneralErrorToast(shortNumber);
+          toastService.showGeneralErrorToast(shortNumber);
         } else {
           if (event.isRegister) {
             if (_phoneNumberExists) {
-              GetIt.instance
-                  .get<ToastService>()
-                  .showGeneralErrorToast(numberIsInDatabase);
-              ;
+              toastService.showGeneralErrorToast(numberIsInDatabase);
             } else {
               Auth.signIn(event.phoneNumber);
               Navigator.push(
@@ -41,9 +40,7 @@ class SignInWithPhonePageBloc
             }
           } else {
             if (!_phoneNumberExists) {
-              GetIt.instance
-                  .get<ToastService>()
-                  .showGeneralErrorToast(noNumberInDatabase);
+              toastService.showGeneralErrorToast(noNumberInDatabase);
             } else {
               Auth.signIn(event.phoneNumber);
               Navigator.push(
