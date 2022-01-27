@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/code_page/code_page_bloc.dart';
 import 'package:uber/bloc/register_user_information_page/register_user_information_page_bloc.dart';
 import 'package:uber/bloc/register_user_information_page/register_user_information_page_event.dart';
 import 'package:uber/bloc/register_user_information_page/register_user_information_page_state.dart';
-import 'package:uber/pages/home_page.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/scripts/user_data.dart';
-import 'package:uber/scripts/widgets.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
-import 'package:uber/widgets/avatar_widget.dart';
+import 'package:uber/widgets/avatar_widget_for_update.dart';
 import 'package:uber/widgets/button_widget.dart';
 import 'package:uber/widgets/text_field_widget.dart';
 
@@ -67,7 +62,7 @@ class _RegisterUserInformationPageState
                       color: AppColors.plum,
                       size: 40.0,
                     ),
-                    AvatarWidget(
+                    AvatarWidgetForUpdate(
                       function: (String url) async {
                         setState(() {
                           _pickImageUrl = url;

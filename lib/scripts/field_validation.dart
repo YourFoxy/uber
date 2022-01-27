@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/user_data.dart';
-import 'package:uber/scripts/widgets.dart';
 import 'package:uber/service/toast_service.dart';
 
 class FieldValidation {

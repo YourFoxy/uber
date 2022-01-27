@@ -2,15 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:uber/pages/login_or_register_page.dart';
 import 'package:uber/pages/home_page.dart';
 import 'package:uber/pages/sign_in_with_phone_number.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/service/toast_service.dart';
-
-import 'bloc/avatar_widget/avatar_widget_bloc.dart';
 import 'bloc/drawer_widget/drawer_widget_bloc.dart';
 import 'bloc/sign_in_with_phone_page/sign_in_with_phone_page_bloc.dart';
 

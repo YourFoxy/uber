@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uber/bloc/code_page/code_page_bloc.dart';
 import 'package:uber/bloc/code_page/code_page_event.dart';
 import 'package:uber/bloc/code_page/code_page_state.dart';
-import 'package:uber/domain/auth.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/button_widget.dart';

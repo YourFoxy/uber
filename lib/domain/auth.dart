@@ -7,7 +7,6 @@ import 'package:uber/pages/register_user_information_page.dart';
 import 'package:uber/pages/home_page.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/user_data.dart';
-import 'package:uber/scripts/widgets.dart';
 import 'package:uber/service/toast_service.dart';
 
 class Auth {
@@ -30,7 +29,6 @@ class Auth {
 
   static void verificationID(
     String smsCode,
-    //bool isRegister,
     BuildContext context,
     String phoneNumber,
   ) async {
@@ -60,7 +58,7 @@ class Auth {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => HomePage(),
+            builder: (context) => const HomePage(),
           ),
         );
       }
