@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:uber/scripts/const.dart';
 
-class MyAvatarViewForUpdate extends StatelessWidget {
+class EditableMyAvatarView extends StatelessWidget {
   final String? pickImageUrl;
   final double radius;
 
-  const MyAvatarViewForUpdate({
+  const EditableMyAvatarView({
     Key? key,
     required this.pickImageUrl,
     required this.radius,

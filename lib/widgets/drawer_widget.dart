@@ -20,8 +20,14 @@ class _DrawerMenuState extends State<DrawerMenu> {
 
   @override
   void didChangeDependencies() {
-    _bloc = BlocProvider.of<DrawerWidgetBloc>;
     super.didChangeDependencies();
+    _bloc = BlocProvider.of<DrawerWidgetBloc>;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bloc.dispose();
   }
 
   @override

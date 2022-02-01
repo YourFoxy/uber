@@ -1,6 +1,6 @@
-abstract class AvatarWidgetForUpdateEvent {}
+abstract class EditableAvatarEvent {}
 
-class SetAvatarEvent extends AvatarWidgetForUpdateEvent {
+class SetAvatarEvent extends EditableAvatarEvent {
   final String url;
   final Function function;
 

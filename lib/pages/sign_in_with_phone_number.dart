@@ -36,17 +36,17 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
 
   @override
   void initState() {
-    _numberController.text = '+375';
     super.initState();
-
+    _numberController.text = '+375';
     fToast = FToast();
     fToast.init(context);
   }
 
   @override
   void dispose() {
-    _numberController.dispose();
     super.dispose();
+    _numberController.dispose();
+    _bloc.dispose();
   }
 
   @override

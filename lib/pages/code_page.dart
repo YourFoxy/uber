@@ -28,64 +28,61 @@ class _CodePageState extends State<CodePage> {
 
   @override
   void didChangeDependencies() {
-    _bloc = BlocProvider.of<CodePageBloc>;
     super.didChangeDependencies();
+    _bloc = BlocProvider.of<CodePageBloc>;
   }
 
   @override
   void dispose() {
-    _smsCodeController.dispose();
     super.dispose();
+    _smsCodeController.dispose();
+    _bloc.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CodePageBloc(),
-      child: BlocBuilder<CodePageBloc, CodePageState>(
-        builder: (context, state) {
-          return Scaffold(
-            backgroundColor: AppColors.orange,
-            body: SingleChildScrollView(
-              child: Center(
-                child: Column(
-                  children: <Widget>[
-                    const SizedBox(
-                      height: 200,
-                    ),
-                    const AppLargeText(
-                      text: 'Code',
-                      color: AppColors.plum,
-                      size: 40.0,
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    TextFieldForCodeWidget(
-                      smsCodeController: _smsCodeController,
-                    ),
-                    ButtonWidget(
-                      text: widget.isRegister ? 'Register' : 'LogIn',
-                      onTap: () => () {
-                        _bloc(context).add(
-                          SignInEvent(
-                            smsCode: _smsCodeController.text,
-                            context: context,
-                            //isRegister: widget.isRegister,
-                            phoneNumber: widget.phoneNumber,
-                          ),
-                        );
-                      },
-                      textColor: AppColors.orange,
-                      buttonColor: AppColors.plum,
-                    )
-                  ],
-                ),
+    return BlocBuilder<CodePageBloc, CodePageState>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: AppColors.orange,
+          body: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  const SizedBox(
+                    height: 200,
+                  ),
+                  const AppLargeText(
+                    text: 'Code',
+                    color: AppColors.plum,
+                    size: 40.0,
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  TextFieldForCodeWidget(
+                    smsCodeController: _smsCodeController,
+                  ),
+                  ButtonWidget(
+                    text: widget.isRegister ? 'Register' : 'LogIn',
+                    onTap: () => () {
+                      _bloc(context).add(
+                        SignInEvent(
+                          smsCode: _smsCodeController.text,
+                          context: context,
+                          phoneNumber: widget.phoneNumber,
+                        ),
+                      );
+                    },
+                    textColor: AppColors.orange,
+                    buttonColor: AppColors.plum,
+                  )
+                ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
