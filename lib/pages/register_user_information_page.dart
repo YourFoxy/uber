@@ -33,7 +33,7 @@ class _RegisterUserInformationPageState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<RegisterUserInformationPageBloc>;
+    _bloc = BlocProvider.of<RegisterUserInformationPageBloc>(context);
   }
 
   @override
@@ -64,10 +64,8 @@ class _RegisterUserInformationPageState
                     size: 40.0,
                   ),
                   EditableAvatarWidget(
-                    function: (String url) async {
-                      setState(() {
-                        _pickImageUrl = url;
-                      });
+                    onImageChanged: (url) {
+                      _pickImageUrl = url;
                     },
                   ).createWithProvider<EditableAvatarBloc>(),
                   TextFieldWidget(
@@ -81,7 +79,7 @@ class _RegisterUserInformationPageState
                   ButtonWidget(
                     text: 'Next',
                     onTap: () => () {
-                      _bloc(context).add(
+                      _bloc.add(
                         AddUserInformationEvent(
                           city: _cityController.text,
                           context: context,

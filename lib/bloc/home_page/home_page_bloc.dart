@@ -10,22 +10,15 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   HomePageBloc() : super(PageInitState()) {
     on<LoadedUserInformationEvent>(
       (event, emit) async {
-        late DocumentSnapshot<Map<String, dynamic>> _snapshot;
-        await Auth.fbd
+        final snapshot = await Auth.fbd
             .collection(collectionNameWithUsers)
             .doc(UserData.currentUserPhoneNumber)
-            .get()
-            .then(
-          (snapshot) {
-            _snapshot = snapshot;
-          },
-        ).whenComplete(
-          () => emit(
-            LoadedUserInformationState(
-              nicknameAndCity:
-                  '${_snapshot[nicknameFieldInCollection]}, \n${_snapshot[cityFieldInCollection]}',
-              currentUserPhoneNumber: UserData.currentUserPhoneNumber,
-            ),
+            .get();
+        emit(
+          LoadedUserInformationState(
+            nicknameAndCity:
+                '${snapshot[nicknameFieldInCollection]}, \n${snapshot[cityFieldInCollection]}',
+            currentUserPhoneNumber: UserData.currentUserPhoneNumber,
           ),
         );
       },

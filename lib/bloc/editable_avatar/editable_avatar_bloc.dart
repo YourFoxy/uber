@@ -8,7 +8,6 @@ class EditableAvatarBloc
   EditableAvatarBloc() : super(WidgetInitState()) {
     on<SetAvatarEvent>(
       (event, emit) {
-        event.function(event.url);
         emit(AvatarUrlState(url: event.url));
       },
     );

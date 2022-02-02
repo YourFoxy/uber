@@ -10,13 +10,15 @@ import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/editable_my_avatar_view_widget.dart';
 
 class EditableAvatarWidget extends StatefulWidget {
-  Function(String) function;
+  // Function(String) function;
   final Color backgroundColor;
+  ValueChanged<String> onImageChanged;
 
   EditableAvatarWidget({
     Key? key,
-    required this.function,
+    // required this.function,
     this.backgroundColor = AppColors.plum,
+    required this.onImageChanged,
   }) : super(key: key);
 
   @override
@@ -56,7 +58,7 @@ class _EditableAvatarWidgetState extends State<EditableAvatarWidget> {
                   _bloc.add(
                     SetAvatarEvent(
                       url: await Avatar.pickImage(),
-                      function: widget.function,
+                      onImageChanged: widget.onImageChanged,
                     ),
                   );
                 },

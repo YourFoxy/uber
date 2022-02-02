@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+
 abstract class EditableAvatarEvent {}
 
 class SetAvatarEvent extends EditableAvatarEvent {
   final String url;
-  final Function function;
+  ValueChanged<String> onImageChanged;
 
   SetAvatarEvent({
     required this.url,
-    required this.function,
+    required this.onImageChanged,
   });
 }
