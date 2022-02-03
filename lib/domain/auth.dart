@@ -3,11 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:uber/bloc/home_page/home_page_bloc.dart';
+import 'package:uber/bloc/register_user_information_page/register_user_information_page_bloc.dart';
+import 'package:uber/extensionBloc/bloc_widget.dart';
 import 'package:uber/pages/register_user_information_page.dart';
 import 'package:uber/pages/home_page.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/user_data.dart';
-import 'package:uber/scripts/widgets.dart';
 import 'package:uber/service/toast_service.dart';
 
 class Auth {
@@ -30,7 +32,6 @@ class Auth {
 
   static void verificationID(
     String smsCode,
-    //bool isRegister,
     BuildContext context,
     String phoneNumber,
   ) async {
@@ -53,14 +54,15 @@ class Auth {
           MaterialPageRoute(
             builder: (context) => RegisterUserInformationPage(
               phoneNumber: phoneNumber,
-            ),
+            ).createWithProvider<RegisterUserInformationPageBloc>(),
           ),
         );
       } else {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => HomePage(),
+            builder: (context) =>
+                const HomePage().createWithProvider<HomePageBloc>(),
           ),
         );
       }

@@ -1,17 +1,34 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:uber/bloc/drawer_widget/drawer_widget_bloc.dart';
 import 'package:uber/bloc/drawer_widget/drawer_widget_event.dart';
 import 'package:uber/bloc/drawer_widget/drawer_widget_state.dart';
-import 'package:uber/scripts/widgets.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/app_text.dart';
 
-class DrawerMenu extends StatelessWidget {
+class DrawerMenu extends StatefulWidget {
   const DrawerMenu({Key? key}) : super(key: key);
+
+  @override
+  State<DrawerMenu> createState() => _DrawerMenuState();
+}
+
+class _DrawerMenuState extends State<DrawerMenu> {
+  late final _bloc;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _bloc = BlocProvider.of<DrawerWidgetBloc>;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bloc.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +36,6 @@ class DrawerMenu extends StatelessWidget {
       create: (context) => GetIt.instance.get<DrawerWidgetBloc>(),
       child: BlocBuilder<DrawerWidgetBloc, DrawerWidgetState>(
         builder: (context, state) {
-          final _bloc = BlocProvider.of<DrawerWidgetBloc>(context);
-
           return Drawer(
             backgroundColor: AppColors.plum2,
             child: ListView(
@@ -54,7 +69,7 @@ class DrawerMenu extends StatelessWidget {
                 InkWell(
                   hoverColor: AppColors.orange,
                   onTap: () async {
-                    _bloc.add(
+                    _bloc(context).add(
                       ExitEvent(
                         context: context,
                       ),

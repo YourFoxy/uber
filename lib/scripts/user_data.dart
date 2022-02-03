@@ -25,6 +25,12 @@ class UserData {
     });
   }
 
+  static Future<String> getUrlImapeFromStorage() async {
+    return await Auth.fStorage
+        .ref('avatars/${UserData.currentUserPhoneNumber}')
+        .getDownloadURL();
+  }
+
   static Future<bool> checkPhoneNumberInDatabase(String phoneNumber) async {
     bool _phoneNumberExists = false;
     await Auth.fbd.collection(collectionNameWithUsers).get().then(

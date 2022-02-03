@@ -1,12 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:uber/scripts/const.dart';
 
-class MyAvatarView extends StatelessWidget {
+class EditableMyAvatarView extends StatelessWidget {
   final String? pickImageUrl;
   final double radius;
 
-  const MyAvatarView({
+  const EditableMyAvatarView({
     Key? key,
     required this.pickImageUrl,
     required this.radius,
@@ -21,7 +22,7 @@ class MyAvatarView extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
         image: pickImageUrl == ''
             ? const DecorationImage(
-                image: AssetImage('assets/picture/car.png'),
+                image: AssetImage(carUrl),
                 fit: BoxFit.cover,
               )
             : DecorationImage(

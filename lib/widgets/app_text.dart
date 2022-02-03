@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uber/style/colors.dart';
 
 class AppTextStyle extends StatelessWidget {
   final double size;
@@ -9,7 +10,7 @@ class AppTextStyle extends StatelessWidget {
       {Key? key,
       this.size = 16.0,
       required this.text,
-      this.color = Colors.black54})
+      this.color = AppColors.orange})
       : super(key: key);
 
   @override

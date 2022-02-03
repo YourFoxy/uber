@@ -9,7 +9,6 @@ class CodePageBloc extends Bloc<CodePageEvent, CodePageState> {
       (event, emit) {
         Auth.verificationID(
           event.smsCode,
-          // event.isRegister,
           event.context,
           event.phoneNumber,
         );
