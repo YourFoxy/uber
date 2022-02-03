@@ -10,13 +10,11 @@ import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/editable_my_avatar_view_widget.dart';
 
 class EditableAvatarWidget extends StatefulWidget {
-  // Function(String) function;
   final Color backgroundColor;
-  ValueChanged<String> onImageChanged;
+  final ValueChanged<String> onImageChanged;
 
   EditableAvatarWidget({
     Key? key,
-    // required this.function,
     this.backgroundColor = AppColors.plum,
     required this.onImageChanged,
   }) : super(key: key);
@@ -55,12 +53,13 @@ class _EditableAvatarWidgetState extends State<EditableAvatarWidget> {
               ),
               InkWell(
                 onTap: () async {
+                  final url = await Avatar.pickImage();
                   _bloc.add(
                     SetAvatarEvent(
-                      url: await Avatar.pickImage(),
-                      onImageChanged: widget.onImageChanged,
+                      url: url,
                     ),
                   );
+                  widget.onImageChanged.call(url);
                 },
                 child: EditableMyAvatarView(
                   pickImageUrl: (state is AvatarUrlState) ? state.url : '',
