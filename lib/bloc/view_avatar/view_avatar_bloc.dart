@@ -6,12 +6,14 @@ import 'view_avatar_state.dart';
 
 class ViewAvatarBloc extends Bloc<ViewAvatarEvent, ViewAvatarState> {
   ViewAvatarBloc() : super(PageInitialState()) {
-    on<UploadAvatarEvent>((event, emit) async {
-      emit(
-        UploadAvatarState(
-          url: await UserData.getUrlImapeFromStorage(),
-        ),
-      );
-    });
+    on<UploadAvatarEvent>(
+      (event, emit) async {
+        emit(
+          UploadAvatarState(
+            url: await UserData.getUrlImapeFromStorage(),
+          ),
+        );
+      },
+    );
   }
 }

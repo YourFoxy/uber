@@ -15,20 +15,34 @@ class UserData {
   }
 
   static Future<void> updateCurrentUserInformation(
-    String phoneNumber,
     String nickname,
     String city,
+    String pickImageUrl,
   ) async {
-    await Auth.fbd.collection(collectionNameWithUsers).doc(phoneNumber).update({
-      'Nickname': AppText.upperFirstLetterAndDeleteExtraSpaces(nickname),
-      'City': AppText.upperFirstLetterAndDeleteExtraSpaces(city),
-    });
+    await Auth.fbd
+        .collection(collectionNameWithUsers)
+        .doc(currentUserPhoneNumber)
+        .update(
+      {
+        'Nickname': AppText.upperFirstLetterAndDeleteExtraSpaces(nickname),
+        'City': AppText.upperFirstLetterAndDeleteExtraSpaces(city),
+      },
+    );
+    await saveCurrentUserPhoto(pickImageUrl, currentUserPhoneNumber);
   }
 
   static Future<String> getUrlImapeFromStorage() async {
     return await Auth.fStorage
         .ref('avatars/${UserData.currentUserPhoneNumber}')
         .getDownloadURL();
+  }
+
+  static Future<String> getFieldValueFromDatabase(String fieldName) async {
+    final snapshot = await Auth.fbd
+        .collection(collectionNameWithUsers)
+        .doc(UserData.currentUserPhoneNumber)
+        .get();
+    return snapshot[fieldName];
   }
 
   static Future<bool> checkPhoneNumberInDatabase(String phoneNumber) async {
@@ -45,7 +59,7 @@ class UserData {
     return _phoneNumberExists;
   }
 
-  static void saveCurrentUserPhoto(
+  static Future<void> saveCurrentUserPhoto(
     String pickImageUrl,
     String phoneNumber,
   ) async {

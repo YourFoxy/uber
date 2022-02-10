@@ -4,7 +4,7 @@ import 'package:uber/bloc/code_page/code_page_bloc.dart';
 import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_event.dart';
 import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_state.dart';
 import 'package:uber/domain/auth.dart';
-import 'package:uber/extensionBloc/bloc_widget.dart';
+import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/pages/code_page.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/user_data.dart';

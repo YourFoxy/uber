@@ -36,7 +36,6 @@ class _CodePageState extends State<CodePage> {
   void dispose() {
     super.dispose();
     _smsCodeController.dispose();
-    _bloc.dispose();
   }
 
   @override
@@ -44,7 +43,7 @@ class _CodePageState extends State<CodePage> {
     return BlocBuilder<CodePageBloc, CodePageState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.orange,
+          backgroundColor: AppColors.plum,
           body: SingleChildScrollView(
             child: Center(
               child: Column(
@@ -54,7 +53,7 @@ class _CodePageState extends State<CodePage> {
                   ),
                   const AppLargeText(
                     text: 'Code',
-                    color: AppColors.plum,
+                    color: AppColors.orange,
                     size: 40.0,
                   ),
                   const SizedBox(
@@ -74,8 +73,8 @@ class _CodePageState extends State<CodePage> {
                         ),
                       );
                     },
-                    textColor: AppColors.orange,
-                    buttonColor: AppColors.plum,
+                    textColor: AppColors.plum,
+                    buttonColor: AppColors.orange,
                   )
                 ],
               ),

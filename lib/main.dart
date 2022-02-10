@@ -4,16 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:uber/bloc/code_page/code_page_bloc.dart';
-import 'package:uber/bloc/editable_avatar/editable_avatar_bloc.dart';
+import 'package:uber/bloc/editable_avatar/editable_round_avatar_bloc.dart';
 import 'package:uber/bloc/home_page/home_page_bloc.dart';
+import 'package:uber/bloc/long_save_button_widget/long_save_button_widget_bloc.dart';
 import 'package:uber/bloc/register_user_information_page/register_user_information_page_bloc.dart';
-import 'package:uber/extensionBloc/bloc_widget.dart';
+import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/pages/login_or_register_page.dart';
 import 'package:uber/pages/home_page.dart';
 import 'package:uber/pages/sign_in_with_phone_number.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/service/toast_service.dart';
 import 'bloc/drawer_widget/drawer_widget_bloc.dart';
+import 'bloc/edit_user_information_page/edit_user_information_page_bloc.dart';
+import 'bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
 import 'bloc/sign_in_with_phone_page/sign_in_with_phone_page_bloc.dart';
 import 'bloc/view_avatar/view_avatar_bloc.dart';
 
@@ -36,11 +39,18 @@ void registerBlocsFactory() {
   _getIt.registerFactory<DrawerWidgetBloc>(
       () => DrawerWidgetBloc(toastService: _toastService));
   _getIt.registerFactory<ViewAvatarBloc>(() => ViewAvatarBloc());
-  _getIt.registerFactory<EditableAvatarBloc>(() => EditableAvatarBloc());
+  _getIt.registerFactory<EditableRoundAvatarBloc>(
+      () => EditableRoundAvatarBloc());
   _getIt.registerFactory<HomePageBloc>(() => HomePageBloc());
   _getIt.registerFactory<CodePageBloc>(() => CodePageBloc());
   _getIt.registerFactory<RegisterUserInformationPageBloc>(
       () => RegisterUserInformationPageBloc());
+  _getIt.registerFactory<EditableRectangularAvatarBloc>(
+      () => EditableRectangularAvatarBloc());
+  _getIt.registerFactory<EditUserInformationPageBloc>(
+      () => EditUserInformationPageBloc());
+  _getIt.registerFactory<LongSaveButtonWidgetBloc>(
+      () => LongSaveButtonWidgetBloc());
 }
 
 class MyApp extends StatelessWidget {

@@ -46,7 +46,6 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
   void dispose() {
     super.dispose();
     _numberController.dispose();
-    _bloc.dispose();
   }
 
   @override
@@ -56,7 +55,7 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
       child: BlocBuilder<SignInWithPhonePageBloc, SignInWithPhonePageState>(
         builder: (context, state) {
           return Scaffold(
-            backgroundColor: AppColors.orange,
+            backgroundColor: AppColors.plum,
             body: SingleChildScrollView(
               child: Center(
                 child: Column(
@@ -66,13 +65,15 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
                     ),
                     AppLargeText(
                       text: widget.isRegister ? 'Register' : 'LogIn',
-                      color: AppColors.plum,
+                      color: AppColors.orange,
                       size: 40.0,
                     ),
                     const SizedBox(
                       height: 10.0,
                     ),
                     TextFieldWidget(
+                      backgroundColor: AppColors.orange,
+                      textColor: AppColors.plum,
                       controller: _numberController,
                       hintText: 'Number',
                       isNumber: true,
@@ -80,7 +81,7 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
                     ButtonWidget(
                       text: 'Send code',
                       textColor: AppColors.orange,
-                      buttonColor: AppColors.plum,
+                      buttonColor: AppColors.dark,
                       onTap: () => () {
                         _bloc(context).add(
                           SendCodeEvent(

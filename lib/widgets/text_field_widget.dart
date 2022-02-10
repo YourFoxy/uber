@@ -9,13 +9,17 @@ class TextFieldWidget extends StatelessWidget {
   final bool isNumber;
   final String hintText;
   final TextEditingController controller;
+  final Color backgroundColor;
+  final Color textColor;
 
-  const TextFieldWidget(
-      {Key? key,
-      required this.hintText,
-      this.isNumber = false,
-      required this.controller})
-      : super(key: key);
+  const TextFieldWidget({
+    Key? key,
+    required this.hintText,
+    this.isNumber = false,
+    required this.controller,
+    this.backgroundColor = AppColors.plum,
+    this.textColor = AppColors.orange,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +34,11 @@ class TextFieldWidget extends StatelessWidget {
         width: 300,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: AppColors.plum,
+          color: backgroundColor,
         ),
         child: TextField(
           textAlign: TextAlign.center,
-          cursorColor: AppColors.orange,
+          cursorColor: textColor,
           maxLength: 19,
           controller: controller,
           keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
@@ -47,15 +51,15 @@ class TextFieldWidget extends StatelessWidget {
                   FilteringTextInputFormatter.singleLineFormatter,
                   RemoveAllExtraSpacesTextFormatter(),
                 ],
-          style: const TextStyle(
-            color: AppColors.orange,
+          style: TextStyle(
+            color: textColor,
             fontSize: 30.0,
             fontFamily: 'BebasNeue',
           ),
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: const TextStyle(
-              color: AppColors.orange,
+            hintStyle: TextStyle(
+              color: textColor,
               fontSize: 25.0,
               fontFamily: 'BebasNeue',
             ),

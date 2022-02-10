@@ -12,7 +12,6 @@ class RegisterUserInformationPageBloc extends Bloc<
           event.city,
           event.nickname,
           event.pickImageUrl,
-          event.phoneNumber,
           event.context,
         );
       },

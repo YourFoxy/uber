@@ -5,6 +5,7 @@ import 'app_text.dart';
 
 class PlaceForCardWidget extends StatelessWidget {
   final String text;
+
   const PlaceForCardWidget({required this.text, Key? key}) : super(key: key);
 
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-abstract class EditableAvatarEvent {}
+abstract class EditableRoundAvatarEvent {}
 
-class SetAvatarEvent extends EditableAvatarEvent {
+class SetAvatarEvent extends EditableRoundAvatarEvent {
   final String url;
   SetAvatarEvent({
     required this.url,

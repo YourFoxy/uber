@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/editable_avatar/editable_avatar_bloc.dart';
+import 'package:uber/bloc/editable_avatar/editable_round_avatar_bloc.dart';
 import 'package:uber/bloc/register_user_information_page/register_user_information_page_bloc.dart';
 import 'package:uber/bloc/register_user_information_page/register_user_information_page_event.dart';
 import 'package:uber/bloc/register_user_information_page/register_user_information_page_state.dart';
-import 'package:uber/extensionBloc/bloc_widget.dart';
+import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
-import 'package:uber/widgets/editable_avatar_widget.dart';
+import 'package:uber/widgets/editable_round_avatar_widget.dart';
 import 'package:uber/widgets/button_widget.dart';
 import 'package:uber/widgets/text_field_widget.dart';
 
@@ -41,7 +41,6 @@ class _RegisterUserInformationPageState
     super.dispose();
     _nicknameController.dispose();
     _cityController.dispose();
-    _bloc.dispose();
   }
 
   @override
@@ -50,7 +49,7 @@ class _RegisterUserInformationPageState
         RegisterUserInformationPageState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.orange,
+          backgroundColor: AppColors.plum,
           body: SingleChildScrollView(
             child: Center(
               child: Column(
@@ -60,19 +59,24 @@ class _RegisterUserInformationPageState
                   ),
                   const AppLargeText(
                     text: 'User information',
-                    color: AppColors.plum,
+                    color: AppColors.orange,
                     size: 40.0,
                   ),
-                  EditableAvatarWidget(
+                  EditableRoundAvatarWidget(
+                    backgroundColor: AppColors.orange,
                     onImageChanged: (url) {
                       _pickImageUrl = url;
                     },
-                  ).createWithProvider<EditableAvatarBloc>(),
+                  ).createWithProvider<EditableRoundAvatarBloc>(),
                   TextFieldWidget(
+                    backgroundColor: AppColors.orange,
+                    textColor: AppColors.plum,
                     hintText: 'Nickname',
                     controller: _nicknameController,
                   ),
                   TextFieldWidget(
+                    backgroundColor: AppColors.orange,
+                    textColor: AppColors.plum,
                     hintText: 'City',
                     controller: _cityController,
                   ),
@@ -89,8 +93,8 @@ class _RegisterUserInformationPageState
                         ),
                       );
                     },
-                    textColor: AppColors.orange,
-                    buttonColor: AppColors.plum,
+                    textColor: AppColors.plum,
+                    buttonColor: AppColors.orange,
                   ),
                 ],
               ),

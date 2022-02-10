@@ -61,14 +61,22 @@ import 'package:flutter/cupertino.dart';
 //   static const Color white = Color(0xFFFFFFFF);
 // }
 
-BoxDecoration backgroundDecorstion() {
-  return const BoxDecoration(
-    gradient: LinearGradient(
-        begin: Alignment.topRight,
-        end: Alignment.bottomLeft,
-        colors: [AppColors.dark, Color(0xFF666668), AppColors.orange]),
-  );
-}
+// BoxDecoration backgroundDecorstion() {
+//   return const BoxDecoration(
+//     gradient: LinearGradient(
+//         begin: Alignment.topCenter,
+//         end: Alignment.bottomCenter,
+//         colors: [
+//           AppColors.dark,
+//           //AppColors.plum,
+//           //AppColors.plum,
+
+//           // Color(0xFF996C39),
+//           // AppColors.dark,
+//           AppColors.orange,
+//         ]),
+//   );
+// }
 
 class AppColors {
   static const Color plum = Color(0xFF3E3D41);
@@ -77,7 +85,11 @@ class AppColors {
 
   //static const Color black = Color(0xFF1C1C1C);
 
-  static const Color orange = Color(0xFFFFFEFB);
+  //
+  static const Color orange = Color(0xFFFFB55E);
+  //static const Color orange = Color(0xFFFFFEFB);
+//
+
   // static const Color orange = Color(0xFFF99F1A);
   static const Color light = Color(0xFFCDD2CB);
   static const Color white = Color(0xFFFFFFFF);

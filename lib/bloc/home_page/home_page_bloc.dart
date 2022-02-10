@@ -10,14 +10,10 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   HomePageBloc() : super(PageInitState()) {
     on<LoadedUserInformationEvent>(
       (event, emit) async {
-        final snapshot = await Auth.fbd
-            .collection(collectionNameWithUsers)
-            .doc(UserData.currentUserPhoneNumber)
-            .get();
         emit(
           LoadedUserInformationState(
             nicknameAndCity:
-                '${snapshot[nicknameFieldInCollection]}, \n${snapshot[cityFieldInCollection]}',
+                '${await UserData.getFieldValueFromDatabase(nicknameFieldInCollection)}, \n${await UserData.getFieldValueFromDatabase(cityFieldInCollection)}',
             currentUserPhoneNumber: UserData.currentUserPhoneNumber,
           ),
         );
