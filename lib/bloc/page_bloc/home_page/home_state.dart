@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 @immutable
-abstract class HomePageState {}
+abstract class HomeState {}
 
-class PageInitState extends HomePageState {}
+class PageInitState extends HomeState {}
 
-class LoadedUserInformationState extends HomePageState {
+class LoadedUserInformationState extends HomeState {
   final String nicknameAndCity;
   final String currentUserPhoneNumber;
 

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
-import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_bloc.dart';
-import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_event.dart';
-import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_state.dart';
+import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_bloc.dart';
+import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_event.dart';
+import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_state.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/button_widget.dart';
@@ -31,7 +31,7 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<SignInWithPhonePageBloc>;
+    _bloc = BlocProvider.of<SignInWithPhoneBloc>;
   }
 
   @override
@@ -51,8 +51,8 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetIt.instance.get<SignInWithPhonePageBloc>(),
-      child: BlocBuilder<SignInWithPhonePageBloc, SignInWithPhonePageState>(
+      create: (context) => GetIt.instance.get<SignInWithPhoneBloc>(),
+      child: BlocBuilder<SignInWithPhoneBloc, SignInWithPhoneState>(
         builder: (context, state) {
           return Scaffold(
             backgroundColor: AppColors.plum,

@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/editable_avatar/editable_round_avatar_bloc.dart';
-import 'package:uber/bloc/editable_avatar/editable_round_avatar_event.dart';
-import 'package:uber/bloc/editable_avatar/editable_round_avatar_state.dart';
+import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_bloc.dart';
+import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_event.dart';
+import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_state.dart';
 import 'package:uber/scripts/const.dart';
 
 import 'package:uber/scripts/image.dart';
@@ -56,11 +56,13 @@ class _EditableRoundAvatarWidgetState extends State<EditableRoundAvatarWidget> {
               InkWell(
                 onTap: () async {
                   final url = await Avatar.pickImage();
+                  print('..................................');
                   _bloc.add(
                     SetAvatarEvent(
                       url: url,
                     ),
                   );
+                  print('..................................');
                   widget.onImageChanged.call(url);
                 },
                 child: Container(

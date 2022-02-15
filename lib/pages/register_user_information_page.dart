@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/editable_avatar/editable_round_avatar_bloc.dart';
-import 'package:uber/bloc/register_user_information_page/register_user_information_page_bloc.dart';
-import 'package:uber/bloc/register_user_information_page/register_user_information_page_event.dart';
-import 'package:uber/bloc/register_user_information_page/register_user_information_page_state.dart';
+import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_bloc.dart';
+import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_event.dart';
+import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_state.dart';
+import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_bloc.dart';
 import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
@@ -33,7 +33,7 @@ class _RegisterUserInformationPageState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<RegisterUserInformationPageBloc>(context);
+    _bloc = BlocProvider.of<RegisterUserInformationBloc>(context);
   }
 
   @override
@@ -45,8 +45,8 @@ class _RegisterUserInformationPageState
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RegisterUserInformationPageBloc,
-        RegisterUserInformationPageState>(
+    return BlocBuilder<RegisterUserInformationBloc,
+        RegisterUserInformationState>(
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColors.plum,

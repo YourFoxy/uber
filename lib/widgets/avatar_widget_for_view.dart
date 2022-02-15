@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:uber/bloc/view_avatar/view_avatar_bloc.dart';
-import 'package:uber/bloc/view_avatar/view_avatar_event.dart';
-import 'package:uber/bloc/view_avatar/view_avatar_state.dart';
+import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
+import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_event.dart';
+import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_state.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/style/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,11 +22,18 @@ class AvatarWidgetForView extends StatefulWidget {
 class _AvatarWidgetForViewState extends State<AvatarWidgetForView> {
   late final _bloc;
 
-  @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
+  // @override
+  // void didChangeDependencies() {
+  //   // TODO: implement didChangeDependencies
+  //   super.didChangeDependencies();
 
+  //   _bloc = BlocProvider.of<ViewAvatarBloc>(context);
+  //   _bloc.add(UploadAvatarEvent());
+  // }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
     _bloc = BlocProvider.of<ViewAvatarBloc>(context);
     _bloc.add(UploadAvatarEvent());
   }

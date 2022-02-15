@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/edit_user_information_page/edit_user_information_page_bloc.dart';
-import 'package:uber/bloc/edit_user_information_page/edit_user_information_page_event.dart';
-import 'package:uber/bloc/edit_user_information_page/edit_user_information_page_state.dart';
-import 'package:uber/bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
-import 'package:uber/bloc/long_save_button_widget/long_save_button_widget_bloc.dart';
+import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_bloc.dart';
+import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_event.dart';
+import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_state.dart';
+import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
 import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_text.dart';
@@ -28,14 +27,19 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
   late final _bloc;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _bloc = BlocProvider.of<EditUserInformationPageBloc>(context);
+  void initState() {
+    super.initState();
+    _bloc = BlocProvider.of<EditUserInformationBloc>(context);
     _bloc.add(
-      UploadNicknameAndCityEvent(
-          nicknameController: _nicknameController,
-          cityController: _cityController),
+      UploadNicknameAndCityEvent(),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _nicknameController.dispose();
+    _cityController.dispose();
   }
 
   @override
@@ -51,9 +55,12 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
         ),
       ),
       backgroundColor: AppColors.plum,
-      body: BlocBuilder<EditUserInformationPageBloc,
-          EditUserInformationPageState>(
+      body: BlocBuilder<EditUserInformationBloc, EditUserInformationState>(
         builder: (context, state) {
+          if (state is UploadNicknameAndCityState) {
+            _nicknameController.text = state.nickname;
+            _cityController.text = state.city;
+          }
           return Stack(
             children: [
               SingleChildScrollView(
@@ -89,10 +96,17 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
               ),
               SafeArea(
                 child: LongSaveButtonWidget(
-                  imageUrl: _pickImageUrl,
-                  nickname: _nicknameController.text,
-                  city: _cityController.text,
-                ).createWithProvider<LongSaveButtonWidgetBloc>(),
+                  function: () {
+                    _bloc.add(
+                      SaveUserInformationEvent(
+                        nickname: _nicknameController.text,
+                        city: _cityController.text,
+                        pickImageUrl: _pickImageUrl,
+                        context: context,
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           );

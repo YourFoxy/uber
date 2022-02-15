@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:uber/bloc/home_page/home_page_bloc.dart';
-import 'package:uber/bloc/register_user_information_page/register_user_information_page_bloc.dart';
+import 'package:uber/bloc/page_bloc/home_page/home_bloc.dart';
+import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_bloc.dart';
 import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/pages/register_user_information_page.dart';
 import 'package:uber/pages/home_page.dart';
@@ -54,7 +54,7 @@ class Auth {
           MaterialPageRoute(
             builder: (context) => RegisterUserInformationPage(
               phoneNumber: phoneNumber,
-            ).createWithProvider<RegisterUserInformationPageBloc>(),
+            ).createWithProvider<RegisterUserInformationBloc>(),
           ),
         );
       } else {
@@ -62,7 +62,7 @@ class Auth {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                const HomePage().createWithProvider<HomePageBloc>(),
+                const HomePage().createWithProvider<HomeBloc>(),
           ),
         );
       }

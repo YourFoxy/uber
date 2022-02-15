@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
-import 'package:uber/bloc/editable_rectangular_avatar/editable_rectangular_avatar_event.dart';
-import 'package:uber/bloc/editable_rectangular_avatar/editable_rectangular_avatar_state.dart';
+import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
+import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_event.dart';
+import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_state.dart';
 import 'package:uber/scripts/image.dart';
 import 'package:uber/style/colors.dart';
 
@@ -24,17 +24,19 @@ class _EditableRectangularAvatarWidgetState
     extends State<EditableRectangularAvatarWidget> {
   late final _bloc;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _bloc = BlocProvider.of<EditableRectangularAvatarBloc>(context);
-    _bloc.add(UploadAvatarEvent());
-  }
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   _bloc = BlocProvider.of<EditableRectangularAvatarBloc>(context);
+  //   _bloc.add(UploadAvatarEvent());
+  // }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _bloc = BlocProvider.of<EditableRectangularAvatarBloc>(context);
+    _bloc.add(UploadAvatarEvent());
   }
 
   @override

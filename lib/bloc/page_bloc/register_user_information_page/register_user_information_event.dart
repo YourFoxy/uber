@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-abstract class RegisterUserInformationPageEvent {}
+abstract class RegisterUserInformationEvent {}
 
-class AddUserInformationEvent extends RegisterUserInformationPageEvent {
+class AddUserInformationEvent extends RegisterUserInformationEvent {
   final String city;
   final String nickname;
   final String pickImageUrl;

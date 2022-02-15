@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:uber/bloc/home_page/home_page_bloc.dart';
+import 'package:uber/bloc/page_bloc/home_page/home_bloc.dart';
 import 'package:uber/pages/home_page.dart';
 import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/user_data.dart';
@@ -28,8 +28,7 @@ class FieldValidation {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>
-              const HomePage().createWithProvider<HomePageBloc>(),
+          builder: (context) => const HomePage().createWithProvider<HomeBloc>(),
         ),
       );
     } else {

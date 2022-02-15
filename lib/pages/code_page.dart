@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/code_page/code_page_bloc.dart';
-import 'package:uber/bloc/code_page/code_page_event.dart';
-import 'package:uber/bloc/code_page/code_page_state.dart';
+import 'package:uber/bloc/page_bloc/code_page/code_bloc.dart';
+import 'package:uber/bloc/page_bloc/code_page/code_event.dart';
+import 'package:uber/bloc/page_bloc/code_page/code_state.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/button_widget.dart';
@@ -29,7 +29,7 @@ class _CodePageState extends State<CodePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<CodePageBloc>;
+    _bloc = BlocProvider.of<CodeBloc>;
   }
 
   @override
@@ -40,7 +40,7 @@ class _CodePageState extends State<CodePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CodePageBloc, CodePageState>(
+    return BlocBuilder<CodeBloc, CodeState>(
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColors.plum,

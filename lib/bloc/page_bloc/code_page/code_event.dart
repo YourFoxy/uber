@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-abstract class CodePageEvent {}
+abstract class CodeEvent {}
 
-class SignInEvent extends CodePageEvent {
+class SignInEvent extends CodeEvent {
   final String smsCode;
   final String phoneNumber;
   final BuildContext context;

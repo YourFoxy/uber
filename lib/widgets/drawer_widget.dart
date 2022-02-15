@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:uber/bloc/drawer_widget/drawer_widget_bloc.dart';
-import 'package:uber/bloc/drawer_widget/drawer_widget_event.dart';
-import 'package:uber/bloc/drawer_widget/drawer_widget_state.dart';
-import 'package:uber/bloc/edit_user_information_page/edit_user_information_page_bloc.dart';
+import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_bloc.dart';
+import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
+import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_event.dart';
+import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_state.dart';
 import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/pages/edit_user_information_page.dart';
 import 'package:uber/style/colors.dart';
@@ -52,7 +52,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => EditUserInformationPage()
-                          .createWithProvider<EditUserInformationPageBloc>(),
+                          .createWithProvider<EditUserInformationBloc>(),
                     ),
                   );
                 },

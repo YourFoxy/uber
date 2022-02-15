@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-abstract class SignInWithPhonePageEvent {}
+abstract class SignInWithPhoneEvent {}
 
-class SendCodeEvent extends SignInWithPhonePageEvent {
+class SendCodeEvent extends SignInWithPhoneEvent {
   final String phoneNumber;
   final bool isRegister;
   final BuildContext context;
