@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/page_bloc/code_page/code_bloc.dart';
-import 'package:uber/bloc/page_bloc/code_page/code_event.dart';
-import 'package:uber/bloc/page_bloc/code_page/code_state.dart';
+import 'package:uber/bloc/page_bloc/verify_code/verify_code_bloc.dart';
+import 'package:uber/bloc/page_bloc/verify_code/verify_code_event.dart';
+import 'package:uber/bloc/page_bloc/verify_code/verify_code_state.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/button_widget.dart';
@@ -24,12 +24,12 @@ class CodePage extends StatefulWidget {
 
 class _CodePageState extends State<CodePage> {
   final TextEditingController _smsCodeController = TextEditingController();
-  late final _bloc;
+  late final Bloc _bloc;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<CodeBloc>;
+    _bloc = BlocProvider.of<VerifyCodeBloc>(context);
   }
 
   @override
@@ -40,7 +40,7 @@ class _CodePageState extends State<CodePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CodeBloc, CodeState>(
+    return BlocBuilder<VerifyCodeBloc, VerifyCodeState>(
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColors.plum,
@@ -65,7 +65,7 @@ class _CodePageState extends State<CodePage> {
                   ButtonWidget(
                     text: widget.isRegister ? 'Register' : 'LogIn',
                     onTap: () => () {
-                      _bloc(context).add(
+                      _bloc.add(
                         SignInEvent(
                           smsCode: _smsCodeController.text,
                           context: context,

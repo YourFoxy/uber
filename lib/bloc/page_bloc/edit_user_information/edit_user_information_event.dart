@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class EditUserInformationEvent {}
 
-class UploadNicknameAndCityEvent extends EditUserInformationEvent {
-  // final String city;
-  // final String nickname;
-  // UploadNicknameAndCityEvent({required this.nickname, required this.city});
-}
+class UploadNicknameAndCityEvent extends EditUserInformationEvent {}
 
 class SaveUserInformationEvent extends EditUserInformationEvent {
   final String nickname;

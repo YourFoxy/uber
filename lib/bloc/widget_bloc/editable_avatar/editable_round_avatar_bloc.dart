@@ -7,7 +7,6 @@ class EditableRoundAvatarBloc
   EditableRoundAvatarBloc() : super(WidgetInitState()) {
     on<SetAvatarEvent>(
       (event, emit) {
-        print('ddddddddddddddddddddddd');
         emit(AvatarUrlState(url: event.url));
       },
     );

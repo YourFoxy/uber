@@ -22,27 +22,12 @@ class AvatarWidgetForView extends StatefulWidget {
 class _AvatarWidgetForViewState extends State<AvatarWidgetForView> {
   late final _bloc;
 
-  // @override
-  // void didChangeDependencies() {
-  //   // TODO: implement didChangeDependencies
-  //   super.didChangeDependencies();
-
-  //   _bloc = BlocProvider.of<ViewAvatarBloc>(context);
-  //   _bloc.add(UploadAvatarEvent());
-  // }
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _bloc = BlocProvider.of<ViewAvatarBloc>(context);
     _bloc.add(UploadAvatarEvent());
   }
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _bloc = BlocProvider.of<ViewAvatarBloc>(context);
-  //   _bloc.add(UploadAvatarEvent());
-  // }
 
   @override
   void dispose() {
@@ -53,7 +38,6 @@ class _AvatarWidgetForViewState extends State<AvatarWidgetForView> {
   Widget build(BuildContext context) {
     return BlocBuilder<ViewAvatarBloc, ViewAvatarState>(
       builder: (context, state) {
-        // _bloc.add(UploadAvatarEvent());
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
           child: Stack(

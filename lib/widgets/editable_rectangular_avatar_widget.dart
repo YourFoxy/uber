@@ -24,16 +24,8 @@ class _EditableRectangularAvatarWidgetState
     extends State<EditableRectangularAvatarWidget> {
   late final _bloc;
 
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   _bloc = BlocProvider.of<EditableRectangularAvatarBloc>(context);
-  //   _bloc.add(UploadAvatarEvent());
-  // }
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _bloc = BlocProvider.of<EditableRectangularAvatarBloc>(context);
     _bloc.add(UploadAvatarEvent());
@@ -66,8 +58,6 @@ class _EditableRectangularAvatarWidgetState
                   ? DecorationImage(
                       image: FileImage(
                         File(state.url),
-
-                        // 'https://sun9-21.userapi.com/impg/THWSTu9fOIyc73-Fb026p65uzN_sbpz1-4VXVQ/HF7qNvBkXOc.jpg?size=720x900&quality=95&sign=978e26961bf749ec622e8275b89889e9&type=album',
                       ),
                       fit: BoxFit.cover,
                     )

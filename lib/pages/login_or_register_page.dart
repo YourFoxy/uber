@@ -10,9 +10,7 @@ class LoginOrRegister extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //  decoration: backgroundDecorstion(),
       child: Scaffold(
-        //  backgroundColor: Colors.transparent,
         backgroundColor: AppColors.plum,
         body: SingleChildScrollView(
           child: Center(

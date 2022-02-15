@@ -13,10 +13,6 @@ class EditUserInformationBloc
   EditUserInformationBloc() : super(PageInitState()) {
     on<UploadNicknameAndCityEvent>(
       (event, emit) async {
-        // event.nicknameController.text =
-        //     await UserData.getFieldValueFromDatabase(nicknameFieldInCollection);
-        // event.cityController.text =
-        //     await UserData.getFieldValueFromDatabase(cityFieldInCollection);
         emit(
           UploadNicknameAndCityState(
             nickname: await UserData.getFieldValueFromDatabase(
@@ -29,7 +25,6 @@ class EditUserInformationBloc
     );
     on<SaveUserInformationEvent>(
       (event, emit) async {
-        print('.....................${event.nickname}');
         await UserData.updateCurrentUserInformation(
             event.nickname, event.city, event.pickImageUrl);
         Navigator.push(

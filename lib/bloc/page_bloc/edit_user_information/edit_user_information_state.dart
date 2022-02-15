@@ -6,7 +6,7 @@ abstract class EditUserInformationState {}
 class PageInitState extends EditUserInformationState {}
 
 class UploadNicknameAndCityState extends EditUserInformationState {
-  String nickname;
-  String city;
+  final String nickname;
+  final String city;
   UploadNicknameAndCityState({required this.nickname, required this.city});
 }

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
-import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_bloc.dart';
+import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_bloc.dart';
 import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
 import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_event.dart';
 import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_state.dart';
 import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/pages/edit_user_information_page.dart';
 import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/app_text.dart';
 import 'package:uber/widgets/icon_and_text_for_drawer_button.dart';
 
@@ -20,7 +18,7 @@ class DrawerMenu extends StatefulWidget {
 }
 
 class _DrawerMenuState extends State<DrawerMenu> {
-  late final _bloc;
+  late final Bloc _bloc;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -51,7 +49,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => EditUserInformationPage()
+                      builder: (context) => const EditUserInformationPage()
                           .createWithProvider<EditUserInformationBloc>(),
                     ),
                   );

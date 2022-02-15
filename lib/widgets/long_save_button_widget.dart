@@ -4,15 +4,14 @@ import 'package:uber/widgets/app_large_text.dart';
 
 class LongSaveButtonWidget extends StatefulWidget {
   final Function function;
-  LongSaveButtonWidget({Key? key, required this.function}) : super(key: key);
+  const LongSaveButtonWidget({Key? key, required this.function})
+      : super(key: key);
 
   @override
   State<LongSaveButtonWidget> createState() => _LongSaveButtonWidgetState();
 }
 
 class _LongSaveButtonWidgetState extends State<LongSaveButtonWidget> {
-  late final _bloc;
-
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -34,8 +33,6 @@ class _LongSaveButtonWidgetState extends State<LongSaveButtonWidget> {
           ),
         ),
       ),
-      // );
-      //},
     );
   }
 }

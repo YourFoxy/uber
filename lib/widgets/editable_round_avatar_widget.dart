@@ -56,13 +56,11 @@ class _EditableRoundAvatarWidgetState extends State<EditableRoundAvatarWidget> {
               InkWell(
                 onTap: () async {
                   final url = await Avatar.pickImage();
-                  print('..................................');
                   _bloc.add(
                     SetAvatarEvent(
                       url: url,
                     ),
                   );
-                  print('..................................');
                   widget.onImageChanged.call(url);
                 },
                 child: Container(
