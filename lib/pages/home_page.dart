@@ -1,11 +1,11 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/home_page/home_page_bloc.dart';
-import 'package:uber/bloc/home_page/home_page_event.dart';
-import 'package:uber/bloc/home_page/home_page_state.dart';
-import 'package:uber/bloc/view_avatar/view_avatar_bloc.dart';
-import 'package:uber/extensionBloc/bloc_widget.dart';
+import 'package:uber/bloc/page_bloc/home_page/home_bloc.dart';
+import 'package:uber/bloc/page_bloc/home_page/home_event.dart';
+import 'package:uber/bloc/page_bloc/home_page/home_state.dart';
+import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
+import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
+import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/avatar_widget_for_view.dart';
@@ -27,23 +27,22 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    _bloc = BlocProvider.of<HomePageBloc>(context);
+    _bloc = BlocProvider.of<HomeBloc>(context);
     _bloc.add(LoadedUserInformationEvent());
   }
 
   @override
   void dispose() {
     super.dispose();
-    _bloc.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomePageBloc, HomePageState>(
+    return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColors.plum,
-          drawer: const DrawerMenu(),
+          drawer: DrawerMenu().createWithProvider<DrawerWidgetBloc>(),
           appBar: AppBar(
             backgroundColor: AppColors.plum,
             iconTheme: const IconThemeData(color: AppColors.orange),

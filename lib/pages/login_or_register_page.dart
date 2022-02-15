@@ -10,23 +10,24 @@ class LoginOrRegister extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: backgroundDecorstion(),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.plum,
         body: SingleChildScrollView(
           child: Center(
             child: Column(
               children: <Widget>[
                 const Car(),
                 ButtonWidget(
-                  buttonColor: AppColors.light,
+                  buttonColor: AppColors.dark,
+                  textColor: AppColors.orange,
                   text: 'Login',
                   onTap: () => () {
                     Navigator.pushNamed(context, logInNumberPage);
                   },
                 ),
                 ButtonWidget(
-                  buttonColor: AppColors.light,
+                  buttonColor: AppColors.dark,
+                  textColor: AppColors.orange,
                   text: 'Register',
                   onTap: () => () {
                     Navigator.pushNamed(context, registerNumberPage);

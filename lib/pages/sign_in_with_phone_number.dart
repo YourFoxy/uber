@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
-import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_bloc.dart';
-import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_event.dart';
-import 'package:uber/bloc/sign_in_with_phone_page/sign_in_with_phone_page_state.dart';
+import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_bloc.dart';
+import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_event.dart';
+import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_state.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/button_widget.dart';
@@ -31,7 +31,7 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<SignInWithPhonePageBloc>;
+    _bloc = BlocProvider.of<SignInWithPhoneBloc>;
   }
 
   @override
@@ -46,17 +46,16 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
   void dispose() {
     super.dispose();
     _numberController.dispose();
-    _bloc.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetIt.instance.get<SignInWithPhonePageBloc>(),
-      child: BlocBuilder<SignInWithPhonePageBloc, SignInWithPhonePageState>(
+      create: (context) => GetIt.instance.get<SignInWithPhoneBloc>(),
+      child: BlocBuilder<SignInWithPhoneBloc, SignInWithPhoneState>(
         builder: (context, state) {
           return Scaffold(
-            backgroundColor: AppColors.orange,
+            backgroundColor: AppColors.plum,
             body: SingleChildScrollView(
               child: Center(
                 child: Column(
@@ -66,13 +65,15 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
                     ),
                     AppLargeText(
                       text: widget.isRegister ? 'Register' : 'LogIn',
-                      color: AppColors.plum,
+                      color: AppColors.orange,
                       size: 40.0,
                     ),
                     const SizedBox(
                       height: 10.0,
                     ),
                     TextFieldWidget(
+                      backgroundColor: AppColors.orange,
+                      textColor: AppColors.plum,
                       controller: _numberController,
                       hintText: 'Number',
                       isNumber: true,
@@ -80,7 +81,7 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
                     ButtonWidget(
                       text: 'Send code',
                       textColor: AppColors.orange,
-                      buttonColor: AppColors.plum,
+                      buttonColor: AppColors.dark,
                       onTap: () => () {
                         _bloc(context).add(
                           SendCodeEvent(

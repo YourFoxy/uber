@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:uber/bloc/view_avatar/view_avatar_bloc.dart';
-import 'package:uber/bloc/view_avatar/view_avatar_event.dart';
-import 'package:uber/bloc/view_avatar/view_avatar_state.dart';
+import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
+import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_event.dart';
+import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_state.dart';
+import 'package:uber/scripts/const.dart';
 import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/my_avatar_view_widget_for_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AvatarWidgetForView extends StatefulWidget {
@@ -32,7 +32,6 @@ class _AvatarWidgetForViewState extends State<AvatarWidgetForView> {
   @override
   void dispose() {
     super.dispose();
-    _bloc.dispose();
   }
 
   @override
@@ -48,10 +47,23 @@ class _AvatarWidgetForViewState extends State<AvatarWidgetForView> {
                 radius: 74,
                 backgroundColor: widget.backgroundColor,
               ),
-              MyAvatarViewForView(
-                imageUrlFromStorage:
-                    state is UploadAvatarState ? state.url : ' ',
-                radius: 69,
+              Container(
+                height: 138,
+                width: 138,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  image: state is UploadAvatarState
+                      ? DecorationImage(
+                          image: NetworkImage(
+                            state.url,
+                          ),
+                          fit: BoxFit.cover,
+                        )
+                      : const DecorationImage(
+                          image: AssetImage(carUrl),
+                          fit: BoxFit.cover,
+                        ),
+                ),
               ),
             ],
           ),

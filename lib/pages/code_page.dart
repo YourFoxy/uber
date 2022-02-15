@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/code_page/code_page_bloc.dart';
-import 'package:uber/bloc/code_page/code_page_event.dart';
-import 'package:uber/bloc/code_page/code_page_state.dart';
+import 'package:uber/bloc/page_bloc/verify_code/verify_code_bloc.dart';
+import 'package:uber/bloc/page_bloc/verify_code/verify_code_event.dart';
+import 'package:uber/bloc/page_bloc/verify_code/verify_code_state.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/button_widget.dart';
@@ -24,27 +24,26 @@ class CodePage extends StatefulWidget {
 
 class _CodePageState extends State<CodePage> {
   final TextEditingController _smsCodeController = TextEditingController();
-  late final _bloc;
+  late final Bloc _bloc;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<CodePageBloc>;
+    _bloc = BlocProvider.of<VerifyCodeBloc>(context);
   }
 
   @override
   void dispose() {
     super.dispose();
     _smsCodeController.dispose();
-    _bloc.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CodePageBloc, CodePageState>(
+    return BlocBuilder<VerifyCodeBloc, VerifyCodeState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.orange,
+          backgroundColor: AppColors.plum,
           body: SingleChildScrollView(
             child: Center(
               child: Column(
@@ -54,7 +53,7 @@ class _CodePageState extends State<CodePage> {
                   ),
                   const AppLargeText(
                     text: 'Code',
-                    color: AppColors.plum,
+                    color: AppColors.orange,
                     size: 40.0,
                   ),
                   const SizedBox(
@@ -66,7 +65,7 @@ class _CodePageState extends State<CodePage> {
                   ButtonWidget(
                     text: widget.isRegister ? 'Register' : 'LogIn',
                     onTap: () => () {
-                      _bloc(context).add(
+                      _bloc.add(
                         SignInEvent(
                           smsCode: _smsCodeController.text,
                           context: context,
@@ -74,8 +73,8 @@ class _CodePageState extends State<CodePage> {
                         ),
                       );
                     },
-                    textColor: AppColors.orange,
-                    buttonColor: AppColors.plum,
+                    textColor: AppColors.plum,
+                    buttonColor: AppColors.orange,
                   )
                 ],
               ),
