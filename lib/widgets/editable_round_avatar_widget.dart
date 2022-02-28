@@ -15,7 +15,7 @@ class EditableRoundAvatarWidget extends StatefulWidget {
   final Color backgroundColor;
   final ValueChanged<String> onImageChanged;
 
-  EditableRoundAvatarWidget({
+  const EditableRoundAvatarWidget({
     Key? key,
     this.backgroundColor = AppColors.plum,
     required this.onImageChanged,
@@ -27,7 +27,7 @@ class EditableRoundAvatarWidget extends StatefulWidget {
 }
 
 class _EditableRoundAvatarWidgetState extends State<EditableRoundAvatarWidget> {
-  late final _bloc;
+  late final Bloc _bloc;
 
   @override
   void didChangeDependencies() {

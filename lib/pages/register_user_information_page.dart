@@ -28,7 +28,7 @@ class _RegisterUserInformationPageState
 
   String _pickImageUrl = '';
 
-  late final _bloc;
+  late final Bloc _bloc;
 
   @override
   void didChangeDependencies() {
@@ -38,7 +38,6 @@ class _RegisterUserInformationPageState
 
   @override
   void dispose() {
-    print('d');
     super.dispose();
     _nicknameController.dispose();
     _cityController.dispose();

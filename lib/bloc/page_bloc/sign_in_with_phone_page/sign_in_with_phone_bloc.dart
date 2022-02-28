@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/page_bloc/code_page/code_bloc.dart';
 import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_event.dart';
 import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_state.dart';
+import 'package:uber/bloc/page_bloc/verify_code/verify_code_bloc.dart';
 import 'package:uber/domain/auth.dart';
 import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/pages/code_page.dart';
@@ -34,7 +34,7 @@ class SignInWithPhoneBloc
                   builder: (context) => CodePage(
                     isRegister: true,
                     phoneNumber: event.phoneNumber,
-                  ).createWithProvider<CodeBloc>(),
+                  ).createWithProvider<VerifyCodeBloc>(),
                 ),
               );
             }
@@ -49,7 +49,7 @@ class SignInWithPhoneBloc
                   builder: (context) => CodePage(
                     isRegister: false,
                     phoneNumber: event.phoneNumber,
-                  ).createWithProvider<CodeBloc>(),
+                  ).createWithProvider<VerifyCodeBloc>(),
                 ),
               );
             }

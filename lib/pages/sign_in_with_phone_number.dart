@@ -26,12 +26,12 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
   late FToast fToast;
 
   final TextEditingController _numberController = TextEditingController();
-  late final _bloc;
+  late final Bloc _bloc;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<SignInWithPhoneBloc>;
+    _bloc = BlocProvider.of<SignInWithPhoneBloc>(context);
   }
 
   @override
@@ -83,7 +83,7 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
                       textColor: AppColors.orange,
                       buttonColor: AppColors.dark,
                       onTap: () => () {
-                        _bloc(context).add(
+                        _bloc.add(
                           SendCodeEvent(
                             phoneNumber: _numberController.text,
                             isRegister: widget.isRegister,

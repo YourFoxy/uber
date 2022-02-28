@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 @immutable
-abstract class CodeState {}
+abstract class VerifyCodeState {}
 
-class PageInitialState extends CodeState {}
+class PageInitialState extends VerifyCodeState {}
 
-class SignInState extends CodeState {}
+class SignInState extends VerifyCodeState {}

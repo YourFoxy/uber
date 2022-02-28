@@ -12,7 +12,8 @@ import 'package:uber/style/colors.dart';
 class EditableRectangularAvatarWidget extends StatefulWidget {
   final ValueChanged<String> onImageChanged;
 
-  EditableRectangularAvatarWidget({Key? key, required this.onImageChanged})
+  const EditableRectangularAvatarWidget(
+      {Key? key, required this.onImageChanged})
       : super(key: key);
 
   @override
@@ -22,7 +23,7 @@ class EditableRectangularAvatarWidget extends StatefulWidget {
 
 class _EditableRectangularAvatarWidgetState
     extends State<EditableRectangularAvatarWidget> {
-  late final _bloc;
+  late final Bloc _bloc;
 
   @override
   void initState() {

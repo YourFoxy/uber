@@ -26,7 +26,7 @@ class IconAndTextForDrawerButton extends StatelessWidget {
             size: 30,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: AppLargeText(
               text: text,
               size: 25,

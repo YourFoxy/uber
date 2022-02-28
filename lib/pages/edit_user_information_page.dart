@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_bloc.dart';
-import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_event.dart';
-import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_state.dart';
+import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_bloc.dart';
+import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_event.dart';
+import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_state.dart';
 import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
 import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/style/colors.dart';
@@ -24,7 +24,7 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
   final TextEditingController _nicknameController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
 
-  late final _bloc;
+  late final Bloc _bloc;
 
   @override
   void initState() {
