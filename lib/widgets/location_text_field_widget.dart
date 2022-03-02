@@ -14,10 +14,10 @@ class LocationTextFieldWidget extends StatefulWidget {
   final Function onTap;
 
   const LocationTextFieldWidget({
-    Key? key,
     required this.hintText,
     required this.controller,
     required this.onTap,
+    Key? key,
     this.isNumber = false,
     this.backgroundColor = AppColors.plum,
     this.textColor = AppColors.orange,
