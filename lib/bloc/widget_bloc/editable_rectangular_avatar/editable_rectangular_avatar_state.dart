@@ -1,18 +1,10 @@
-import 'package:flutter/material.dart';
+part of 'editable_rectangular_avatar_bloc.dart';
 
-@immutable
-abstract class EditableRectangularAvatarState {}
-
-class WidgetInitState extends EditableRectangularAvatarState {}
-
-class UploadAvatarState extends EditableRectangularAvatarState {
-  final String url;
-
-  UploadAvatarState({required this.url});
-}
-
-class PickImageState extends EditableRectangularAvatarState {
-  final String url;
-
-  PickImageState({required this.url});
+@freezed
+class EditableRectangularAvatarState with _$EditableRectangularAvatarState {
+  const factory EditableRectangularAvatarState.widgetInit() = WidgetInitState;
+  const factory EditableRectangularAvatarState.uploadAvatar(
+      {required String url}) = UploadAvatarState;
+  const factory EditableRectangularAvatarState.pickImage(
+      {required String url}) = PickImageState;
 }

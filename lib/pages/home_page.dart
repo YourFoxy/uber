@@ -22,14 +22,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String pickImageUrl = '';
-  late final Bloc _bloc;
+  late final Bloc _homeBloc;
 
   @override
   void initState() {
     super.initState();
 
-    _bloc = BlocProvider.of<HomeBloc>(context);
-    _bloc.add(LoadedUserInformationEvent());
+    _homeBloc = BlocProvider.of<HomeBloc>(context);
+    _homeBloc.add(LoadedUserInformationEvent());
   }
 
   @override
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                               child: AppLargeText(
                                 text: (state is LoadedUserInformationState)
                                     ? state.currentUserPhoneNumber
-                                    : '', //
+                                    : '',
                                 color: AppColors.orange,
                                 size: 25,
                               ),

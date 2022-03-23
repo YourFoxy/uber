@@ -18,11 +18,11 @@ class DrawerMenu extends StatefulWidget {
 }
 
 class _DrawerMenuState extends State<DrawerMenu> {
-  late final Bloc _bloc;
+  late final Bloc _drawerBloc;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<DrawerWidgetBloc>(context);
+    _drawerBloc = BlocProvider.of<DrawerWidgetBloc>(context);
   }
 
   @override
@@ -69,7 +69,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
               InkWell(
                 hoverColor: AppColors.orange,
                 onTap: () async {
-                  _bloc.add(
+                  _drawerBloc.add(
                     ExitEvent(
                       context: context,
                     ),

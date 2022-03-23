@@ -1,18 +1,13 @@
-import 'package:flutter/material.dart';
+part of 'route_creation_bloc.dart';
 
-@immutable
-abstract class RouteCreationState {}
-
-class PageInitState extends RouteCreationState {}
-
-class ShowLocationForArrivalPointState extends RouteCreationState {
-  final Map<dynamic, List<String>> locationMap;
-  ShowLocationForArrivalPointState({required this.locationMap});
+@freezed
+class RouteCreationState with _$RouteCreationState {
+  const factory RouteCreationState.pageInit() = _PageInitState;
+  const factory RouteCreationState.showLocationForArrivalPoint(
+          {required List<List<String>> locationMap}) =
+      _ShowLocationForArrivalPointState;
+  const factory RouteCreationState.showLocationForDeparturePoint(
+          {required List<List<String>> locationMap}) =
+      _ShowLocationForDeparturePointState;
+  const factory RouteCreationState.closeLocation() = _CloseLocationState;
 }
-
-class ShowLocationForDeparturePointState extends RouteCreationState {
-  final Map<dynamic, List<String>> locationMap;
-  ShowLocationForDeparturePointState({required this.locationMap});
-}
-
-class CloseLocationState extends RouteCreationState {}

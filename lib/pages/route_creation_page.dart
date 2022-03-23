@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uber/bloc/page_bloc/route_creation/route_creation_bloc.dart';
-import 'package:uber/bloc/page_bloc/route_creation/route_creation_event.dart';
-import 'package:uber/bloc/page_bloc/route_creation/route_creation_state.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/list_of_location_widget.dart';
 import 'package:uber/widgets/location_text_field_widget.dart';
-import 'package:uber/widgets/long_save_button_widget.dart';
 
 class RouteCreationPage extends StatefulWidget {
   const RouteCreationPage({Key? key}) : super(key: key);
@@ -17,11 +14,12 @@ class RouteCreationPage extends StatefulWidget {
 }
 
 class _RouteCreationPageState extends State<RouteCreationPage> {
-  late final Bloc _bloc;
+  late final Bloc _routeCreationBloc;
 
   final TextEditingController _departurePointController =
       TextEditingController();
   final TextEditingController _arrivalPointController = TextEditingController();
+
   String _departurePoint = '';
   String _arrivalPoint = '';
 
@@ -51,7 +49,7 @@ class _RouteCreationPageState extends State<RouteCreationPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<RouteCreationBloc>(context);
+    _routeCreationBloc = BlocProvider.of<RouteCreationBloc>(context);
   }
 
   @override
@@ -76,51 +74,70 @@ class _RouteCreationPageState extends State<RouteCreationPage> {
           backgroundColor: AppColors.dark,
           body: InkWell(
             onTap: () {
-              _bloc.add(CloseLocationEvent());
+              _routeCreationBloc.add(const RouteCreationEvent.closeLocation());
             },
             splashColor: Colors.black.withOpacity(0),
             highlightColor: Colors.black.withOpacity(0),
             child: Stack(
               children: [
                 SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 170,
-                      ),
-                      _PanelForRoutes(
-                        departurePointController: _departurePointController,
-                        arrivalPointController: _arrivalPointController,
-                        state: state,
-                        bloc: _bloc,
-                        departurePoint: _departurePoint,
-                        arrivalPoint: _arrivalPoint,
-                        //locationMap: state.locationMap,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const SizedBox(
-                        height: 200,
-                      ),
-                    ],
+                  child: _PlaceForRouteTextFields(
+                    arrivalPointController: _arrivalPointController,
+                    departurePointController: _departurePointController,
+                    routeCreationBloc: _routeCreationBloc,
                   ),
                 ),
                 SafeArea(
-                  child: LongSaveButtonWidget(
-                    function: () async {
-                      _bloc.add(
-                        AddRouteEvent(
-                          departurePoint: _departurePointController.text,
-                          arrivalPoint: _arrivalPointController.text,
-                          context: context,
-                        ),
-                      );
-                    },
-                    color: AppColors.plum,
+                  child: state.when(
+                    pageInit: () => Container(),
+                    showLocationForArrivalPoint: (locationMap) => Padding(
+                      padding: const EdgeInsets.only(
+                        top: 235.0,
+                      ),
+                      child: ListOfLocationWidget(
+                        locations: locationMap,
+                        searchLocationString: _arrivalPoint,
+                        onRouteChanged: (location) {
+                          _arrivalPointController.text = location;
+                          _routeCreationBloc
+                              .add(const RouteCreationEvent.closeLocation());
+                        },
+                      ),
+                    ),
+                    showLocationForDeparturePoint: (locationMap) => Padding(
+                      padding: const EdgeInsets.only(
+                        top: 120.0,
+                      ),
+                      child: ListOfLocationWidget(
+                        locations: locationMap,
+                        searchLocationString: _departurePoint,
+                        onRouteChanged: (location) {
+                          _departurePointController.text = location;
+                          _routeCreationBloc
+                              .add(const RouteCreationEvent.closeLocation());
+                        },
+                      ),
+                    ),
+                    closeLocation: () => Container(),
                   ),
                 ),
               ],
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: AppColors.orange,
+            onPressed: () async {
+              _routeCreationBloc.add(
+                AddRouteEvent(
+                  departurePoint: _departurePointController.text,
+                  arrivalPoint: _arrivalPointController.text,
+                  context: context,
+                ),
+              );
+            },
+            child: const Icon(
+              Icons.save,
+              color: AppColors.dark,
             ),
           ),
         );
@@ -129,99 +146,60 @@ class _RouteCreationPageState extends State<RouteCreationPage> {
   }
 }
 
-class _PanelForRoutes extends StatelessWidget {
+class _PlaceForRouteTextFields extends StatelessWidget {
   final TextEditingController departurePointController;
   final TextEditingController arrivalPointController;
-  final RouteCreationState state;
-  final Bloc<dynamic, dynamic> bloc;
-  final String departurePoint;
-  final String arrivalPoint;
-  // final Map<dynamic, List<String>> locationMap;
-  _PanelForRoutes(
-      {required this.departurePointController,
-      required this.arrivalPointController,
-      required this.state,
-      required this.bloc,
-      required this.departurePoint,
-      required this.arrivalPoint,
-      //required this.locationMap,
-      Key? key})
-      : super(key: key);
+  final Bloc routeCreationBloc;
+  const _PlaceForRouteTextFields({
+    Key? key,
+    required this.departurePointController,
+    required this.routeCreationBloc,
+    required this.arrivalPointController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        Center(
-          child: Container(
-            height: 300,
-            width: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: AppColors.plum,
+        Stack(
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  LocationTextFieldWidget(
+                    hintText: 'откуда',
+                    controller: departurePointController,
+                    backgroundColor: AppColors.orange,
+                    textColor: AppColors.dark,
+                    onTap: () {
+                      routeCreationBloc.add(
+                        RouteCreationEvent.showLocationForDeparturePoint(
+                          context: context,
+                        ),
+                      );
+                    },
+                  ),
+                  LocationTextFieldWidget(
+                    hintText: 'куда',
+                    controller: arrivalPointController,
+                    backgroundColor: AppColors.orange,
+                    textColor: AppColors.dark,
+                    onTap: () {
+                      routeCreationBloc.add(
+                        RouteCreationEvent.showLocationForArrivalPoint(
+                          context: context,
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
-            child: Column(
-              children: [
-                LocationTextFieldWidget(
-                  hintText: 'откуда',
-                  controller: departurePointController,
-                  backgroundColor: AppColors.orange,
-                  textColor: AppColors.dark,
-                  onTap: () {
-                    bloc.add(
-                      ShowLocationForDeparturePointEvent(
-                        context: context,
-                      ),
-                    );
-                  },
-                ),
-                LocationTextFieldWidget(
-                  hintText: 'куда',
-                  controller: arrivalPointController,
-                  backgroundColor: AppColors.orange,
-                  textColor: AppColors.dark,
-                  onTap: () {
-                    bloc.add(
-                      ShowLocationForArrivalPointEvent(
-                        context: context,
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
+          ],
         ),
-        state is ShowLocationForDeparturePointState
-            ? Padding(
-                padding: const EdgeInsets.only(
-                  top: 120.0,
-                ),
-                child: ListOfLocationWidget(
-                  locations:
-                      (state as ShowLocationForArrivalPointState).locationMap,
-                  searchLocationString: departurePoint,
-                  onRouteChanged: (location) {
-                    departurePointController.text = location;
-                  },
-                ),
-              )
-            : const SizedBox(),
-        state is ShowLocationForArrivalPointState
-            ? Padding(
-                padding: const EdgeInsets.only(
-                  top: 240.0,
-                ),
-                child: ListOfLocationWidget(
-                  locations:
-                      (state as ShowLocationForArrivalPointState).locationMap,
-                  searchLocationString: arrivalPoint,
-                  onRouteChanged: (location) {
-                    arrivalPointController.text = location;
-                  },
-                ),
-              )
-            : const SizedBox(),
       ],
     );
   }

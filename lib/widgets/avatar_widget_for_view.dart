@@ -20,13 +20,13 @@ class AvatarWidgetForView extends StatefulWidget {
 }
 
 class _AvatarWidgetForViewState extends State<AvatarWidgetForView> {
-  late final Bloc _bloc;
+  late final Bloc _viewAvatarBloc;
 
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of<ViewAvatarBloc>(context);
-    _bloc.add(UploadAvatarEvent());
+    _viewAvatarBloc = BlocProvider.of<ViewAvatarBloc>(context);
+    _viewAvatarBloc.add(UploadAvatarEvent());
   }
 
   @override

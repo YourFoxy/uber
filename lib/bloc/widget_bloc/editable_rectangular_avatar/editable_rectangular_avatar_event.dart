@@ -1,10 +1,9 @@
-abstract class EditableRectangularAvatarEvent {}
+part of 'editable_rectangular_avatar_bloc.dart';
 
-class UploadAvatarEvent extends EditableRectangularAvatarEvent {}
-
-class SetAvatarEvent extends EditableRectangularAvatarEvent {
-  final String url;
-  SetAvatarEvent({
-    required this.url,
-  });
+@freezed
+class EditableRectangularAvatarEvent with _$EditableRectangularAvatarEvent {
+  const factory EditableRectangularAvatarEvent.uploadAvatar() =
+      UploadAvatarEvent;
+  const factory EditableRectangularAvatarEvent.setAvatar(
+      {required String url}) = SetAvatarEvent;
 }

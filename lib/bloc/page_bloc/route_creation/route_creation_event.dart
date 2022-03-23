@@ -1,30 +1,20 @@
-import 'package:flutter/cupertino.dart';
+part of 'route_creation_bloc.dart';
 
-abstract class RouteCreationEvent {}
+@freezed
+class RouteCreationEvent with _$RouteCreationEvent {
+  const factory RouteCreationEvent.showLocationForDeparturePoint({
+    required BuildContext context,
+  }) = ShowLocationForDeparturePointEvent;
 
-class ShowLocationForDeparturePointEvent extends RouteCreationEvent {
-  final BuildContext context;
-  ShowLocationForDeparturePointEvent({
-    required this.context,
-  });
-}
+  const factory RouteCreationEvent.showLocationForArrivalPoint({
+    required BuildContext context,
+  }) = ShowLocationForArrivalPointEvent;
 
-class ShowLocationForArrivalPointEvent extends RouteCreationEvent {
-  final BuildContext context;
-  ShowLocationForArrivalPointEvent({
-    required this.context,
-  });
-}
+  const factory RouteCreationEvent.closeLocation() = CloseLocationEvent;
 
-class CloseLocationEvent extends RouteCreationEvent {}
-
-class AddRouteEvent extends RouteCreationEvent {
-  final String departurePoint;
-  final String arrivalPoint;
-  final BuildContext context;
-
-  AddRouteEvent(
-      {required this.departurePoint,
-      required this.arrivalPoint,
-      required this.context});
+  const factory RouteCreationEvent.addRouteEventt({
+    required String departurePoint,
+    required String arrivalPoint,
+    required BuildContext context,
+  }) = AddRouteEvent;
 }

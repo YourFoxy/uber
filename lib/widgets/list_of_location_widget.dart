@@ -5,7 +5,7 @@ import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/app_text.dart';
 
 class ListOfLocationWidget extends StatelessWidget {
-  final Map<dynamic, List<String>> locations;
+  final List<List<String>> locations;
   final String searchLocationString;
   final ValueChanged<String> onRouteChanged;
 
@@ -30,24 +30,24 @@ class ListOfLocationWidget extends StatelessWidget {
           child: ListView.builder(
             itemCount: locations.length,
             itemBuilder: (context, index) {
-              if (locations[index]![locationIndex]
+              if (locations[index][locationIndex]
                   .startsWith(searchLocationString)) {
                 return InkWell(
                   onTap: () {
-                    onRouteChanged.call(locations[index]![locationIndex]);
+                    onRouteChanged.call(locations[index][locationIndex]);
                   },
                   child: Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: AppLargeText(
-                          text: locations[index]![locationIndex],
+                          text: locations[index][locationIndex],
                           color: AppColors.orange,
                         ),
                       ),
                       AppTextStyle(
                           text:
-                              '${locations[index]![regionIndex]} область, ${locations[index]![districtIndex]} район'),
+                              '${locations[index][regionIndex]} область, ${locations[index][districtIndex]} район'),
                       const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Divider(
@@ -62,7 +62,7 @@ class ListOfLocationWidget extends StatelessWidget {
                   ),
                 );
               } else {
-                return SizedBox();
+                return const SizedBox();
               }
             },
           ),

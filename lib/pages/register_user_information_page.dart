@@ -28,12 +28,13 @@ class _RegisterUserInformationPageState
 
   String _pickImageUrl = '';
 
-  late final Bloc _bloc;
+  late final Bloc _registerUserInformationBloc;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<RegisterUserInformationBloc>(context);
+    _registerUserInformationBloc =
+        BlocProvider.of<RegisterUserInformationBloc>(context);
   }
 
   @override
@@ -83,7 +84,7 @@ class _RegisterUserInformationPageState
                   ButtonWidget(
                     text: 'Next',
                     onTap: () => () {
-                      _bloc.add(
+                      _registerUserInformationBloc.add(
                         AddUserInformationEvent(
                           city: _cityController.text,
                           context: context,
