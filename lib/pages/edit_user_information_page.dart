@@ -19,10 +19,16 @@ class EditUserInformationPage extends StatefulWidget {
 
 class _EditUserInformationPageState extends State<EditUserInformationPage> {
   String _pickImageUrl = '';
-  final TextEditingController _nicknameController = TextEditingController();
-  final TextEditingController _cityController = TextEditingController();
 
   late final Bloc _editUserInformationBloc;
+
+  final _nicknameTextKey = GlobalKey();
+  final _cityTextKey = GlobalKey();
+
+  TextEditingController? get _nicknameController =>
+      (_nicknameTextKey.currentWidget as TextField).controller;
+  TextEditingController? get _cityController =>
+      (_cityTextKey.currentWidget as TextField).controller;
 
   @override
   void initState() {
@@ -35,10 +41,15 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
   }
 
   @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+  }
+
+  @override
   void dispose() {
     super.dispose();
-    _nicknameController.dispose();
-    _cityController.dispose();
+    _nicknameController!.dispose();
+    _cityController!.dispose();
   }
 
   @override
@@ -56,13 +67,6 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
       backgroundColor: AppColors.plum,
       body: BlocBuilder<EditUserInformationBloc, EditUserInformationState>(
         builder: (context, state) {
-          state.when(
-            pageInit: () {},
-            uploadNicknameAndCity: (nickname, city) {
-              _nicknameController.text = nickname;
-              _cityController.text = city;
-            },
-          );
           return Stack(
             children: [
               SingleChildScrollView(
@@ -82,13 +86,23 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                       backgroundColor: AppColors.orange,
                       textColor: AppColors.plum,
                       hintText: 'Nickname',
-                      controller: _nicknameController,
+                      textKey: _nicknameTextKey,
+                      controller: TextEditingController(
+                        text: state is UploadNicknameAndCityState
+                            ? _editUserInformationBloc.state.nickname
+                            : '',
+                      ),
                     ),
                     TextFieldWidget(
                       backgroundColor: AppColors.orange,
                       textColor: AppColors.plum,
                       hintText: 'City',
-                      controller: _cityController,
+                      textKey: _cityTextKey,
+                      controller: TextEditingController(
+                        text: state is UploadNicknameAndCityState
+                            ? _editUserInformationBloc.state.city
+                            : '',
+                      ),
                     ),
                     const SizedBox(
                       height: 70,
@@ -101,8 +115,8 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                   function: () {
                     _editUserInformationBloc.add(
                       SaveUserInformationEvent(
-                        nickname: _nicknameController.text,
-                        city: _cityController.text,
+                        nickname: _nicknameController!.text,
+                        city: _cityController!.text,
                         pickImageUrl: _pickImageUrl,
                         context: context,
                       ),

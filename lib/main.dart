@@ -65,10 +65,10 @@ class MyApp extends StatelessWidget {
       routes: {
         logInNumberPage: (_) => const SignInWithPhonePage(
               isRegister: false,
-            ),
+            ).createWithProvider<SignInWithPhoneBloc>(),
         registerNumberPage: (_) => const SignInWithPhonePage(
               isRegister: true,
-            ),
+            ).createWithProvider<SignInWithPhoneBloc>(),
         loginOrRegisterPage: (_) => const LoginOrRegister(),
         homePage: (_) => const HomePage().createWithProvider<HomeBloc>(),
         routeCreationPage: (_) =>

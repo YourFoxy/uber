@@ -56,7 +56,8 @@ class _EditableRectangularAvatarWidgetState
               ),
               image: state.when(
                 widgetInit: () => const DecorationImage(
-                  image: NetworkImage(''),
+                  image: NetworkImage(
+                      'https://sun9-54.userapi.com/impf/g5URL63RL6vg9C8SkSJ_rkpX4VIMuHQgQDXepQ/HBi5PKBgZaY.jpg?size=563x565&quality=95&sign=e16cb95d9bfbf8bae2c87c0e8dda99c6&type=album'),
                   fit: BoxFit.cover,
                 ),
                 uploadAvatar: (url) => DecorationImage(

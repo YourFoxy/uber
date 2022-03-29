@@ -11,14 +11,17 @@ class TextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final Color backgroundColor;
   final Color textColor;
+  final Key? textKey;
 
   const TextFieldWidget({
     Key? key,
     required this.hintText,
-    this.isNumber = false,
     required this.controller,
     this.backgroundColor = AppColors.plum,
+    this.isNumber = false,
     this.textColor = AppColors.orange,
+    // this.textKey;
+    this.textKey,
   }) : super(key: key);
 
   @override
@@ -37,6 +40,7 @@ class TextFieldWidget extends StatelessWidget {
           color: backgroundColor,
         ),
         child: TextField(
+          key: textKey,
           textAlign: TextAlign.center,
           cursorColor: textColor,
           maxLength: 19,

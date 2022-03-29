@@ -19,6 +19,7 @@ class UserData {
     String city,
     String pickImageUrl,
   ) async {
+    print(',,,,,,,,,...........${nickname}');
     await Auth.fbd
         .collection(collectionNameWithUsers)
         .doc(currentUserPhoneNumber)
