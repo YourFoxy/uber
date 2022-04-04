@@ -26,7 +26,7 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
   late FToast fToast;
 
   final TextEditingController _numberController = TextEditingController();
-  late final Bloc _signInWithPhoneNumberBloc;
+  late final SignInWithPhoneBloc _signInWithPhoneNumberBloc;
 
   @override
   void didChangeDependencies() {

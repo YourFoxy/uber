@@ -22,7 +22,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String pickImageUrl = '';
-  late final Bloc _homeBloc;
+  late final HomeBloc _homeBloc;
 
   @override
   void initState() {

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/input.dart';
 import 'package:uber/style/colors.dart';
 
@@ -73,14 +74,14 @@ class _LocationTextFieldWidgetState extends State<LocationTextFieldWidget> {
           style: TextStyle(
             color: widget.textColor,
             fontSize: 30.0,
-            fontFamily: 'BebasNeue',
+            fontFamily: font,
           ),
           decoration: InputDecoration(
             hintText: widget.hintText,
             hintStyle: TextStyle(
               color: widget.textColor,
               fontSize: 25.0,
-              fontFamily: 'BebasNeue',
+              fontFamily: font,
             ),
             border: InputBorder.none,
             counterText: '',

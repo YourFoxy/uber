@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/input.dart';
 import 'package:uber/style/colors.dart';
 
@@ -58,14 +59,14 @@ class TextFieldWidget extends StatelessWidget {
           style: TextStyle(
             color: textColor,
             fontSize: 30.0,
-            fontFamily: 'BebasNeue',
+            fontFamily: font,
           ),
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: TextStyle(
               color: textColor,
               fontSize: 25.0,
-              fontFamily: 'BebasNeue',
+              fontFamily: font,
             ),
             border: InputBorder.none,
             counterText: '',

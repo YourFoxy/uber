@@ -27,7 +27,7 @@ class EditableRoundAvatarWidget extends StatefulWidget {
 }
 
 class _EditableRoundAvatarWidgetState extends State<EditableRoundAvatarWidget> {
-  late final Bloc _editableRoundAvatarBloc;
+  late final EditableRoundAvatarBloc _editableRoundAvatarBloc;
 
   @override
   void didChangeDependencies() {

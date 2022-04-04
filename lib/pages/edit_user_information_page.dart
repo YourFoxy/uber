@@ -20,15 +20,15 @@ class EditUserInformationPage extends StatefulWidget {
 class _EditUserInformationPageState extends State<EditUserInformationPage> {
   String _pickImageUrl = '';
 
-  late final Bloc _editUserInformationBloc;
+  late final EditUserInformationBloc _editUserInformationBloc;
 
   final _nicknameTextKey = GlobalKey();
   final _cityTextKey = GlobalKey();
 
-  TextEditingController? get _nicknameController =>
-      (_nicknameTextKey.currentWidget as TextField).controller;
-  TextEditingController? get _cityController =>
-      (_cityTextKey.currentWidget as TextField).controller;
+  TextEditingController get _nicknameController =>
+      (_nicknameTextKey.currentWidget as TextField).controller!;
+  TextEditingController get _cityController =>
+      (_cityTextKey.currentWidget as TextField).controller!;
 
   @override
   void initState() {
@@ -48,8 +48,8 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
   @override
   void dispose() {
     super.dispose();
-    _nicknameController!.dispose();
-    _cityController!.dispose();
+    _nicknameController.dispose();
+    _cityController.dispose();
   }
 
   @override
@@ -89,7 +89,7 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                       textKey: _nicknameTextKey,
                       controller: TextEditingController(
                         text: state is UploadNicknameAndCityState
-                            ? _editUserInformationBloc.state.nickname
+                            ? state.nickname
                             : '',
                       ),
                     ),
@@ -100,7 +100,7 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                       textKey: _cityTextKey,
                       controller: TextEditingController(
                         text: state is UploadNicknameAndCityState
-                            ? _editUserInformationBloc.state.city
+                            ? state.city
                             : '',
                       ),
                     ),

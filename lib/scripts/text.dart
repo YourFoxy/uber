@@ -17,7 +17,6 @@ class AppText {
 
   static String upperFirstLetterAndDeleteExtraSpaces(String text) {
     final reg = RegExp(r' +');
-    print('/////////////бббб/${text}');
     text = text.trim();
     text = text[0].toUpperCase() + text.substring(1, text.length);
     text = text.replaceAll(reg, ' ');

@@ -23,3 +23,5 @@ const csvPath = 'assets/by.csv';
 const districtIndex = 2;
 const regionIndex = 1;
 const locationIndex = 3;
+
+const font = 'BebasNeue';

@@ -18,7 +18,7 @@ class DrawerMenu extends StatefulWidget {
 }
 
 class _DrawerMenuState extends State<DrawerMenu> {
-  late final Bloc _drawerBloc;
+  late final DrawerWidgetBloc _drawerBloc;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();

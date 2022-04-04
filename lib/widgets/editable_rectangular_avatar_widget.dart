@@ -21,7 +21,7 @@ class EditableRectangularAvatarWidget extends StatefulWidget {
 
 class _EditableRectangularAvatarWidgetState
     extends State<EditableRectangularAvatarWidget> {
-  late final Bloc _editableRectangularAvatarBloc;
+  late final EditableRectangularAvatarBloc _editableRectangularAvatarBloc;
 
   @override
   void initState() {

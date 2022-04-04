@@ -20,7 +20,7 @@ class AvatarWidgetForView extends StatefulWidget {
 }
 
 class _AvatarWidgetForViewState extends State<AvatarWidgetForView> {
-  late final Bloc _viewAvatarBloc;
+  late final ViewAvatarBloc _viewAvatarBloc;
 
   @override
   void initState() {

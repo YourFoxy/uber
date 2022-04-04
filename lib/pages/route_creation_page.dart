@@ -14,7 +14,7 @@ class RouteCreationPage extends StatefulWidget {
 }
 
 class _RouteCreationPageState extends State<RouteCreationPage> {
-  late final Bloc _routeCreationBloc;
+  late final RouteCreationBloc _routeCreationBloc;
 
   final TextEditingController _departurePointController =
       TextEditingController();

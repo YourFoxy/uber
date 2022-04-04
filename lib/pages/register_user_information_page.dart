@@ -28,7 +28,7 @@ class _RegisterUserInformationPageState
 
   String _pickImageUrl = '';
 
-  late final Bloc _registerUserInformationBloc;
+  late final RegisterUserInformationBloc _registerUserInformationBloc;
 
   @override
   void didChangeDependencies() {

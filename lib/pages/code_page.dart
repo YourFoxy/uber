@@ -24,7 +24,7 @@ class CodePage extends StatefulWidget {
 
 class _CodePageState extends State<CodePage> {
   final TextEditingController _smsCodeController = TextEditingController();
-  late final Bloc _codeBloc;
+  late final VerifyCodeBloc _codeBloc;
 
   @override
   void didChangeDependencies() {

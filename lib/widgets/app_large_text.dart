@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uber/scripts/const.dart';
 
 class AppLargeText extends StatelessWidget {
   final double size;
@@ -17,7 +18,7 @@ class AppLargeText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontFamily: 'BebasNeue',
+        fontFamily: font,
         color: color,
         fontSize: size,
         fontWeight: FontWeight.bold,
