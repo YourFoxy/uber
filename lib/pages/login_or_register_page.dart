@@ -9,32 +9,30 @@ class LoginOrRegister extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        backgroundColor: AppColors.plum,
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                const Car(),
-                ButtonWidget(
-                  buttonColor: AppColors.dark,
-                  textColor: AppColors.orange,
-                  text: 'Login',
-                  onTap: () => () {
-                    Navigator.pushNamed(context, logInNumberPage);
-                  },
-                ),
-                ButtonWidget(
-                  buttonColor: AppColors.dark,
-                  textColor: AppColors.orange,
-                  text: 'Register',
-                  onTap: () => () {
-                    Navigator.pushNamed(context, registerNumberPage);
-                  },
-                ),
-              ],
-            ),
+    return Scaffold(
+      backgroundColor: AppColors.plum,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              const Car(),
+              ButtonWidget(
+                buttonColor: AppColors.dark,
+                textColor: AppColors.orange,
+                text: 'Login',
+                onTap: () => () {
+                  Navigator.pushNamed(context, logInNumberPage);
+                },
+              ),
+              ButtonWidget(
+                buttonColor: AppColors.dark,
+                textColor: AppColors.orange,
+                text: 'Register',
+                onTap: () => () {
+                  Navigator.pushNamed(context, registerNumberPage);
+                },
+              ),
+            ],
           ),
         ),
       ),

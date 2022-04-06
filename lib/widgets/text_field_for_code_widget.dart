@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:uber/scripts/const.dart';
 import 'package:uber/style/colors.dart';
 
 class TextFieldForCodeWidget extends StatelessWidget {
@@ -38,7 +39,7 @@ class TextFieldForCodeWidget extends StatelessWidget {
         cursorColor: AppColors.plum,
         textStyle: const TextStyle(
           color: AppColors.plum,
-          fontFamily: 'BebasNeue',
+          fontFamily: font,
           fontSize: 30,
         ),
         keyboardType: TextInputType.phone,

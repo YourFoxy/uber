@@ -24,12 +24,12 @@ class CodePage extends StatefulWidget {
 
 class _CodePageState extends State<CodePage> {
   final TextEditingController _smsCodeController = TextEditingController();
-  late final Bloc _bloc;
+  late final VerifyCodeBloc _codeBloc;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<VerifyCodeBloc>(context);
+    _codeBloc = BlocProvider.of<VerifyCodeBloc>(context);
   }
 
   @override
@@ -65,7 +65,7 @@ class _CodePageState extends State<CodePage> {
                   ButtonWidget(
                     text: widget.isRegister ? 'Register' : 'LogIn',
                     onTap: () => () {
-                      _bloc.add(
+                      _codeBloc.add(
                         SignInEvent(
                           smsCode: _smsCodeController.text,
                           context: context,

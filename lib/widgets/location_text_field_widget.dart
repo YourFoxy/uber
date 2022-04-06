@@ -6,24 +6,38 @@ import 'package:uber/scripts/const.dart';
 import 'package:uber/scripts/input.dart';
 import 'package:uber/style/colors.dart';
 
-class TextFieldWidget extends StatelessWidget {
+class LocationTextFieldWidget extends StatefulWidget {
   final bool isNumber;
   final String hintText;
   final TextEditingController controller;
   final Color backgroundColor;
   final Color textColor;
-  final Key? textKey;
+  final Function onTap;
 
-  const TextFieldWidget({
-    Key? key,
+  const LocationTextFieldWidget({
     required this.hintText,
     required this.controller,
-    this.backgroundColor = AppColors.plum,
+    required this.onTap,
+    Key? key,
     this.isNumber = false,
+    this.backgroundColor = AppColors.plum,
     this.textColor = AppColors.orange,
-    // this.textKey;
-    this.textKey,
   }) : super(key: key);
+
+  @override
+  State<LocationTextFieldWidget> createState() =>
+      _LocationTextFieldWidgetState();
+}
+
+class _LocationTextFieldWidgetState extends State<LocationTextFieldWidget> {
+  late FocusNode focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode = FocusNode();
+    focusNode.addListener(() => widget.onTap());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,16 +52,17 @@ class TextFieldWidget extends StatelessWidget {
         width: 300,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: backgroundColor,
+          color: widget.backgroundColor,
         ),
         child: TextField(
-          key: textKey,
+          focusNode: focusNode,
           textAlign: TextAlign.center,
-          cursorColor: textColor,
+          cursorColor: widget.textColor,
           maxLength: 19,
-          controller: controller,
-          keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
-          inputFormatters: isNumber
+          controller: widget.controller,
+          keyboardType:
+              widget.isNumber ? TextInputType.phone : TextInputType.text,
+          inputFormatters: widget.isNumber
               ? [
                   WhitelistingTextInputFormatter.digitsOnly,
                   NumberTextInputFormatter(),
@@ -57,14 +72,14 @@ class TextFieldWidget extends StatelessWidget {
                   RemoveAllExtraSpacesTextFormatter(),
                 ],
           style: TextStyle(
-            color: textColor,
+            color: widget.textColor,
             fontSize: 30.0,
             fontFamily: font,
           ),
           decoration: InputDecoration(
-            hintText: hintText,
+            hintText: widget.hintText,
             hintStyle: TextStyle(
-              color: textColor,
+              color: widget.textColor,
               fontSize: 25.0,
               fontFamily: font,
             ),

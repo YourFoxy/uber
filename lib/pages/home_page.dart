@@ -6,6 +6,7 @@ import 'package:uber/bloc/page_bloc/home_page/home_state.dart';
 import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
 import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
 import 'package:uber/extension/bloc_widget_extension.dart';
+import 'package:uber/scripts/const.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/widgets/avatar_widget_for_view.dart';
@@ -21,14 +22,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String pickImageUrl = '';
-  late final _bloc;
+  late final HomeBloc _homeBloc;
 
   @override
   void initState() {
     super.initState();
 
-    _bloc = BlocProvider.of<HomeBloc>(context);
-    _bloc.add(LoadedUserInformationEvent());
+    _homeBloc = BlocProvider.of<HomeBloc>(context);
+    _homeBloc.add(LoadedUserInformationEvent());
   }
 
   @override
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColors.plum,
-          drawer: DrawerMenu().createWithProvider<DrawerWidgetBloc>(),
+          drawer: const DrawerMenu().createWithProvider<DrawerWidgetBloc>(),
           appBar: AppBar(
             backgroundColor: AppColors.plum,
             iconTheme: const IconThemeData(color: AppColors.orange),
@@ -95,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                               child: AppLargeText(
                                 text: (state is LoadedUserInformationState)
                                     ? state.currentUserPhoneNumber
-                                    : '', //
+                                    : '',
                                 color: AppColors.orange,
                                 size: 25,
                               ),
@@ -119,7 +120,9 @@ class _HomePageState extends State<HomePage> {
           ),
           floatingActionButton: FloatingActionButton(
             backgroundColor: AppColors.dark,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, routeCreationPage);
+            },
             child: const Icon(
               Icons.edit,
               color: AppColors.orange,

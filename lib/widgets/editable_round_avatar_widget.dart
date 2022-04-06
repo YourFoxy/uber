@@ -15,7 +15,7 @@ class EditableRoundAvatarWidget extends StatefulWidget {
   final Color backgroundColor;
   final ValueChanged<String> onImageChanged;
 
-  EditableRoundAvatarWidget({
+  const EditableRoundAvatarWidget({
     Key? key,
     this.backgroundColor = AppColors.plum,
     required this.onImageChanged,
@@ -27,12 +27,13 @@ class EditableRoundAvatarWidget extends StatefulWidget {
 }
 
 class _EditableRoundAvatarWidgetState extends State<EditableRoundAvatarWidget> {
-  late final _bloc;
+  late final EditableRoundAvatarBloc _editableRoundAvatarBloc;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _bloc = BlocProvider.of<EditableRoundAvatarBloc>(context);
+    _editableRoundAvatarBloc =
+        BlocProvider.of<EditableRoundAvatarBloc>(context);
   }
 
   @override
@@ -56,7 +57,7 @@ class _EditableRoundAvatarWidgetState extends State<EditableRoundAvatarWidget> {
               InkWell(
                 onTap: () async {
                   final url = await Avatar.pickImage();
-                  _bloc.add(
+                  _editableRoundAvatarBloc.add(
                     SetAvatarEvent(
                       url: url,
                     ),

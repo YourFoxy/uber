@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uber/scripts/const.dart';
 import 'package:uber/style/colors.dart';
 
 class AppTextStyle extends StatelessWidget {
@@ -18,7 +19,7 @@ class AppTextStyle extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-          fontFamily: 'BebasNeue',
+          fontFamily: font,
           color: color,
           fontSize: size,
           fontWeight: FontWeight.w400),

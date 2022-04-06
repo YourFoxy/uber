@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
+part of 'edit_user_information_bloc.dart';
 
-@immutable
-abstract class EditUserInformationState {}
-
-class PageInitState extends EditUserInformationState {}
-
-class UploadNicknameAndCityState extends EditUserInformationState {
-  final String nickname;
-  final String city;
-  UploadNicknameAndCityState({required this.nickname, required this.city});
+@freezed
+class EditUserInformationState with _$EditUserInformationState {
+  const factory EditUserInformationState.pageInit() = PageInitState;
+  const factory EditUserInformationState.uploadNicknameAndCity({
+    required String nickname,
+    required String city,
+  }) = UploadNicknameAndCityState;
 }

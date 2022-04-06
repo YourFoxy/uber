@@ -1,18 +1,13 @@
-import 'package:flutter/material.dart';
+part of 'edit_user_information_bloc.dart';
 
-abstract class EditUserInformationEvent {}
-
-class UploadNicknameAndCityEvent extends EditUserInformationEvent {}
-
-class SaveUserInformationEvent extends EditUserInformationEvent {
-  final String nickname;
-  final String city;
-  final String pickImageUrl;
-  final BuildContext context;
-  SaveUserInformationEvent({
-    required this.nickname,
-    required this.city,
-    required this.pickImageUrl,
-    required this.context,
-  });
+@freezed
+class EditUserInformationEvent with _$EditUserInformationEvent {
+  const factory EditUserInformationEvent.uploadNicknameAndCity() =
+      UploadNicknameAndCityEvent;
+  const factory EditUserInformationEvent.saveUserInformation({
+    required String nickname,
+    required String city,
+    required String pickImageUrl,
+    required BuildContext context,
+  }) = SaveUserInformationEvent;
 }

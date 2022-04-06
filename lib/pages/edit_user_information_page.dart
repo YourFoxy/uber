@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_bloc.dart';
-import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_event.dart';
-import 'package:uber/bloc/page_bloc/edit_user_information_page/edit_user_information_state.dart';
+import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_bloc.dart';
 import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
 import 'package:uber/extension/bloc_widget_extension.dart';
 import 'package:uber/style/colors.dart';
@@ -21,18 +19,30 @@ class EditUserInformationPage extends StatefulWidget {
 
 class _EditUserInformationPageState extends State<EditUserInformationPage> {
   String _pickImageUrl = '';
-  final TextEditingController _nicknameController = TextEditingController();
-  final TextEditingController _cityController = TextEditingController();
 
-  late final _bloc;
+  late final EditUserInformationBloc _editUserInformationBloc;
+
+  final _nicknameTextKey = GlobalKey();
+  final _cityTextKey = GlobalKey();
+
+  TextEditingController get _nicknameController =>
+      (_nicknameTextKey.currentWidget as TextField).controller!;
+  TextEditingController get _cityController =>
+      (_cityTextKey.currentWidget as TextField).controller!;
 
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of<EditUserInformationBloc>(context);
-    _bloc.add(
-      UploadNicknameAndCityEvent(),
+    _editUserInformationBloc =
+        BlocProvider.of<EditUserInformationBloc>(context);
+    _editUserInformationBloc.add(
+      const EditUserInformationEvent.uploadNicknameAndCity(),
     );
+  }
+
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
   }
 
   @override
@@ -57,10 +67,6 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
       backgroundColor: AppColors.plum,
       body: BlocBuilder<EditUserInformationBloc, EditUserInformationState>(
         builder: (context, state) {
-          if (state is UploadNicknameAndCityState) {
-            _nicknameController.text = state.nickname;
-            _cityController.text = state.city;
-          }
           return Stack(
             children: [
               SingleChildScrollView(
@@ -80,13 +86,23 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                       backgroundColor: AppColors.orange,
                       textColor: AppColors.plum,
                       hintText: 'Nickname',
-                      controller: _nicknameController,
+                      textKey: _nicknameTextKey,
+                      controller: TextEditingController(
+                        text: state is UploadNicknameAndCityState
+                            ? state.nickname
+                            : '',
+                      ),
                     ),
                     TextFieldWidget(
                       backgroundColor: AppColors.orange,
                       textColor: AppColors.plum,
                       hintText: 'City',
-                      controller: _cityController,
+                      textKey: _cityTextKey,
+                      controller: TextEditingController(
+                        text: state is UploadNicknameAndCityState
+                            ? state.city
+                            : '',
+                      ),
                     ),
                     const SizedBox(
                       height: 70,
@@ -97,10 +113,10 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
               SafeArea(
                 child: LongSaveButtonWidget(
                   function: () {
-                    _bloc.add(
+                    _editUserInformationBloc.add(
                       SaveUserInformationEvent(
-                        nickname: _nicknameController.text,
-                        city: _cityController.text,
+                        nickname: _nicknameController!.text,
+                        city: _cityController!.text,
                         pickImageUrl: _pickImageUrl,
                         context: context,
                       ),
