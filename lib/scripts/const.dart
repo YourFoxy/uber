@@ -10,6 +10,7 @@ const cityFieldInCollection = 'City';
 
 const collectionNameWithRoutes = 'Routes';
 const routeFieldInCollection = 'Route';
+const collectionNameWithDate = 'Date';
 
 const shortNumber = 'Please enter the number correctly';
 const numberIsInDatabase = 'A user with the same number already exists!';
@@ -25,3 +26,18 @@ const regionIndex = 1;
 const locationIndex = 3;
 
 const font = 'BebasNeue';
+
+const Map<String, String> newMonth = {
+  'Январь': 'Января',
+  'Февраль': 'Февраля',
+  'Март': 'Марта',
+  'Апрель': 'Апреля',
+  'Май': 'Мая',
+  'Июнь': 'Июня',
+  'Июль': 'Июля',
+  'Август': 'Августа',
+  'Сентябрь': 'Сентября',
+  'Окрябрь': 'Окрября',
+  'Ноябрь': 'Ноября',
+  'Декабрь': 'Декабря',
+};

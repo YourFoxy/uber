@@ -12,9 +12,14 @@ class RouteCreationEvent with _$RouteCreationEvent {
 
   const factory RouteCreationEvent.closeLocation() = CloseLocationEvent;
 
-  const factory RouteCreationEvent.addRouteEventt({
+  const factory RouteCreationEvent.addRoute({
     required String departurePoint,
     required String arrivalPoint,
+    required String date,
     required BuildContext context,
   }) = AddRouteEvent;
+  const factory RouteCreationEvent.showCalendarEvent({
+    required int month,
+    required int year,
+  }) = ShowCalendarEvent;
 }

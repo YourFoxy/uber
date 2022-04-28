@@ -7,8 +7,7 @@ class LocationData {
     final String localitiesString =
         await DefaultAssetBundle.of(context).loadString('assets/by.txt');
     List<List<dynamic>> rowsAsListOfValues =
-        const CsvToListConverter().convert(localitiesString);
-
+        const CsvToListConverter().convert(localitiesString, eol: '\n');
     List<List<String>> location = [];
     rowsAsListOfValues.forEach((value) {
       location.add(value.toString().split(';'));

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
 import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_event.dart';
 import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_state.dart';

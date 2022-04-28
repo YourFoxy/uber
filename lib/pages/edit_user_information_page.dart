@@ -37,7 +37,7 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
         BlocProvider.of<EditUserInformationBloc>(context);
     _editUserInformationBloc.add(
       const EditUserInformationEvent.uploadNicknameAndCity(),
-    );
+    );     
   }
 
   @override
@@ -115,8 +115,8 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                   function: () {
                     _editUserInformationBloc.add(
                       SaveUserInformationEvent(
-                        nickname: _nicknameController!.text,
-                        city: _cityController!.text,
+                        nickname: _nicknameController.text,
+                        city: _cityController.text,
                         pickImageUrl: _pickImageUrl,
                         context: context,
                       ),

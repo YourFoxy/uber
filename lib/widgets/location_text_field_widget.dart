@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:uber/scripts/const.dart';
@@ -64,7 +62,9 @@ class _LocationTextFieldWidgetState extends State<LocationTextFieldWidget> {
               widget.isNumber ? TextInputType.phone : TextInputType.text,
           inputFormatters: widget.isNumber
               ? [
-                  WhitelistingTextInputFormatter.digitsOnly,
+                
+                  //WhitelistingTextInputFormatter.digitsOnly,
+                  FilteringTextInputFormatter.digitsOnly,
                   NumberTextInputFormatter(),
                 ]
               : [

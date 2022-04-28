@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_bloc.dart';
 import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_event.dart';
