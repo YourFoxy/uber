@@ -49,8 +49,8 @@ class TextFieldWidget extends StatelessWidget {
           keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
           inputFormatters: isNumber
               ? [
-                FilteringTextInputFormatter.digitsOnly,
-                 // WhitelistingTextInputFormatter.digitsOnly,
+                  FilteringTextInputFormatter.digitsOnly,
+                  // WhitelistingTextInputFormatter.digitsOnly,
                   NumberTextInputFormatter(),
                 ]
               : [
