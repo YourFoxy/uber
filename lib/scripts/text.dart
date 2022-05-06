@@ -2,7 +2,7 @@ class AppText {
   static String convertNumber(String phoneNumber) {
     String newPhoneNumber = '';
 
-    List list = phoneNumber.split('');
+    final list = phoneNumber.split('');
     list.insert(4, ' (');
     list.insert(7, ') ');
     list.insert(11, '-');

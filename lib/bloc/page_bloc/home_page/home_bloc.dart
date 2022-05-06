@@ -6,16 +6,15 @@ import 'package:uber/scripts/user_data.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(PageInitState()) {
-    on<LoadedUserInformationEvent>(
-      (event, emit) async {
-        emit(
-          LoadedUserInformationState(
-            nicknameAndCity:
-                '${await UserData.getFieldValueFromDatabase(nicknameFieldInCollection)}, \n${await UserData.getFieldValueFromDatabase(cityFieldInCollection)}',
-            currentUserPhoneNumber: UserData.currentUserPhoneNumber,
-          ),
-        );
-      },
+    on<LoadedUserInformationEvent>(_onLoadedUserInformationEvent);
+  }
+  _onLoadedUserInformationEvent(event, emit) async {
+    emit(
+      LoadedUserInformationState(
+        nicknameAndCity:
+            '${await UserData.getFieldValueFromDatabase(nicknameFieldInCollection)}, \n${await UserData.getFieldValueFromDatabase(cityFieldInCollection)}',
+        currentUserPhoneNumber: UserData.currentUserPhoneNumber,
+      ),
     );
   }
 }

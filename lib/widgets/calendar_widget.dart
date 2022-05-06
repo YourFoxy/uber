@@ -19,6 +19,7 @@ class CalendarWidget extends StatefulWidget {
 
 class _CalendarWidgetState extends State<CalendarWidget> {
   late final CalendarBloc _calendarBloc;
+
   @override
   void initState() {
     super.initState();

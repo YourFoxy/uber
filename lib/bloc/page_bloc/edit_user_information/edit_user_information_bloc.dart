@@ -13,30 +13,27 @@ part 'edit_user_information_bloc.freezed.dart';
 class EditUserInformationBloc
     extends Bloc<EditUserInformationEvent, EditUserInformationState> {
   EditUserInformationBloc() : super(const EditUserInformationState.pageInit()) {
-    on<UploadNicknameAndCityEvent>(
-      (event, emit) async {
-        emit(
-          EditUserInformationState.uploadNicknameAndCity(
-            nickname: await UserData.getFieldValueFromDatabase(
-                nicknameFieldInCollection),
-            city:
-                await UserData.getFieldValueFromDatabase(cityFieldInCollection),
-          ),
-        );
-      },
+    on<UploadNicknameAndCityEvent>(_onUploadNicknameAndCityEvent);
+    on<SaveUserInformationEvent>(_onSaveUserInformationEvent);
+  }
+  _onUploadNicknameAndCityEvent(event, emit) async {
+    emit(
+      EditUserInformationState.uploadNicknameAndCity(
+        nickname:
+            await UserData.getFieldValueFromDatabase(nicknameFieldInCollection),
+        city: await UserData.getFieldValueFromDatabase(cityFieldInCollection),
+      ),
     );
-    on<SaveUserInformationEvent>(
-      (event, emit) async {
-        await UserData.updateCurrentUserInformation(
-            event.nickname, event.city, event.pickImageUrl);
-        Navigator.push(
-          event.context,
-          MaterialPageRoute(
-            builder: (context) =>
-                const HomePage().createWithProvider<HomeBloc>(),
-          ),
-        );
-      },
+  }
+
+  _onSaveUserInformationEvent(event, emit) async {
+    await UserData.updateCurrentUserInformation(
+        event.nickname, event.city, event.pickImageUrl);
+    Navigator.push(
+      event.context,
+      MaterialPageRoute(
+        builder: (context) => const HomePage().createWithProvider<HomeBloc>(),
+      ),
     );
   }
 }

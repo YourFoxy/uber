@@ -5,14 +5,13 @@ import 'package:uber/scripts/user_data.dart';
 
 class ViewAvatarBloc extends Bloc<ViewAvatarEvent, ViewAvatarState> {
   ViewAvatarBloc() : super(PageInitialState()) {
-    on<UploadAvatarEvent>(
-      (event, emit) async {
-        emit(
-          UploadAvatarState(
-            url: await UserData.getUrlImapeFromStorage(),
-          ),
-        );
-      },
+    on<UploadAvatarEvent>(_onUploadAvatarEvent);
+  }
+  _onUploadAvatarEvent(event, emit) async {
+    emit(
+      UploadAvatarState(
+        url: await UserData.getUrlImapeFromStorage(),
+      ),
     );
   }
 }

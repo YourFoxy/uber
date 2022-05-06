@@ -15,47 +15,46 @@ class SignInWithPhoneBloc
   ToastService toastService;
   SignInWithPhoneBloc({required this.toastService})
       : super(PageInitialState()) {
-    on<SendCodeEvent>(
-      (event, emit) async {
-        bool _phoneNumberExists =
-            await UserData.checkPhoneNumberInDatabase(event.phoneNumber);
+    on<SendCodeEvent>(_onSendCodeEvent);
+  }
+  _onSendCodeEvent(event, emit) async {
+    final _phoneNumberExists =
+        await UserData.checkPhoneNumberInDatabase(event.phoneNumber);
 
-        if (event.phoneNumber.length < 19) {
-          toastService.showGeneralErrorToast(shortNumber);
+    if (event.phoneNumber.length < 19) {
+      toastService.showGeneralErrorToast(shortNumber);
+    } else {
+      if (event.isRegister) {
+        if (_phoneNumberExists) {
+          toastService.showGeneralErrorToast(numberIsInDatabase);
         } else {
-          if (event.isRegister) {
-            if (_phoneNumberExists) {
-              toastService.showGeneralErrorToast(numberIsInDatabase);
-            } else {
-              Auth.signIn(event.phoneNumber);
-              Navigator.push(
-                event.context,
-                MaterialPageRoute(
-                  builder: (context) => CodePage(
-                    isRegister: true,
-                    phoneNumber: event.phoneNumber,
-                  ).createWithProvider<VerifyCodeBloc>(),
-                ),
-              );
-            }
-          } else {
-            if (!_phoneNumberExists) {
-              toastService.showGeneralErrorToast(noNumberInDatabase);
-            } else {
-              Auth.signIn(event.phoneNumber);
-              Navigator.push(
-                event.context,
-                MaterialPageRoute(
-                  builder: (context) => CodePage(
-                    isRegister: false,
-                    phoneNumber: event.phoneNumber,
-                  ).createWithProvider<VerifyCodeBloc>(),
-                ),
-              );
-            }
-          }
+          Auth.signIn(event.phoneNumber);
+          Navigator.push(
+            event.context,
+            MaterialPageRoute(
+              builder: (context) => CodePage(
+                isRegister: true,
+                phoneNumber: event.phoneNumber,
+              ).createWithProvider<VerifyCodeBloc>(),
+            ),
+          );
         }
-      },
-    );
+      } else {
+        if (!_phoneNumberExists) {
+          toastService.showGeneralErrorToast(noNumberInDatabase);
+        } else {
+          Auth.signIn(event.phoneNumber);
+          Navigator.push(
+            event.context,
+            MaterialPageRoute(
+              builder: (context) => CodePage(
+                isRegister: false,
+                phoneNumber: event.phoneNumber,
+              ).createWithProvider<VerifyCodeBloc>(),
+            ),
+          );
+        }
+      }
+    }
   }
 }

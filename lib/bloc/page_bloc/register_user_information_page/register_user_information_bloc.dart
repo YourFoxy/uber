@@ -6,15 +6,14 @@ import 'package:uber/scripts/field_validation.dart';
 class RegisterUserInformationBloc
     extends Bloc<RegisterUserInformationEvent, RegisterUserInformationState> {
   RegisterUserInformationBloc() : super(PageInitState()) {
-    on<AddUserInformationEvent>(
-      (event, emit) {
-        FieldValidation.checkingFieldsAndMovingToHomePage(
-          event.city,
-          event.nickname,
-          event.pickImageUrl,
-          event.context,
-        );
-      },
+    on<AddUserInformationEvent>(_onAddUserInformationEvent);
+  }
+  _onAddUserInformationEvent(event, emit) {
+    FieldValidation.checkingFieldsAndMovingToHomePage(
+      event.city,
+      event.nickname,
+      event.pickImageUrl,
+      event.context,
     );
   }
 }

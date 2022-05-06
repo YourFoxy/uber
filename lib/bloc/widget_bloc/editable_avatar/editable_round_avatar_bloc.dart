@@ -5,10 +5,9 @@ import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_stat
 class EditableRoundAvatarBloc
     extends Bloc<EditableRoundAvatarEvent, EditableRoundAvatarState> {
   EditableRoundAvatarBloc() : super(WidgetInitState()) {
-    on<SetAvatarEvent>(
-      (event, emit) {
-        emit(AvatarUrlState(url: event.url));
-      },
-    );
+    on<SetAvatarEvent>(_onSetAvatarEvent);
+  }
+  _onSetAvatarEvent(event, emit) {
+    emit(AvatarUrlState(url: event.url));
   }
 }

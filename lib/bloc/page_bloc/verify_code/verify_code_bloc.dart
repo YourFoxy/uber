@@ -5,14 +5,13 @@ import 'package:uber/domain/auth.dart';
 
 class VerifyCodeBloc extends Bloc<VerifyCodeEvent, VerifyCodeState> {
   VerifyCodeBloc() : super(PageInitialState()) {
-    on<SignInEvent>(
-      (event, emit) {
-        Auth.verificationID(
-          event.smsCode,
-          event.context,
-          event.phoneNumber,
-        );
-      },
+    on<SignInEvent>(_onSignInEvent);
+  }
+  _onSignInEvent(event, emit) {
+    Auth.verificationID(
+      event.smsCode,
+      event.context,
+      event.phoneNumber,
     );
   }
 }

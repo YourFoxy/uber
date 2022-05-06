@@ -19,7 +19,6 @@ import 'package:uber/pages/home_page.dart';
 import 'package:uber/pages/route_creation_page.dart';
 import 'package:uber/pages/sign_in_with_phone_number.dart';
 import 'package:uber/scripts/const.dart';
-import 'package:uber/scripts/date.dart';
 import 'package:uber/service/toast_service.dart';
 
 import 'bloc/widget_bloc/calendar_widget/calendar_bloc.dart';
@@ -28,7 +27,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   GetIt.instance.registerSingleton(ToastService());
-  GetIt.instance.registerSingleton(Date());
 
   registerBlocsFactory();
   runApp(const MyApp());

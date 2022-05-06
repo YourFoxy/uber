@@ -6,7 +6,7 @@ class NumberTextInputFormatter extends TextInputFormatter {
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
-    final int newTextLength = newValue.text.length;
+    final newTextLength = newValue.text.length;
     int selectionIndex = newValue.selection.end;
     int usedSubstringIndex = 0;
     final StringBuffer newText = StringBuffer();

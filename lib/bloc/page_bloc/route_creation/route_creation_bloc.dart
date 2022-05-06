@@ -13,52 +13,58 @@ part 'route_creation_bloc.freezed.dart';
 
 class RouteCreationBloc extends Bloc<RouteCreationEvent, RouteCreationState> {
   RouteCreationBloc() : super(const RouteCreationState.pageInit()) {
-    on<ShowLocationForArrivalPointEvent>(
-      (event, emit) async {
-        List<List<String>> locationMap =
-            await LocationData.createLocationMap(event.context);
-        emit(RouteCreationState.showLocationForArrivalPoint(
-            locationMap: locationMap));
-      },
-    );
+    on<ShowLocationForArrivalPointEvent>(_onShowLocationForArrivalPointEvent);
     on<ShowLocationForDeparturePointEvent>(
-      (event, emit) async {
-        List<List<String>> locationMap =
-            await LocationData.createLocationMap(event.context);
+        _onShowLocationForDeparturePointEvent);
+    on<CloseLocationEvent>(_onCloseLocationEvent);
+    on<AddRouteEvent>(_onAddRouteEvent);
+    on<ShowCalendarEvent>(_onShowCalendarEvent);
+  }
+  _onShowLocationForArrivalPointEvent(event, emit) async {
+    List<List<String>> locationMap =
+        await LocationData.createLocationMap(event.context);
+    emit(RouteCreationState.showLocationForArrivalPoint(
+        locationMap: locationMap));
+  }
 
-        emit(RouteCreationState.showLocationForDeparturePoint(
-            locationMap: locationMap));
-      },
-    );
-    on<CloseLocationEvent>((event, emit) {
-      emit(const RouteCreationState.closeLocation());
-    });
-    on<AddRouteEvent>((event, emit) async {
-      final List<String> route = [event.departurePoint, event.arrivalPoint];
+  _onShowLocationForDeparturePointEvent(event, emit) async {
+    List<List<String>> locationMap =
+        await LocationData.createLocationMap(event.context);
 
-      await Auth.fbd
-          .collection(collectionNameWithRoutes)
-          .doc(UserData.currentUserPhoneNumber)
-          .collection(collectionNameWithRoutes)
-          .add({
-        routeFieldInCollection: route,
-        'date': event.date,
-      });
-      Navigator.pushNamed(event.context, homePage);
+    emit(RouteCreationState.showLocationForDeparturePoint(
+        locationMap: locationMap));
+  }
+
+  _onCloseLocationEvent(event, emit) {
+    emit(const RouteCreationState.closeLocation());
+  }
+
+  _onAddRouteEvent(event, emit) async {
+    final route = <String>[event.departurePoint, event.arrivalPoint];
+
+    await Auth.fbd
+        .collection(collectionNameWithRoutes)
+        .doc(UserData.currentUserPhoneNumber)
+        .collection(collectionNameWithRoutes)
+        .add({
+      routeFieldInCollection: route,
+      'date': event.date,
     });
-    on<ShowCalendarEvent>((event, emit) {
-      List<String> month = [];
-      int emptyCells = DateTime(event.year, event.month, 1).weekday - 1;
-      int? monthLenght = DateUtil.daysInMonth(event.month, event.year);
-      for (int i = 0; i < emptyCells + monthLenght; i++) {
-        if (i < emptyCells) {
-          month.add('');
-        } else {
-          month.add('${i - emptyCells + 1}');
-        }
+    Navigator.pushNamed(event.context, homePage);
+  }
+
+  _onShowCalendarEvent(event, emit) {
+    final month = <String>[];
+    final emptyCells = DateTime(event.year, event.month, 1).weekday - 1;
+    final monthLenght = DateUtil.daysInMonth(event.month, event.year);
+    for (int i = 0; i < emptyCells + monthLenght; i++) {
+      if (i < emptyCells) {
+        month.add('');
+      } else {
+        month.add('${i - emptyCells + 1}');
       }
+    }
 
-      emit(_ShowCalendarState(month: month));
-    });
+    emit(_ShowCalendarState(month: month));
   }
 }

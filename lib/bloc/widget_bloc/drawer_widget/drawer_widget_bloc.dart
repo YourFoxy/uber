@@ -9,15 +9,14 @@ import 'package:uber/service/toast_service.dart';
 class DrawerWidgetBloc extends Bloc<DrawerWidgetEvent, DrawerWidgetState> {
   ToastService toastService;
   DrawerWidgetBloc({required this.toastService}) : super(WidgetInitialState()) {
-    on<ExitEvent>(
-      (event, emit) async {
-        try {
-          await FirebaseAuth.instance.signOut();
-          Navigator.pushNamed(event.context, loginOrRegisterPage);
-        } catch (e) {
-          toastService.showGeneralErrorToast(e.toString());
-        }
-      },
-    );
+    on<ExitEvent>(_onExitEvent);
+  }
+  _onExitEvent(event, emit) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Navigator.pushNamed(event.context, loginOrRegisterPage);
+    } catch (e) {
+      toastService.showGeneralErrorToast(e.toString());
+    }
   }
 }

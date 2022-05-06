@@ -27,7 +27,7 @@ const locationIndex = 3;
 
 const font = 'BebasNeue';
 
-const Map<String, String> newMonth = {
+const newMonth = <String, String>{
   'Январь': 'Января',
   'Февраль': 'Февраля',
   'Март': 'Марта',

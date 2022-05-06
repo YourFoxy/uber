@@ -84,8 +84,8 @@ class _RouteCreationPageState extends State<RouteCreationPage> {
                 _routeCreationBloc
                     .add(const RouteCreationEvent.closeLocation());
               },
-              splashColor: Colors.black.withOpacity(0),
-              highlightColor: Colors.black.withOpacity(0),
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
               child: Stack(
                 children: [
                   SingleChildScrollView(
@@ -182,6 +182,7 @@ class _PlaceForRouteTextFields extends StatelessWidget {
     required this.arrivalPointController,
     required this.date,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(

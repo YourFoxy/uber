@@ -21,7 +21,6 @@ class TextFieldWidget extends StatelessWidget {
     this.backgroundColor = AppColors.plum,
     this.isNumber = false,
     this.textColor = AppColors.orange,
-    // this.textKey;
     this.textKey,
   }) : super(key: key);
 

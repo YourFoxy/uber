@@ -9,17 +9,18 @@ class EditableRectangularAvatarBloc extends Bloc<EditableRectangularAvatarEvent,
     EditableRectangularAvatarState> {
   EditableRectangularAvatarBloc()
       : super(const EditableRectangularAvatarState.widgetInit()) {
-    on<UploadAvatarEvent>(
-      (event, emit) async {
-        emit(
-          EditableRectangularAvatarState.uploadAvatar(
-            url: await UserData.getUrlImapeFromStorage(),
-          ),
-        );
-      },
+    on<UploadAvatarEvent>(_onUploadAvatarEvent);
+    on<SetAvatarEvent>(_onSetAvatarEvent);
+  }
+  _onUploadAvatarEvent(event, emit) async {
+    emit(
+      EditableRectangularAvatarState.uploadAvatar(
+        url: await UserData.getUrlImapeFromStorage(),
+      ),
     );
-    on<SetAvatarEvent>((event, emit) {
-      emit(EditableRectangularAvatarState.pickImage(url: event.url));
-    });
+  }
+
+  _onSetAvatarEvent(event, emit) {
+    emit(EditableRectangularAvatarState.pickImage(url: event.url));
   }
 }
