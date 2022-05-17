@@ -3,6 +3,7 @@ const logInNumberPage = '/Login code page';
 const loginOrRegisterPage = '/Logit or Register page';
 const homePage = '/home page';
 const routeCreationPage = '/route creation page';
+const editUserInformationPage = '/edit user information page';
 
 const collectionNameWithUsers = 'Users';
 const nicknameFieldInCollection = 'Nickname';

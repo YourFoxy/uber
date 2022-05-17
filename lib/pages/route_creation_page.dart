@@ -151,7 +151,7 @@ class _RouteCreationPageState extends State<RouteCreationPage> {
             backgroundColor: AppColors.orange,
             onPressed: () async {
               _routeCreationBloc.add(
-                AddRouteEvent(
+                RouteCreationEvent.addRoute(
                   departurePoint: _departurePointController.text,
                   arrivalPoint: _arrivalPointController.text,
                   date: _date,

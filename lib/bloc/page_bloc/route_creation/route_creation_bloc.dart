@@ -7,12 +7,15 @@ import 'package:uber/scripts/date_util.dart';
 import 'package:uber/scripts/location.dart';
 import 'package:uber/scripts/user_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uber/service/navigation_service.dart';
 part 'route_creation_event.dart';
 part 'route_creation_state.dart';
 part 'route_creation_bloc.freezed.dart';
 
 class RouteCreationBloc extends Bloc<RouteCreationEvent, RouteCreationState> {
-  RouteCreationBloc() : super(const RouteCreationState.pageInit()) {
+  NavigationService navigationService;
+  RouteCreationBloc({required this.navigationService})
+      : super(const RouteCreationState.pageInit()) {
     on<ShowLocationForArrivalPointEvent>(_onShowLocationForArrivalPointEvent);
     on<ShowLocationForDeparturePointEvent>(
         _onShowLocationForDeparturePointEvent);
@@ -50,7 +53,8 @@ class RouteCreationBloc extends Bloc<RouteCreationEvent, RouteCreationState> {
       routeFieldInCollection: route,
       'date': event.date,
     });
-    Navigator.pushNamed(event.context, homePage);
+    navigationService.navigatorToHomePage();
+    // Navigator.pushNamed(event.context, homePage);
   }
 
   _onShowCalendarEvent(event, emit) {

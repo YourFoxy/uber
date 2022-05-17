@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:uber/scripts/const.dart';
+import 'package:uber/service/navigation_service.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/button_widget.dart';
 import 'package:uber/widgets/car_image_widget.dart';
 
 class LoginOrRegister extends StatelessWidget {
-  const LoginOrRegister({Key? key}) : super(key: key);
+  final NavigationService navigationService;
+  const LoginOrRegister({
+    Key? key,
+    required this.navigationService,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,8 @@ class LoginOrRegister extends StatelessWidget {
                 textColor: AppColors.orange,
                 text: 'Login',
                 onTap: () => () {
-                  Navigator.pushNamed(context, logInNumberPage);
+                  navigationService.navigatorToLogInNumberPage();
+                  //Navigator.pushNamed(context, logInNumberPage);
                 },
               ),
               ButtonWidget(
@@ -29,7 +34,9 @@ class LoginOrRegister extends StatelessWidget {
                 textColor: AppColors.orange,
                 text: 'Register',
                 onTap: () => () {
-                  Navigator.pushNamed(context, registerNumberPage);
+                  navigationService.navigatorToRegisterPage();
+                  // Navigator.pushNamed(context, registerNumberPage);
+                  //  NavigationService.NavigatorToRegisterPage();
                 },
               ),
             ],

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +16,15 @@ import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_bloc
 import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
 import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
 import 'package:uber/extension/bloc_widget_extension.dart';
+import 'package:uber/pages/code_page.dart';
+import 'package:uber/pages/edit_user_information_page.dart';
 import 'package:uber/pages/login_or_register_page.dart';
 import 'package:uber/pages/home_page.dart';
+import 'package:uber/pages/register_user_information_page.dart';
 import 'package:uber/pages/route_creation_page.dart';
 import 'package:uber/pages/sign_in_with_phone_number.dart';
 import 'package:uber/scripts/const.dart';
+import 'package:uber/service/navigation_service.dart';
 import 'package:uber/service/toast_service.dart';
 
 import 'bloc/widget_bloc/calendar_widget/calendar_bloc.dart';
@@ -27,20 +33,26 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   GetIt.instance.registerSingleton(ToastService());
+  GetIt.instance.registerSingleton(NavigationService());
 
   registerBlocsFactory();
-  runApp(const MyApp());
+  runApp(MyApp());
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 }
 
 void registerBlocsFactory() {
   final GetIt _getIt = GetIt.instance;
   final ToastService _toastService = GetIt.instance.get<ToastService>();
+  final _navigationService = GetIt.instance.get<NavigationService>();
 
-  _getIt.registerFactory<SignInWithPhoneBloc>(
-      () => SignInWithPhoneBloc(toastService: _toastService));
-  _getIt.registerFactory<DrawerWidgetBloc>(
-      () => DrawerWidgetBloc(toastService: _toastService));
+  _getIt.registerFactory<SignInWithPhoneBloc>(() => SignInWithPhoneBloc(
+        toastService: _toastService,
+        navigationService: _navigationService,
+      ));
+  _getIt.registerFactory<DrawerWidgetBloc>(() => DrawerWidgetBloc(
+        toastService: _toastService,
+        navigationService: _navigationService,
+      ));
   _getIt.registerFactory<ViewAvatarBloc>(() => ViewAvatarBloc());
   _getIt.registerFactory<EditableRoundAvatarBloc>(
       () => EditableRoundAvatarBloc());
@@ -50,15 +62,20 @@ void registerBlocsFactory() {
       () => RegisterUserInformationBloc());
   _getIt.registerFactory<EditableRectangularAvatarBloc>(
       () => EditableRectangularAvatarBloc());
-  _getIt.registerFactory<EditUserInformationBloc>(
-      () => EditUserInformationBloc());
-  _getIt.registerFactory<RouteCreationBloc>(() => RouteCreationBloc());
+  _getIt.registerFactory<EditUserInformationBloc>(() => EditUserInformationBloc(
+        navigationService: _navigationService,
+      ));
+  _getIt.registerFactory<RouteCreationBloc>(() => RouteCreationBloc(
+        navigationService: _navigationService,
+      ));
 
   _getIt.registerFactory<CalendarBloc>(() => CalendarBloc());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final _navigationService = GetIt.instance.get<NavigationService>();
+
+  MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -66,6 +83,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xFF5E838C),
       ),
       initialRoute: '/',
+      navigatorKey: kNavigatorKey,
       routes: {
         logInNumberPage: (_) => const SignInWithPhonePage(
               isRegister: false,
@@ -73,14 +91,28 @@ class MyApp extends StatelessWidget {
         registerNumberPage: (_) => const SignInWithPhonePage(
               isRegister: true,
             ).createWithProvider<SignInWithPhoneBloc>(),
-        loginOrRegisterPage: (_) => const LoginOrRegister(),
-        homePage: (_) => const HomePage().createWithProvider<HomeBloc>(),
+        loginOrRegisterPage: (_) => LoginOrRegister(
+              navigationService: _navigationService,
+            ),
+        homePage: (_) => HomePage(
+              navigationService: _navigationService,
+            ).createWithProvider<HomeBloc>(),
         routeCreationPage: (_) =>
             const RouteCreationPage().createWithProvider<RouteCreationBloc>(),
+        editUserInformationPage: (_) => const EditUserInformationPage()
+            .createWithProvider<EditUserInformationBloc>(),
+        // 'g': (_) => CodePage(
+        //       isRegister: false,
+        //       phoneNumber: 'd',
+        //     ).createWithProvider<VerifyCodeBloc>(),
       },
       home: FirebaseAuth.instance.currentUser == null
-          ? const LoginOrRegister()
-          : const HomePage().createWithProvider<HomeBloc>(),
+          ? LoginOrRegister(
+              navigationService: _navigationService,
+            )
+          : HomePage(
+              navigationService: _navigationService,
+            ).createWithProvider<HomeBloc>(),
     );
   }
 }

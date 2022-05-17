@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_bloc.dart';
 import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
 import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_event.dart';
 import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_state.dart';
-import 'package:uber/extension/bloc_widget_extension.dart';
-import 'package:uber/pages/edit_user_information_page.dart';
+import 'package:uber/service/navigation_service.dart';
 import 'package:uber/style/colors.dart';
 import 'package:uber/widgets/app_text.dart';
 import 'package:uber/widgets/icon_and_text_for_drawer_button.dart';
 
 class DrawerMenu extends StatefulWidget {
-  const DrawerMenu({Key? key}) : super(key: key);
+  final NavigationService navigationService;
+  const DrawerMenu({Key? key, required this.navigationService})
+      : super(key: key);
 
   @override
   State<DrawerMenu> createState() => _DrawerMenuState();
@@ -47,13 +47,14 @@ class _DrawerMenuState extends State<DrawerMenu> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const EditUserInformationPage()
-                          .createWithProvider<EditUserInformationBloc>(),
-                    ),
-                  );
+                  widget.navigationService.navigatorToEditUserInformationPage();
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const EditUserInformationPage()
+                  //         .createWithProvider<EditUserInformationBloc>(),
+                  //   ),
+                  // );
                 },
                 child: const IconAndTextForDrawerButton(
                   iconData: Icons.edit,
