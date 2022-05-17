@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:uber/scripts/const.dart';
@@ -49,7 +47,6 @@ class TextFieldWidget extends StatelessWidget {
           inputFormatters: isNumber
               ? [
                   FilteringTextInputFormatter.digitsOnly,
-                  // WhitelistingTextInputFormatter.digitsOnly,
                   NumberTextInputFormatter(),
                 ]
               : [

@@ -30,15 +30,6 @@ class SignInWithPhoneBloc
           Auth.signIn(event.phoneNumber);
           navigationService.navigatorToCodePage(
               phoneNumber: event.phoneNumber, isRegister: true);
-          // Navigator.push(
-          //   event.context,
-          //   MaterialPageRoute(
-          //     builder: (context) => CodePage(
-          //       isRegister: true,
-          //       phoneNumber: event.phoneNumber,
-          //     ).createWithProvider<VerifyCodeBloc>(),
-          //   ),
-          //);
         }
       } else {
         if (!_phoneNumberExists) {
@@ -47,15 +38,6 @@ class SignInWithPhoneBloc
           Auth.signIn(event.phoneNumber);
           navigationService.navigatorToCodePage(
               phoneNumber: event.phoneNumber, isRegister: false);
-          // Navigator.push(
-          //   event.context,
-          //   MaterialPageRoute(
-          //     builder: (context) => CodePage(
-          //       isRegister: false,
-          //       phoneNumber: event.phoneNumber,
-          //     ).createWithProvider<VerifyCodeBloc>(),
-          //   ),
-          // );
         }
       }
     }

@@ -62,8 +62,6 @@ class _LocationTextFieldWidgetState extends State<LocationTextFieldWidget> {
               widget.isNumber ? TextInputType.phone : TextInputType.text,
           inputFormatters: widget.isNumber
               ? [
-                
-                  //WhitelistingTextInputFormatter.digitsOnly,
                   FilteringTextInputFormatter.digitsOnly,
                   NumberTextInputFormatter(),
                 ]

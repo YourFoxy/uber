@@ -48,13 +48,6 @@ class _DrawerMenuState extends State<DrawerMenu> {
               InkWell(
                 onTap: () {
                   widget.navigationService.navigatorToEditUserInformationPage();
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const EditUserInformationPage()
-                  //         .createWithProvider<EditUserInformationBloc>(),
-                  //   ),
-                  // );
                 },
                 child: const IconAndTextForDrawerButton(
                   iconData: Icons.edit,
