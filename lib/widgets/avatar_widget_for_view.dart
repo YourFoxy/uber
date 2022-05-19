@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
-import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_event.dart';
-import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_state.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/style/colors.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter/material.dart';
+// import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
+// import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_event.dart';
+// import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_state.dart';
+// import 'package:uber/scripts/const.dart';
+// import 'package:uber/style/colors.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uber/scripts/index.dart';
 
 class AvatarWidgetForView extends StatefulWidget {
   final Color backgroundColor;
@@ -25,7 +26,7 @@ class _AvatarWidgetForViewState extends State<AvatarWidgetForView> {
   void initState() {
     super.initState();
     _viewAvatarBloc = BlocProvider.of<ViewAvatarBloc>(context);
-    _viewAvatarBloc.add(UploadAvatarEvent());
+    _viewAvatarBloc.add(UploadViewAvatarEvent());
   }
 
   @override
@@ -51,7 +52,7 @@ class _AvatarWidgetForViewState extends State<AvatarWidgetForView> {
                 width: 138,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
-                  image: state is UploadAvatarState
+                  image: state is UploadViewAvatarState
                       ? DecorationImage(
                           image: NetworkImage(
                             state.url,

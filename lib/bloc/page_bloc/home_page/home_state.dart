@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
+//import 'package:flutter/material.dart';
+
+import 'package:uber/scripts/index.dart';
 
 @immutable
 abstract class HomeState {}
 
-class PageInitState extends HomeState {}
+class PageHomeInitState extends HomeState {}
 
 class LoadedUserInformationState extends HomeState {
   final String nicknameAndCity;

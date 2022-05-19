@@ -1,12 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/scripts/user_data.dart';
-import 'package:uber/service/navigation_service.dart';
-import 'package:uber/service/toast_service.dart';
+import 'package:uber/scripts/index.dart';
 
 class Auth {
   static final FirebaseAuth fAuth = FirebaseAuth.instance;
@@ -30,7 +22,7 @@ class Auth {
     String smsCode,
     BuildContext context,
     String phoneNumber,
-    NavigationService navigationService,
+    final NavigationService navigationService,
   ) async {
     PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
       verificationId: _verificationID,
@@ -48,23 +40,8 @@ class Auth {
         UserData.addCurrentUserInformation(phoneNumber);
         navigationService.navigatorToRegisterUserInformationPage(
             phoneNumber: phoneNumber);
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => RegisterUserInformationPage(
-        //       phoneNumber: phoneNumber,
-        //     ).createWithProvider<RegisterUserInformationBloc>(),
-        //   ),
-        //);
       } else {
         navigationService.navigatorToHomePage();
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) =>
-        //         const HomePage().createWithProvider<HomeBloc>(),
-        //   ),
-        // );
       }
     } catch (e) {
       GetIt.instance.get<ToastService>().showGeneralErrorToast(incorrectCode);

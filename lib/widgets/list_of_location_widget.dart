@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/app_large_text.dart';
-import 'package:uber/widgets/app_text.dart';
+// import 'package:flutter/material.dart';
+// import 'package:uber/scripts/const.dart';
+// import 'package:uber/style/colors.dart';
+// import 'package:uber/widgets/app_large_text.dart';
+// import 'package:uber/widgets/app_text.dart';
+import 'package:uber/scripts/index.dart';
 
 class ListOfLocationWidget extends StatelessWidget {
   final List<List<String>> locations;

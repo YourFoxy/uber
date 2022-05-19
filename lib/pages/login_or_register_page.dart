@@ -1,8 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:uber/service/navigation_service.dart';
-import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/button_widget.dart';
-import 'package:uber/widgets/car_image_widget.dart';
+// import 'package:flutter/material.dart';
+// import 'package:uber/service/navigation_service.dart';
+// import 'package:uber/style/colors.dart';
+// import 'package:uber/widgets/button_widget.dart';
+// import 'package:uber/widgets/car_image_widget.dart';
+
+import 'package:uber/scripts/index.dart';
 
 class LoginOrRegister extends StatelessWidget {
   final NavigationService navigationService;
@@ -26,7 +28,6 @@ class LoginOrRegister extends StatelessWidget {
                 text: 'Login',
                 onTap: () => () {
                   navigationService.navigatorToLogInNumberPage();
-                  //Navigator.pushNamed(context, logInNumberPage);
                 },
               ),
               ButtonWidget(
@@ -35,8 +36,6 @@ class LoginOrRegister extends StatelessWidget {
                 text: 'Register',
                 onTap: () => () {
                   navigationService.navigatorToRegisterPage();
-                  // Navigator.pushNamed(context, registerNumberPage);
-                  //  NavigationService.NavigatorToRegisterPage();
                 },
               ),
             ],

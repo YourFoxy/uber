@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/style/colors.dart';
+// import 'package:flutter/material.dart';
+// import 'package:uber/scripts/const.dart';
+// import 'package:uber/style/colors.dart';
+
+import 'package:uber/scripts/index.dart';
 
 class AppTextStyle extends StatelessWidget {
   final double size;

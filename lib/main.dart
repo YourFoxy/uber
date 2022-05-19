@@ -1,29 +1,32 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get_it/get_it.dart';
-import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_bloc.dart';
-import 'package:uber/bloc/page_bloc/home_page/home_bloc.dart';
-import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_bloc.dart';
-import 'package:uber/bloc/page_bloc/route_creation/route_creation_bloc.dart';
-import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_bloc.dart';
-import 'package:uber/bloc/page_bloc/verify_code/verify_code_bloc.dart';
-import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
-import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_bloc.dart';
-import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
-import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
-import 'package:uber/extension/bloc_widget_extension.dart';
-import 'package:uber/pages/edit_user_information_page.dart';
-import 'package:uber/pages/login_or_register_page.dart';
-import 'package:uber/pages/home_page.dart';
-import 'package:uber/pages/route_creation_page.dart';
-import 'package:uber/pages/sign_in_with_phone_number.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/service/navigation_service.dart';
-import 'package:uber/service/toast_service.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+// import 'package:get_it/get_it.dart';
+// import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_bloc.dart';
+// import 'package:uber/bloc/page_bloc/home_page/home_bloc.dart';
+// import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_bloc.dart';
+// import 'package:uber/bloc/page_bloc/route_creation/route_creation_bloc.dart';
+// import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_bloc.dart';
+// import 'package:uber/bloc/page_bloc/verify_code/verify_code_bloc.dart';
+// import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
+// import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_bloc.dart';
+// import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
+// import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
+// import 'package:uber/extension/bloc_widget_extension.dart';
+// import 'package:uber/pages/edit_user_information_page.dart';
+// import 'package:uber/pages/login_or_register_page.dart';
+// import 'package:uber/pages/home_page.dart';
+// import 'package:uber/pages/route_creation_page.dart';
+// import 'package:uber/pages/sign_in_with_phone_number.dart';
+// import 'package:uber/scripts/const.dart';
+// import 'package:uber/scripts/routes.dart';
+// import 'package:uber/service/navigation_service.dart';
+// import 'package:uber/service/toast_service.dart';
 
-import 'bloc/widget_bloc/calendar_widget/calendar_bloc.dart';
+// import 'bloc/widget_bloc/calendar_widget/calendar_bloc.dart';
+
+import 'package:uber/scripts/index.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -80,24 +83,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       navigatorKey: kNavigatorKey,
-      routes: {
-        logInNumberPage: (_) => const SignInWithPhonePage(
-              isRegister: false,
-            ).createWithProvider<SignInWithPhoneBloc>(),
-        registerNumberPage: (_) => const SignInWithPhonePage(
-              isRegister: true,
-            ).createWithProvider<SignInWithPhoneBloc>(),
-        loginOrRegisterPage: (_) => LoginOrRegister(
-              navigationService: _navigationService,
-            ),
-        homePage: (_) => HomePage(
-              navigationService: _navigationService,
-            ).createWithProvider<HomeBloc>(),
-        routeCreationPage: (_) =>
-            const RouteCreationPage().createWithProvider<RouteCreationBloc>(),
-        editUserInformationPage: (_) => const EditUserInformationPage()
-            .createWithProvider<EditUserInformationBloc>(),
-      },
+      routes: routes,
       home: FirebaseAuth.instance.currentUser == null
           ? LoginOrRegister(
               navigationService: _navigationService,

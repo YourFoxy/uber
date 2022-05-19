@@ -18,12 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$EditableRectangularAvatarEventTearOff {
   const _$EditableRectangularAvatarEventTearOff();
 
-  UploadAvatarEvent uploadAvatar() {
-    return const UploadAvatarEvent();
+  UploadRectangularAvatarEvent uploadAvatar() {
+    return const UploadRectangularAvatarEvent();
   }
 
-  SetAvatarEvent setAvatar({required String url}) {
-    return SetAvatarEvent(
+  SetRectangularAvatarEvent setAvatar({required String url}) {
+    return SetRectangularAvatarEvent(
       url: url,
     );
   }
@@ -56,20 +56,20 @@ mixin _$EditableRectangularAvatarEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UploadAvatarEvent value) uploadAvatar,
-    required TResult Function(SetAvatarEvent value) setAvatar,
+    required TResult Function(UploadRectangularAvatarEvent value) uploadAvatar,
+    required TResult Function(SetRectangularAvatarEvent value) setAvatar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(UploadAvatarEvent value)? uploadAvatar,
-    TResult Function(SetAvatarEvent value)? setAvatar,
+    TResult Function(UploadRectangularAvatarEvent value)? uploadAvatar,
+    TResult Function(SetRectangularAvatarEvent value)? setAvatar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UploadAvatarEvent value)? uploadAvatar,
-    TResult Function(SetAvatarEvent value)? setAvatar,
+    TResult Function(UploadRectangularAvatarEvent value)? uploadAvatar,
+    TResult Function(SetRectangularAvatarEvent value)? setAvatar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -94,28 +94,31 @@ class _$EditableRectangularAvatarEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $UploadAvatarEventCopyWith<$Res> {
-  factory $UploadAvatarEventCopyWith(
-          UploadAvatarEvent value, $Res Function(UploadAvatarEvent) then) =
-      _$UploadAvatarEventCopyWithImpl<$Res>;
+abstract class $UploadRectangularAvatarEventCopyWith<$Res> {
+  factory $UploadRectangularAvatarEventCopyWith(
+          UploadRectangularAvatarEvent value,
+          $Res Function(UploadRectangularAvatarEvent) then) =
+      _$UploadRectangularAvatarEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UploadAvatarEventCopyWithImpl<$Res>
+class _$UploadRectangularAvatarEventCopyWithImpl<$Res>
     extends _$EditableRectangularAvatarEventCopyWithImpl<$Res>
-    implements $UploadAvatarEventCopyWith<$Res> {
-  _$UploadAvatarEventCopyWithImpl(
-      UploadAvatarEvent _value, $Res Function(UploadAvatarEvent) _then)
-      : super(_value, (v) => _then(v as UploadAvatarEvent));
+    implements $UploadRectangularAvatarEventCopyWith<$Res> {
+  _$UploadRectangularAvatarEventCopyWithImpl(
+      UploadRectangularAvatarEvent _value,
+      $Res Function(UploadRectangularAvatarEvent) _then)
+      : super(_value, (v) => _then(v as UploadRectangularAvatarEvent));
 
   @override
-  UploadAvatarEvent get _value => super._value as UploadAvatarEvent;
+  UploadRectangularAvatarEvent get _value =>
+      super._value as UploadRectangularAvatarEvent;
 }
 
 /// @nodoc
 
-class _$UploadAvatarEvent implements UploadAvatarEvent {
-  const _$UploadAvatarEvent();
+class _$UploadRectangularAvatarEvent implements UploadRectangularAvatarEvent {
+  const _$UploadRectangularAvatarEvent();
 
   @override
   String toString() {
@@ -125,7 +128,8 @@ class _$UploadAvatarEvent implements UploadAvatarEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UploadAvatarEvent);
+        (other.runtimeType == runtimeType &&
+            other is UploadRectangularAvatarEvent);
   }
 
   @override
@@ -165,8 +169,8 @@ class _$UploadAvatarEvent implements UploadAvatarEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UploadAvatarEvent value) uploadAvatar,
-    required TResult Function(SetAvatarEvent value) setAvatar,
+    required TResult Function(UploadRectangularAvatarEvent value) uploadAvatar,
+    required TResult Function(SetRectangularAvatarEvent value) setAvatar,
   }) {
     return uploadAvatar(this);
   }
@@ -174,8 +178,8 @@ class _$UploadAvatarEvent implements UploadAvatarEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(UploadAvatarEvent value)? uploadAvatar,
-    TResult Function(SetAvatarEvent value)? setAvatar,
+    TResult Function(UploadRectangularAvatarEvent value)? uploadAvatar,
+    TResult Function(SetRectangularAvatarEvent value)? setAvatar,
   }) {
     return uploadAvatar?.call(this);
   }
@@ -183,8 +187,8 @@ class _$UploadAvatarEvent implements UploadAvatarEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UploadAvatarEvent value)? uploadAvatar,
-    TResult Function(SetAvatarEvent value)? setAvatar,
+    TResult Function(UploadRectangularAvatarEvent value)? uploadAvatar,
+    TResult Function(SetRectangularAvatarEvent value)? setAvatar,
     required TResult orElse(),
   }) {
     if (uploadAvatar != null) {
@@ -194,34 +198,36 @@ class _$UploadAvatarEvent implements UploadAvatarEvent {
   }
 }
 
-abstract class UploadAvatarEvent implements EditableRectangularAvatarEvent {
-  const factory UploadAvatarEvent() = _$UploadAvatarEvent;
+abstract class UploadRectangularAvatarEvent
+    implements EditableRectangularAvatarEvent {
+  const factory UploadRectangularAvatarEvent() = _$UploadRectangularAvatarEvent;
 }
 
 /// @nodoc
-abstract class $SetAvatarEventCopyWith<$Res> {
-  factory $SetAvatarEventCopyWith(
-          SetAvatarEvent value, $Res Function(SetAvatarEvent) then) =
-      _$SetAvatarEventCopyWithImpl<$Res>;
+abstract class $SetRectangularAvatarEventCopyWith<$Res> {
+  factory $SetRectangularAvatarEventCopyWith(SetRectangularAvatarEvent value,
+          $Res Function(SetRectangularAvatarEvent) then) =
+      _$SetRectangularAvatarEventCopyWithImpl<$Res>;
   $Res call({String url});
 }
 
 /// @nodoc
-class _$SetAvatarEventCopyWithImpl<$Res>
+class _$SetRectangularAvatarEventCopyWithImpl<$Res>
     extends _$EditableRectangularAvatarEventCopyWithImpl<$Res>
-    implements $SetAvatarEventCopyWith<$Res> {
-  _$SetAvatarEventCopyWithImpl(
-      SetAvatarEvent _value, $Res Function(SetAvatarEvent) _then)
-      : super(_value, (v) => _then(v as SetAvatarEvent));
+    implements $SetRectangularAvatarEventCopyWith<$Res> {
+  _$SetRectangularAvatarEventCopyWithImpl(SetRectangularAvatarEvent _value,
+      $Res Function(SetRectangularAvatarEvent) _then)
+      : super(_value, (v) => _then(v as SetRectangularAvatarEvent));
 
   @override
-  SetAvatarEvent get _value => super._value as SetAvatarEvent;
+  SetRectangularAvatarEvent get _value =>
+      super._value as SetRectangularAvatarEvent;
 
   @override
   $Res call({
     Object? url = freezed,
   }) {
-    return _then(SetAvatarEvent(
+    return _then(SetRectangularAvatarEvent(
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -232,8 +238,8 @@ class _$SetAvatarEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SetAvatarEvent implements SetAvatarEvent {
-  const _$SetAvatarEvent({required this.url});
+class _$SetRectangularAvatarEvent implements SetRectangularAvatarEvent {
+  const _$SetRectangularAvatarEvent({required this.url});
 
   @override
   final String url;
@@ -247,7 +253,7 @@ class _$SetAvatarEvent implements SetAvatarEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SetAvatarEvent &&
+            other is SetRectangularAvatarEvent &&
             const DeepCollectionEquality().equals(other.url, url));
   }
 
@@ -257,8 +263,9 @@ class _$SetAvatarEvent implements SetAvatarEvent {
 
   @JsonKey(ignore: true)
   @override
-  $SetAvatarEventCopyWith<SetAvatarEvent> get copyWith =>
-      _$SetAvatarEventCopyWithImpl<SetAvatarEvent>(this, _$identity);
+  $SetRectangularAvatarEventCopyWith<SetRectangularAvatarEvent> get copyWith =>
+      _$SetRectangularAvatarEventCopyWithImpl<SetRectangularAvatarEvent>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -294,8 +301,8 @@ class _$SetAvatarEvent implements SetAvatarEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UploadAvatarEvent value) uploadAvatar,
-    required TResult Function(SetAvatarEvent value) setAvatar,
+    required TResult Function(UploadRectangularAvatarEvent value) uploadAvatar,
+    required TResult Function(SetRectangularAvatarEvent value) setAvatar,
   }) {
     return setAvatar(this);
   }
@@ -303,8 +310,8 @@ class _$SetAvatarEvent implements SetAvatarEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(UploadAvatarEvent value)? uploadAvatar,
-    TResult Function(SetAvatarEvent value)? setAvatar,
+    TResult Function(UploadRectangularAvatarEvent value)? uploadAvatar,
+    TResult Function(SetRectangularAvatarEvent value)? setAvatar,
   }) {
     return setAvatar?.call(this);
   }
@@ -312,8 +319,8 @@ class _$SetAvatarEvent implements SetAvatarEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UploadAvatarEvent value)? uploadAvatar,
-    TResult Function(SetAvatarEvent value)? setAvatar,
+    TResult Function(UploadRectangularAvatarEvent value)? uploadAvatar,
+    TResult Function(SetRectangularAvatarEvent value)? setAvatar,
     required TResult orElse(),
   }) {
     if (setAvatar != null) {
@@ -323,12 +330,14 @@ class _$SetAvatarEvent implements SetAvatarEvent {
   }
 }
 
-abstract class SetAvatarEvent implements EditableRectangularAvatarEvent {
-  const factory SetAvatarEvent({required String url}) = _$SetAvatarEvent;
+abstract class SetRectangularAvatarEvent
+    implements EditableRectangularAvatarEvent {
+  const factory SetRectangularAvatarEvent({required String url}) =
+      _$SetRectangularAvatarEvent;
 
   String get url;
   @JsonKey(ignore: true)
-  $SetAvatarEventCopyWith<SetAvatarEvent> get copyWith =>
+  $SetRectangularAvatarEventCopyWith<SetRectangularAvatarEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -336,18 +345,18 @@ abstract class SetAvatarEvent implements EditableRectangularAvatarEvent {
 class _$EditableRectangularAvatarStateTearOff {
   const _$EditableRectangularAvatarStateTearOff();
 
-  WidgetInitState widgetInit() {
-    return const WidgetInitState();
+  WidgetRectangularAvatarInitState widgetInit() {
+    return const WidgetRectangularAvatarInitState();
   }
 
-  UploadAvatarState uploadAvatar({required String url}) {
-    return UploadAvatarState(
+  UploadRectangularAvatarState uploadAvatar({required String url}) {
+    return UploadRectangularAvatarState(
       url: url,
     );
   }
 
-  PickImageState pickImage({required String url}) {
-    return PickImageState(
+  PickRectangularAvatarImageState pickImage({required String url}) {
+    return PickRectangularAvatarImageState(
       url: url,
     );
   }
@@ -383,23 +392,24 @@ mixin _$EditableRectangularAvatarState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WidgetInitState value) widgetInit,
-    required TResult Function(UploadAvatarState value) uploadAvatar,
-    required TResult Function(PickImageState value) pickImage,
+    required TResult Function(WidgetRectangularAvatarInitState value)
+        widgetInit,
+    required TResult Function(UploadRectangularAvatarState value) uploadAvatar,
+    required TResult Function(PickRectangularAvatarImageState value) pickImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(WidgetInitState value)? widgetInit,
-    TResult Function(UploadAvatarState value)? uploadAvatar,
-    TResult Function(PickImageState value)? pickImage,
+    TResult Function(WidgetRectangularAvatarInitState value)? widgetInit,
+    TResult Function(UploadRectangularAvatarState value)? uploadAvatar,
+    TResult Function(PickRectangularAvatarImageState value)? pickImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WidgetInitState value)? widgetInit,
-    TResult Function(UploadAvatarState value)? uploadAvatar,
-    TResult Function(PickImageState value)? pickImage,
+    TResult Function(WidgetRectangularAvatarInitState value)? widgetInit,
+    TResult Function(UploadRectangularAvatarState value)? uploadAvatar,
+    TResult Function(PickRectangularAvatarImageState value)? pickImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -424,28 +434,32 @@ class _$EditableRectangularAvatarStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $WidgetInitStateCopyWith<$Res> {
-  factory $WidgetInitStateCopyWith(
-          WidgetInitState value, $Res Function(WidgetInitState) then) =
-      _$WidgetInitStateCopyWithImpl<$Res>;
+abstract class $WidgetRectangularAvatarInitStateCopyWith<$Res> {
+  factory $WidgetRectangularAvatarInitStateCopyWith(
+          WidgetRectangularAvatarInitState value,
+          $Res Function(WidgetRectangularAvatarInitState) then) =
+      _$WidgetRectangularAvatarInitStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$WidgetInitStateCopyWithImpl<$Res>
+class _$WidgetRectangularAvatarInitStateCopyWithImpl<$Res>
     extends _$EditableRectangularAvatarStateCopyWithImpl<$Res>
-    implements $WidgetInitStateCopyWith<$Res> {
-  _$WidgetInitStateCopyWithImpl(
-      WidgetInitState _value, $Res Function(WidgetInitState) _then)
-      : super(_value, (v) => _then(v as WidgetInitState));
+    implements $WidgetRectangularAvatarInitStateCopyWith<$Res> {
+  _$WidgetRectangularAvatarInitStateCopyWithImpl(
+      WidgetRectangularAvatarInitState _value,
+      $Res Function(WidgetRectangularAvatarInitState) _then)
+      : super(_value, (v) => _then(v as WidgetRectangularAvatarInitState));
 
   @override
-  WidgetInitState get _value => super._value as WidgetInitState;
+  WidgetRectangularAvatarInitState get _value =>
+      super._value as WidgetRectangularAvatarInitState;
 }
 
 /// @nodoc
 
-class _$WidgetInitState implements WidgetInitState {
-  const _$WidgetInitState();
+class _$WidgetRectangularAvatarInitState
+    implements WidgetRectangularAvatarInitState {
+  const _$WidgetRectangularAvatarInitState();
 
   @override
   String toString() {
@@ -455,7 +469,8 @@ class _$WidgetInitState implements WidgetInitState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is WidgetInitState);
+        (other.runtimeType == runtimeType &&
+            other is WidgetRectangularAvatarInitState);
   }
 
   @override
@@ -498,9 +513,10 @@ class _$WidgetInitState implements WidgetInitState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WidgetInitState value) widgetInit,
-    required TResult Function(UploadAvatarState value) uploadAvatar,
-    required TResult Function(PickImageState value) pickImage,
+    required TResult Function(WidgetRectangularAvatarInitState value)
+        widgetInit,
+    required TResult Function(UploadRectangularAvatarState value) uploadAvatar,
+    required TResult Function(PickRectangularAvatarImageState value) pickImage,
   }) {
     return widgetInit(this);
   }
@@ -508,9 +524,9 @@ class _$WidgetInitState implements WidgetInitState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(WidgetInitState value)? widgetInit,
-    TResult Function(UploadAvatarState value)? uploadAvatar,
-    TResult Function(PickImageState value)? pickImage,
+    TResult Function(WidgetRectangularAvatarInitState value)? widgetInit,
+    TResult Function(UploadRectangularAvatarState value)? uploadAvatar,
+    TResult Function(PickRectangularAvatarImageState value)? pickImage,
   }) {
     return widgetInit?.call(this);
   }
@@ -518,9 +534,9 @@ class _$WidgetInitState implements WidgetInitState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WidgetInitState value)? widgetInit,
-    TResult Function(UploadAvatarState value)? uploadAvatar,
-    TResult Function(PickImageState value)? pickImage,
+    TResult Function(WidgetRectangularAvatarInitState value)? widgetInit,
+    TResult Function(UploadRectangularAvatarState value)? uploadAvatar,
+    TResult Function(PickRectangularAvatarImageState value)? pickImage,
     required TResult orElse(),
   }) {
     if (widgetInit != null) {
@@ -530,34 +546,39 @@ class _$WidgetInitState implements WidgetInitState {
   }
 }
 
-abstract class WidgetInitState implements EditableRectangularAvatarState {
-  const factory WidgetInitState() = _$WidgetInitState;
+abstract class WidgetRectangularAvatarInitState
+    implements EditableRectangularAvatarState {
+  const factory WidgetRectangularAvatarInitState() =
+      _$WidgetRectangularAvatarInitState;
 }
 
 /// @nodoc
-abstract class $UploadAvatarStateCopyWith<$Res> {
-  factory $UploadAvatarStateCopyWith(
-          UploadAvatarState value, $Res Function(UploadAvatarState) then) =
-      _$UploadAvatarStateCopyWithImpl<$Res>;
+abstract class $UploadRectangularAvatarStateCopyWith<$Res> {
+  factory $UploadRectangularAvatarStateCopyWith(
+          UploadRectangularAvatarState value,
+          $Res Function(UploadRectangularAvatarState) then) =
+      _$UploadRectangularAvatarStateCopyWithImpl<$Res>;
   $Res call({String url});
 }
 
 /// @nodoc
-class _$UploadAvatarStateCopyWithImpl<$Res>
+class _$UploadRectangularAvatarStateCopyWithImpl<$Res>
     extends _$EditableRectangularAvatarStateCopyWithImpl<$Res>
-    implements $UploadAvatarStateCopyWith<$Res> {
-  _$UploadAvatarStateCopyWithImpl(
-      UploadAvatarState _value, $Res Function(UploadAvatarState) _then)
-      : super(_value, (v) => _then(v as UploadAvatarState));
+    implements $UploadRectangularAvatarStateCopyWith<$Res> {
+  _$UploadRectangularAvatarStateCopyWithImpl(
+      UploadRectangularAvatarState _value,
+      $Res Function(UploadRectangularAvatarState) _then)
+      : super(_value, (v) => _then(v as UploadRectangularAvatarState));
 
   @override
-  UploadAvatarState get _value => super._value as UploadAvatarState;
+  UploadRectangularAvatarState get _value =>
+      super._value as UploadRectangularAvatarState;
 
   @override
   $Res call({
     Object? url = freezed,
   }) {
-    return _then(UploadAvatarState(
+    return _then(UploadRectangularAvatarState(
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -568,8 +589,8 @@ class _$UploadAvatarStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UploadAvatarState implements UploadAvatarState {
-  const _$UploadAvatarState({required this.url});
+class _$UploadRectangularAvatarState implements UploadRectangularAvatarState {
+  const _$UploadRectangularAvatarState({required this.url});
 
   @override
   final String url;
@@ -583,7 +604,7 @@ class _$UploadAvatarState implements UploadAvatarState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UploadAvatarState &&
+            other is UploadRectangularAvatarState &&
             const DeepCollectionEquality().equals(other.url, url));
   }
 
@@ -593,8 +614,9 @@ class _$UploadAvatarState implements UploadAvatarState {
 
   @JsonKey(ignore: true)
   @override
-  $UploadAvatarStateCopyWith<UploadAvatarState> get copyWith =>
-      _$UploadAvatarStateCopyWithImpl<UploadAvatarState>(this, _$identity);
+  $UploadRectangularAvatarStateCopyWith<UploadRectangularAvatarState>
+      get copyWith => _$UploadRectangularAvatarStateCopyWithImpl<
+          UploadRectangularAvatarState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -633,9 +655,10 @@ class _$UploadAvatarState implements UploadAvatarState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WidgetInitState value) widgetInit,
-    required TResult Function(UploadAvatarState value) uploadAvatar,
-    required TResult Function(PickImageState value) pickImage,
+    required TResult Function(WidgetRectangularAvatarInitState value)
+        widgetInit,
+    required TResult Function(UploadRectangularAvatarState value) uploadAvatar,
+    required TResult Function(PickRectangularAvatarImageState value) pickImage,
   }) {
     return uploadAvatar(this);
   }
@@ -643,9 +666,9 @@ class _$UploadAvatarState implements UploadAvatarState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(WidgetInitState value)? widgetInit,
-    TResult Function(UploadAvatarState value)? uploadAvatar,
-    TResult Function(PickImageState value)? pickImage,
+    TResult Function(WidgetRectangularAvatarInitState value)? widgetInit,
+    TResult Function(UploadRectangularAvatarState value)? uploadAvatar,
+    TResult Function(PickRectangularAvatarImageState value)? pickImage,
   }) {
     return uploadAvatar?.call(this);
   }
@@ -653,9 +676,9 @@ class _$UploadAvatarState implements UploadAvatarState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WidgetInitState value)? widgetInit,
-    TResult Function(UploadAvatarState value)? uploadAvatar,
-    TResult Function(PickImageState value)? pickImage,
+    TResult Function(WidgetRectangularAvatarInitState value)? widgetInit,
+    TResult Function(UploadRectangularAvatarState value)? uploadAvatar,
+    TResult Function(PickRectangularAvatarImageState value)? pickImage,
     required TResult orElse(),
   }) {
     if (uploadAvatar != null) {
@@ -665,39 +688,44 @@ class _$UploadAvatarState implements UploadAvatarState {
   }
 }
 
-abstract class UploadAvatarState implements EditableRectangularAvatarState {
-  const factory UploadAvatarState({required String url}) = _$UploadAvatarState;
+abstract class UploadRectangularAvatarState
+    implements EditableRectangularAvatarState {
+  const factory UploadRectangularAvatarState({required String url}) =
+      _$UploadRectangularAvatarState;
 
   String get url;
   @JsonKey(ignore: true)
-  $UploadAvatarStateCopyWith<UploadAvatarState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $UploadRectangularAvatarStateCopyWith<UploadRectangularAvatarState>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PickImageStateCopyWith<$Res> {
-  factory $PickImageStateCopyWith(
-          PickImageState value, $Res Function(PickImageState) then) =
-      _$PickImageStateCopyWithImpl<$Res>;
+abstract class $PickRectangularAvatarImageStateCopyWith<$Res> {
+  factory $PickRectangularAvatarImageStateCopyWith(
+          PickRectangularAvatarImageState value,
+          $Res Function(PickRectangularAvatarImageState) then) =
+      _$PickRectangularAvatarImageStateCopyWithImpl<$Res>;
   $Res call({String url});
 }
 
 /// @nodoc
-class _$PickImageStateCopyWithImpl<$Res>
+class _$PickRectangularAvatarImageStateCopyWithImpl<$Res>
     extends _$EditableRectangularAvatarStateCopyWithImpl<$Res>
-    implements $PickImageStateCopyWith<$Res> {
-  _$PickImageStateCopyWithImpl(
-      PickImageState _value, $Res Function(PickImageState) _then)
-      : super(_value, (v) => _then(v as PickImageState));
+    implements $PickRectangularAvatarImageStateCopyWith<$Res> {
+  _$PickRectangularAvatarImageStateCopyWithImpl(
+      PickRectangularAvatarImageState _value,
+      $Res Function(PickRectangularAvatarImageState) _then)
+      : super(_value, (v) => _then(v as PickRectangularAvatarImageState));
 
   @override
-  PickImageState get _value => super._value as PickImageState;
+  PickRectangularAvatarImageState get _value =>
+      super._value as PickRectangularAvatarImageState;
 
   @override
   $Res call({
     Object? url = freezed,
   }) {
-    return _then(PickImageState(
+    return _then(PickRectangularAvatarImageState(
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -708,8 +736,9 @@ class _$PickImageStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PickImageState implements PickImageState {
-  const _$PickImageState({required this.url});
+class _$PickRectangularAvatarImageState
+    implements PickRectangularAvatarImageState {
+  const _$PickRectangularAvatarImageState({required this.url});
 
   @override
   final String url;
@@ -723,7 +752,7 @@ class _$PickImageState implements PickImageState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PickImageState &&
+            other is PickRectangularAvatarImageState &&
             const DeepCollectionEquality().equals(other.url, url));
   }
 
@@ -733,8 +762,9 @@ class _$PickImageState implements PickImageState {
 
   @JsonKey(ignore: true)
   @override
-  $PickImageStateCopyWith<PickImageState> get copyWith =>
-      _$PickImageStateCopyWithImpl<PickImageState>(this, _$identity);
+  $PickRectangularAvatarImageStateCopyWith<PickRectangularAvatarImageState>
+      get copyWith => _$PickRectangularAvatarImageStateCopyWithImpl<
+          PickRectangularAvatarImageState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -773,9 +803,10 @@ class _$PickImageState implements PickImageState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WidgetInitState value) widgetInit,
-    required TResult Function(UploadAvatarState value) uploadAvatar,
-    required TResult Function(PickImageState value) pickImage,
+    required TResult Function(WidgetRectangularAvatarInitState value)
+        widgetInit,
+    required TResult Function(UploadRectangularAvatarState value) uploadAvatar,
+    required TResult Function(PickRectangularAvatarImageState value) pickImage,
   }) {
     return pickImage(this);
   }
@@ -783,9 +814,9 @@ class _$PickImageState implements PickImageState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(WidgetInitState value)? widgetInit,
-    TResult Function(UploadAvatarState value)? uploadAvatar,
-    TResult Function(PickImageState value)? pickImage,
+    TResult Function(WidgetRectangularAvatarInitState value)? widgetInit,
+    TResult Function(UploadRectangularAvatarState value)? uploadAvatar,
+    TResult Function(PickRectangularAvatarImageState value)? pickImage,
   }) {
     return pickImage?.call(this);
   }
@@ -793,9 +824,9 @@ class _$PickImageState implements PickImageState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WidgetInitState value)? widgetInit,
-    TResult Function(UploadAvatarState value)? uploadAvatar,
-    TResult Function(PickImageState value)? pickImage,
+    TResult Function(WidgetRectangularAvatarInitState value)? widgetInit,
+    TResult Function(UploadRectangularAvatarState value)? uploadAvatar,
+    TResult Function(PickRectangularAvatarImageState value)? pickImage,
     required TResult orElse(),
   }) {
     if (pickImage != null) {
@@ -805,11 +836,13 @@ class _$PickImageState implements PickImageState {
   }
 }
 
-abstract class PickImageState implements EditableRectangularAvatarState {
-  const factory PickImageState({required String url}) = _$PickImageState;
+abstract class PickRectangularAvatarImageState
+    implements EditableRectangularAvatarState {
+  const factory PickRectangularAvatarImageState({required String url}) =
+      _$PickRectangularAvatarImageState;
 
   String get url;
   @JsonKey(ignore: true)
-  $PickImageStateCopyWith<PickImageState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PickRectangularAvatarImageStateCopyWith<PickRectangularAvatarImageState>
+      get copyWith => throw _privateConstructorUsedError;
 }

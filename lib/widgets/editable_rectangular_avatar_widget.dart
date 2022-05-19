@@ -1,9 +1,11 @@
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
-import 'package:uber/scripts/image.dart';
-import 'package:uber/style/colors.dart';
+// import 'dart:io';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
+// import 'package:uber/scripts/image.dart';
+// import 'package:uber/style/colors.dart';
+
+import 'package:uber/scripts/index.dart';
 
 class EditableRectangularAvatarWidget extends StatefulWidget {
   final ValueChanged<String> onImageChanged;
@@ -26,7 +28,7 @@ class _EditableRectangularAvatarWidgetState
     super.initState();
     _editableRectangularAvatarBloc =
         BlocProvider.of<EditableRectangularAvatarBloc>(context);
-    _editableRectangularAvatarBloc.add(const UploadAvatarEvent());
+    _editableRectangularAvatarBloc.add(const UploadRectangularAvatarEvent());
   }
 
   @override
@@ -38,7 +40,7 @@ class _EditableRectangularAvatarWidgetState
           onTap: () async {
             final url = await Avatar.pickImage();
             _editableRectangularAvatarBloc.add(
-              SetAvatarEvent(
+              SetRectangularAvatarEvent(
                 url: url,
               ),
             );

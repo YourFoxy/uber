@@ -1,13 +1,15 @@
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_bloc.dart';
-import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_event.dart';
-import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_state.dart';
-import 'package:uber/scripts/const.dart';
+// import 'dart:io';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_bloc.dart';
+// import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_event.dart';
+// import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_state.dart';
+// import 'package:uber/scripts/const.dart';
 
-import 'package:uber/scripts/image.dart';
-import 'package:uber/style/colors.dart';
+// import 'package:uber/scripts/image.dart';
+// import 'package:uber/style/colors.dart';
+
+import 'package:uber/scripts/index.dart';
 
 class EditableRoundAvatarWidget extends StatefulWidget {
   final Color backgroundColor;

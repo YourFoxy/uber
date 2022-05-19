@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/app_text.dart';
+// import 'package:flutter/material.dart';
+// import 'package:uber/style/colors.dart';
+// import 'package:uber/widgets/app_text.dart';
+import 'package:uber/scripts/index.dart';
 
 class OrangeButtonWidget extends StatefulWidget {
   final String textButton;
