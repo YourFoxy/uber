@@ -1,12 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/page_bloc/verify_code/verify_code_bloc.dart';
-import 'package:uber/bloc/page_bloc/verify_code/verify_code_event.dart';
-import 'package:uber/bloc/page_bloc/verify_code/verify_code_state.dart';
-import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/app_large_text.dart';
-import 'package:uber/widgets/button_widget.dart';
-import 'package:uber/widgets/text_field_for_code_widget.dart';
+import 'package:uber/scripts/index.dart';
 
 class CodePage extends StatefulWidget {
   final bool isRegister;

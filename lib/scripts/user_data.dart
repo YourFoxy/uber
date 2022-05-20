@@ -1,7 +1,9 @@
-import 'dart:io';
-import 'package:uber/domain/auth.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/scripts/text.dart';
+// import 'dart:io';
+// import 'package:uber/domain/auth.dart';
+// import 'package:uber/scripts/const.dart';
+// import 'package:uber/scripts/text.dart';
+
+import 'package:uber/scripts/index.dart';
 
 class UserData {
   static final String currentUserPhoneNumber =

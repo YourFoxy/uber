@@ -1,3 +1,3 @@
 abstract class ViewAvatarEvent {}
 
-class UploadAvatarEvent extends ViewAvatarEvent {}
+class UploadViewAvatarEvent extends ViewAvatarEvent {}

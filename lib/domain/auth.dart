@@ -1,16 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:uber/bloc/page_bloc/home_page/home_bloc.dart';
-import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_bloc.dart';
-import 'package:uber/extension/bloc_widget_extension.dart';
-import 'package:uber/pages/register_user_information_page.dart';
-import 'package:uber/pages/home_page.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/scripts/user_data.dart';
-import 'package:uber/service/toast_service.dart';
+import 'package:uber/scripts/index.dart';
 
 class Auth {
   static final FirebaseAuth fAuth = FirebaseAuth.instance;
@@ -34,6 +22,7 @@ class Auth {
     String smsCode,
     BuildContext context,
     String phoneNumber,
+    final NavigationService navigationService,
   ) async {
     PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
       verificationId: _verificationID,
@@ -49,22 +38,10 @@ class Auth {
       );
       if (_isRegister) {
         UserData.addCurrentUserInformation(phoneNumber);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => RegisterUserInformationPage(
-              phoneNumber: phoneNumber,
-            ).createWithProvider<RegisterUserInformationBloc>(),
-          ),
-        );
+        navigationService.navigatorToRegisterUserInformationPage(
+            phoneNumber: phoneNumber);
       } else {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                const HomePage().createWithProvider<HomeBloc>(),
-          ),
-        );
+        navigationService.navigatorToHomePage();
       }
     } catch (e) {
       GetIt.instance.get<ToastService>().showGeneralErrorToast(incorrectCode);

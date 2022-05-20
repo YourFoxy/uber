@@ -1,10 +1,9 @@
-// ignore_for_file: deprecated_member_use
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/scripts/input.dart';
-import 'package:uber/style/colors.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+// import 'package:uber/scripts/const.dart';
+// import 'package:uber/scripts/input.dart';
+// import 'package:uber/style/colors.dart';
+import 'package:uber/scripts/index.dart';
 
 class TextFieldWidget extends StatelessWidget {
   final bool isNumber;
@@ -21,7 +20,6 @@ class TextFieldWidget extends StatelessWidget {
     this.backgroundColor = AppColors.plum,
     this.isNumber = false,
     this.textColor = AppColors.orange,
-    // this.textKey;
     this.textKey,
   }) : super(key: key);
 
@@ -49,7 +47,7 @@ class TextFieldWidget extends StatelessWidget {
           keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
           inputFormatters: isNumber
               ? [
-                  WhitelistingTextInputFormatter.digitsOnly,
+                  FilteringTextInputFormatter.digitsOnly,
                   NumberTextInputFormatter(),
                 ]
               : [

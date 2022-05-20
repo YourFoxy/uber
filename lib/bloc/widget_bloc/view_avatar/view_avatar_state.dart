@@ -1,12 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:uber/scripts/index.dart';
+
 
 @immutable
 abstract class ViewAvatarState {}
 
-class PageInitialState extends ViewAvatarState {}
+class PageViewAvatarInitialState extends ViewAvatarState {}
 
-class UploadAvatarState extends ViewAvatarState {
+class UploadViewAvatarState extends ViewAvatarState {
   final String url;
 
-  UploadAvatarState({required this.url});
+  UploadViewAvatarState({required this.url});
 }

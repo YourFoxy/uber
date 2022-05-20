@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:uber/style/colors.dart';
+// import 'package:flutter/material.dart';
+// import 'package:uber/style/colors.dart';
 
-import 'app_text.dart';
+// import 'app_text.dart';
+import 'package:uber/scripts/index.dart';
 
 class PlaceForCardWidget extends StatelessWidget {
   final String text;

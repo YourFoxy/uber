@@ -1,7 +1,9 @@
-import 'package:flutter/cupertino.dart';
-import 'package:uber/style/colors.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:uber/style/colors.dart';
 
-import 'app_large_text.dart';
+// import 'app_large_text.dart';
+
+import 'package:uber/scripts/index.dart';
 
 class IconAndTextForDrawerButton extends StatelessWidget {
   final IconData iconData;

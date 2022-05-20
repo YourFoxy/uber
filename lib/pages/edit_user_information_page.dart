@@ -1,13 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_bloc.dart';
-import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
-import 'package:uber/extension/bloc_widget_extension.dart';
-import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/app_text.dart';
-import 'package:uber/widgets/editable_rectangular_avatar_widget.dart';
-import 'package:uber/widgets/long_save_button_widget.dart';
-import 'package:uber/widgets/text_field_widget.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_bloc.dart';
+// import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
+// import 'package:uber/extension/bloc_widget_extension.dart';
+// import 'package:uber/style/colors.dart';
+// import 'package:uber/widgets/app_text.dart';
+// import 'package:uber/widgets/editable_rectangular_avatar_widget.dart';
+// import 'package:uber/widgets/long_save_button_widget.dart';
+// import 'package:uber/widgets/text_field_widget.dart';
+
+import 'package:uber/scripts/index.dart';
 
 class EditUserInformationPage extends StatefulWidget {
   const EditUserInformationPage({Key? key}) : super(key: key);
@@ -115,8 +117,8 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                   function: () {
                     _editUserInformationBloc.add(
                       SaveUserInformationEvent(
-                        nickname: _nicknameController!.text,
-                        city: _cityController!.text,
+                        nickname: _nicknameController.text,
+                        city: _cityController.text,
                         pickImageUrl: _pickImageUrl,
                         context: context,
                       ),

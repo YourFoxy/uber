@@ -1,20 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/page_bloc/home_page/home_bloc.dart';
-import 'package:uber/bloc/page_bloc/home_page/home_event.dart';
-import 'package:uber/bloc/page_bloc/home_page/home_state.dart';
-import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
-import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
-import 'package:uber/extension/bloc_widget_extension.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/app_large_text.dart';
-import 'package:uber/widgets/avatar_widget_for_view.dart';
-import 'package:uber/widgets/drawer_widget.dart';
-import 'package:uber/widgets/place_for_card_widget.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:get_it/get_it.dart';
+// import 'package:uber/bloc/page_bloc/home_page/home_bloc.dart';
+// import 'package:uber/bloc/page_bloc/home_page/home_event.dart';
+// import 'package:uber/bloc/page_bloc/home_page/home_state.dart';
+// import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
+// import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
+// import 'package:uber/extension/bloc_widget_extension.dart';
+// import 'package:uber/service/navigation_service.dart';
+// import 'package:uber/style/colors.dart';
+// import 'package:uber/widgets/app_large_text.dart';
+// import 'package:uber/widgets/avatar_widget_for_view.dart';
+// import 'package:uber/widgets/drawer_widget.dart';
+// import 'package:uber/widgets/place_for_card_widget.dart';
+
+import 'package:uber/scripts/index.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final NavigationService navigationService;
+  const HomePage({Key? key, required this.navigationService}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -23,6 +27,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String pickImageUrl = '';
   late final HomeBloc _homeBloc;
+  final _navigationService = GetIt.instance.get<NavigationService>();
 
   @override
   void initState() {
@@ -43,7 +48,9 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColors.plum,
-          drawer: const DrawerMenu().createWithProvider<DrawerWidgetBloc>(),
+          drawer: DrawerMenu(
+            navigationService: _navigationService,
+          ).createWithProvider<DrawerWidgetBloc>(),
           appBar: AppBar(
             backgroundColor: AppColors.plum,
             iconTheme: const IconThemeData(color: AppColors.orange),
@@ -121,7 +128,7 @@ class _HomePageState extends State<HomePage> {
           floatingActionButton: FloatingActionButton(
             backgroundColor: AppColors.dark,
             onPressed: () {
-              Navigator.pushNamed(context, routeCreationPage);
+              widget.navigationService.navigatorToRouteCreationPage();
             },
             child: const Icon(
               Icons.edit,

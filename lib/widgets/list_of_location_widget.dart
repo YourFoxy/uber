@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:uber/scripts/const.dart';
-import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/app_large_text.dart';
-import 'package:uber/widgets/app_text.dart';
+// import 'package:flutter/material.dart';
+// import 'package:uber/scripts/const.dart';
+// import 'package:uber/style/colors.dart';
+// import 'package:uber/widgets/app_large_text.dart';
+// import 'package:uber/widgets/app_text.dart';
+import 'package:uber/scripts/index.dart';
 
 class ListOfLocationWidget extends StatelessWidget {
   final List<List<String>> locations;
@@ -30,41 +31,6 @@ class ListOfLocationWidget extends StatelessWidget {
           child: ListView.builder(
             itemCount: locations.length,
             itemBuilder: (context, index) {
-              // if (locations[index][locationIndex]
-              //     .startsWith(searchLocationString)) {
-              //   return InkWell(
-              //     onTap: () {
-              //       onRouteChanged.call(locations[index][locationIndex]);
-              //     },
-              //     child: Column(
-              //       children: [
-              //         Padding(
-              //           padding: const EdgeInsets.all(8.0),
-              //           child: AppLargeText(
-              //             text: locations[index][locationIndex],
-              //             color: AppColors.orange,
-              //           ),
-              //         ),
-              //         AppTextStyle(
-              //             text:
-              //                 '${locations[index][regionIndex]} область, ${locations[index][districtIndex]} район'),
-              //         const Padding(
-              //           padding: EdgeInsets.all(8.0),
-              //           child: Divider(
-              //             height: 20,
-              //             thickness: 1,
-              //             indent: 15,
-              //             endIndent: 15,
-              //             color: AppColors.orange,
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   );
-              // }
-              //else {
-              //   return const SizedBox();
-              // }
               if (!locations[index][locationIndex]
                   .startsWith(searchLocationString)) {
                 return const SizedBox();

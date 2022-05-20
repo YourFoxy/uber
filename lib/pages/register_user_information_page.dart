@@ -1,15 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_bloc.dart';
-import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_event.dart';
-import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_state.dart';
-import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_bloc.dart';
-import 'package:uber/extension/bloc_widget_extension.dart';
-import 'package:uber/style/colors.dart';
-import 'package:uber/widgets/app_large_text.dart';
-import 'package:uber/widgets/editable_round_avatar_widget.dart';
-import 'package:uber/widgets/button_widget.dart';
-import 'package:uber/widgets/text_field_widget.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_bloc.dart';
+// import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_event.dart';
+// import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_state.dart';
+// import 'package:uber/bloc/widget_bloc/editable_avatar/editable_round_avatar_bloc.dart';
+// import 'package:uber/extension/bloc_widget_extension.dart';
+// import 'package:uber/style/colors.dart';
+// import 'package:uber/widgets/app_large_text.dart';
+// import 'package:uber/widgets/editable_round_avatar_widget.dart';
+// import 'package:uber/widgets/button_widget.dart';
+// import 'package:uber/widgets/text_field_widget.dart';
+
+import 'package:uber/scripts/index.dart';
 
 class RegisterUserInformationPage extends StatefulWidget {
   final String phoneNumber;
