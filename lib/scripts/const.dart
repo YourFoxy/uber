@@ -12,6 +12,11 @@ const cityFieldInCollection = 'City';
 const collectionNameWithRoutes = 'Routes';
 const routeFieldInCollection = 'Route';
 const collectionNameWithDate = 'Date';
+const dateFieldInCollection = 'date';
+const routeId = 'route id';
+
+const routeFieldInMap = 'route';
+const dateFieldInMap = 'date';
 
 const shortNumber = 'Please enter the number correctly';
 const numberIsInDatabase = 'A user with the same number already exists!';
@@ -42,4 +47,3 @@ const newMonth = <String, String>{
   'Ноябрь': 'Ноября',
   'Декабрь': 'Декабря',
 };
-

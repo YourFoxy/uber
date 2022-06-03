@@ -1,16 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
-// import 'package:get_it/get_it.dart';
-// import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_bloc.dart';
-// import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_event.dart';
-// import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_state.dart';
-// import 'package:uber/style/colors.dart';
-// import 'package:uber/widgets/app_large_text.dart';
-// import 'package:uber/widgets/button_widget.dart';
-// import 'package:uber/widgets/text_field_widget.dart';
-
-
 import 'package:uber/scripts/index.dart';
 
 class SignInWithPhonePage extends StatefulWidget {

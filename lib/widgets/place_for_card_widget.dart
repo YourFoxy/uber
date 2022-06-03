@@ -1,14 +1,19 @@
-// import 'package:flutter/material.dart';
-// import 'package:uber/style/colors.dart';
-
-// import 'app_text.dart';
 import 'package:uber/scripts/index.dart';
 
-class PlaceForCardWidget extends StatelessWidget {
+class PlaceForCardWidget extends StatefulWidget {
   final String text;
+  final String nameCollection;
+  const PlaceForCardWidget({
+    Key? key,
+    required this.text,
+    required this.nameCollection,
+  }) : super(key: key);
 
-  const PlaceForCardWidget({required this.text, Key? key}) : super(key: key);
+  @override
+  State<PlaceForCardWidget> createState() => _PlaceForCardWidgetState();
+}
 
+class _PlaceForCardWidgetState extends State<PlaceForCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +24,7 @@ class PlaceForCardWidget extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             alignment: Alignment.centerLeft,
             child: AppTextStyle(
-              text: text,
+              text: widget.text,
               size: 18,
             ),
           ),
@@ -30,6 +35,9 @@ class PlaceForCardWidget extends StatelessWidget {
               color: AppColors.plum2,
               borderRadius: BorderRadius.circular(30),
             ),
+            child: RouteCard(
+              nameCollection: widget.nameCollection,
+            ).createWithProvider<RouteCardBloc>(),
           ),
         ],
       ),

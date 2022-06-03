@@ -1,10 +1,3 @@
-// import 'dart:io';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
-// import 'package:uber/scripts/image.dart';
-// import 'package:uber/style/colors.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class EditableRectangularAvatarWidget extends StatefulWidget {

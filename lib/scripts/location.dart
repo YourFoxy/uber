@@ -1,6 +1,3 @@
-// import 'package:csv/csv.dart';
-// import 'package:flutter/material.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class LocationData {

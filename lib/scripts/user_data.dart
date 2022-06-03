@@ -1,8 +1,3 @@
-// import 'dart:io';
-// import 'package:uber/domain/auth.dart';
-// import 'package:uber/scripts/const.dart';
-// import 'package:uber/scripts/text.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class UserData {
@@ -45,6 +40,29 @@ class UserData {
         .doc(UserData.currentUserPhoneNumber)
         .get();
     return snapshot[fieldName];
+  }
+
+  static Future<List<Map<String, String>>> getUserRoutesFromDatabase(
+      String nameCollection) async {
+    List<Map<String, String>> routesAndDates = [];
+    await Auth.fbd
+        .collection(collectionNameWithRoutes)
+        .doc(currentUserPhoneNumber)
+        .collection(nameCollection)
+        .get()
+        .then(
+      (value) {
+        for (var element in value.docs) {
+          routesAndDates.add({
+            routeFieldInMap:
+                '${element[routeFieldInCollection][0]} -> ${element[routeFieldInCollection][1]}',
+            dateFieldInMap: element[dateFieldInCollection],
+            routeId: element.id,
+          });
+        }
+      },
+    );
+    return routesAndDates;
   }
 
   static Future<bool> checkPhoneNumberInDatabase(String phoneNumber) async {

@@ -1,12 +1,4 @@
-// import 'package:flutter/material.dart';
-// import 'package:uber/bloc/page_bloc/register_user_information_page/register_user_information_bloc.dart';
-// import 'package:uber/bloc/page_bloc/verify_code/verify_code_bloc.dart';
-// import 'package:uber/extension/bloc_widget_extension.dart';
-// import 'package:uber/pages/code_page.dart';
-// import 'package:uber/pages/register_user_information_page.dart';
-// import 'package:uber/scripts/const.dart';
-
-import'package:uber/scripts/index.dart';
+import 'package:uber/scripts/index.dart';
 
 GlobalKey<NavigatorState> kNavigatorKey = GlobalKey();
 

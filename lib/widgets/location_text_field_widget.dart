@@ -1,8 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:uber/scripts/const.dart';
-// import 'package:uber/scripts/input.dart';
-// import 'package:uber/style/colors.dart';
 import 'package:uber/scripts/index.dart';
 
 class LocationTextFieldWidget extends StatefulWidget {

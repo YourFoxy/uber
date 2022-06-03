@@ -1,10 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
-// import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_event.dart';
-// import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_state.dart';
-// import 'package:uber/scripts/const.dart';
-// import 'package:uber/style/colors.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uber/scripts/index.dart';
 
 class AvatarWidgetForView extends StatefulWidget {
