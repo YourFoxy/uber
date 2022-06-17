@@ -14,7 +14,7 @@ class EditableRectangularAvatarBloc extends Bloc<EditableRectangularAvatarEvent,
   _onUploadRectangularAvatarEvent(event, emit) async {
     emit(
       EditableRectangularAvatarState.uploadAvatar(
-        url: await UserData.getUrlImapeFromStorage(),
+        url: await UserData.getUrlImageFromStorage(),
       ),
     );
   }

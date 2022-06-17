@@ -188,8 +188,8 @@ class _PlaceForRouteTextFields extends StatelessWidget {
                   LocationTextFieldWidget(
                     hintText: 'откуда',
                     controller: departurePointController,
-                    backgroundColor: AppColors.orange,
-                    textColor: AppColors.dark,
+                    borderColor: AppColors.orange,
+                    textColor: AppColors.orange,
                     onTap: () {
                       routeCreationBloc.add(
                         RouteCreationEvent.showLocationForDeparturePoint(
@@ -201,8 +201,8 @@ class _PlaceForRouteTextFields extends StatelessWidget {
                   LocationTextFieldWidget(
                     hintText: 'куда',
                     controller: arrivalPointController,
-                    backgroundColor: AppColors.orange,
-                    textColor: AppColors.dark,
+                    borderColor: AppColors.orange,
+                    textColor: AppColors.orange,
                     onTap: () {
                       routeCreationBloc.add(
                         RouteCreationEvent.showLocationForArrivalPoint(

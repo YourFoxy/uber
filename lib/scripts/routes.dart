@@ -1,3 +1,5 @@
+import 'package:uber/bloc/page_bloc/route_search/route_search_bloc.dart';
+import 'package:uber/pages/route_search_page.dart';
 import 'package:uber/scripts/index.dart';
 
 final routes = {
@@ -17,4 +19,6 @@ final routes = {
       const RouteCreationPage().createWithProvider<RouteCreationBloc>(),
   editUserInformationPage: (_) => const EditUserInformationPage()
       .createWithProvider<EditUserInformationBloc>(),
+  searchRoutePage: (_) =>
+      const RouteSearchPage().createWithProvider<RouteSearchBloc>(),
 };

@@ -1,20 +1,26 @@
+import 'dart:ffi';
+
 import 'package:uber/scripts/index.dart';
 
 class TextFieldWidget extends StatelessWidget {
   final bool isNumber;
   final String hintText;
   final TextEditingController controller;
-  final Color backgroundColor;
+  final Color borderColor;
   final Color textColor;
+  final double height;
+  final double width;
   final Key? textKey;
 
   const TextFieldWidget({
     Key? key,
     required this.hintText,
     required this.controller,
-    this.backgroundColor = AppColors.plum,
+    this.borderColor = AppColors.plum,
     this.isNumber = false,
     this.textColor = AppColors.orange,
+    this.height = 75.0,
+    this.width = 300,
     this.textKey,
   }) : super(key: key);
 
@@ -27,11 +33,14 @@ class TextFieldWidget extends StatelessWidget {
           horizontal: 20.0,
           vertical: 10.0,
         ),
-        height: 75.0,
-        width: 300,
+        height: height,
+        width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: backgroundColor,
+          border: Border.all(
+            width: 2,
+            color: borderColor,
+          ),
         ),
         child: TextField(
           key: textKey,

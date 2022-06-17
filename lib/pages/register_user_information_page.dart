@@ -59,14 +59,14 @@ class _RegisterUserInformationPageState
                     },
                   ).createWithProvider<EditableRoundAvatarBloc>(),
                   TextFieldWidget(
-                    backgroundColor: AppColors.orange,
-                    textColor: AppColors.plum,
+                    borderColor: AppColors.orange,
+                    textColor: AppColors.orange,
                     hintText: 'Nickname',
                     controller: _nicknameController,
                   ),
                   TextFieldWidget(
-                    backgroundColor: AppColors.orange,
-                    textColor: AppColors.plum,
+                    borderColor: AppColors.orange,
+                    textColor: AppColors.orange,
                     hintText: 'City',
                     controller: _cityController,
                   ),

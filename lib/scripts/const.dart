@@ -4,6 +4,7 @@ const loginOrRegisterPage = '/Logit or Register page';
 const homePage = '/home page';
 const routeCreationPage = '/route creation page';
 const editUserInformationPage = '/edit user information page';
+const searchRoutePage = '/search route page';
 
 const collectionNameWithUsers = 'Users';
 const nicknameFieldInCollection = 'Nickname';
@@ -14,6 +15,11 @@ const routeFieldInCollection = 'Route';
 const collectionNameWithDate = 'Date';
 const dateFieldInCollection = 'date';
 const routeId = 'route id';
+const fromRouteIndex = 0;
+const toRouteIndex = 1;
+const fromRoute = 'from';
+const toRoute = 'to';
+const phoneNubmer = 'number';
 
 const routeFieldInMap = 'route';
 const dateFieldInMap = 'date';

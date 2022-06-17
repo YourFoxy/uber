@@ -37,7 +37,9 @@ class _HomePageState extends State<HomePage> {
           ).createWithProvider<DrawerWidgetBloc>(),
           appBar: AppBar(
             backgroundColor: AppColors.plum,
-            iconTheme: const IconThemeData(color: AppColors.orange),
+            iconTheme: const IconThemeData(
+              color: AppColors.orange,
+            ),
             title: const AppLargeText(
               text: '',
             ),

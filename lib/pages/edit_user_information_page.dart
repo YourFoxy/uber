@@ -74,8 +74,8 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                       height: 30,
                     ),
                     TextFieldWidget(
-                      backgroundColor: AppColors.orange,
-                      textColor: AppColors.plum,
+                      borderColor: AppColors.orange,
+                      textColor: AppColors.orange,
                       hintText: 'Nickname',
                       textKey: _nicknameTextKey,
                       controller: TextEditingController(
@@ -85,8 +85,8 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                       ),
                     ),
                     TextFieldWidget(
-                      backgroundColor: AppColors.orange,
-                      textColor: AppColors.plum,
+                      borderColor: AppColors.orange,
+                      textColor: AppColors.orange,
                       hintText: 'City',
                       textKey: _cityTextKey,
                       controller: TextEditingController(

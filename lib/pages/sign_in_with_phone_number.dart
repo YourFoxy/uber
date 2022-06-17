@@ -62,8 +62,8 @@ class _SignInWithPhonePageState extends State<SignInWithPhonePage> {
                       height: 10.0,
                     ),
                     TextFieldWidget(
-                      backgroundColor: AppColors.orange,
-                      textColor: AppColors.plum,
+                      borderColor: AppColors.orange,
+                      textColor: AppColors.orange,
                       controller: _numberController,
                       hintText: 'Number',
                       isNumber: true,

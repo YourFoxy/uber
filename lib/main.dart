@@ -41,6 +41,8 @@ void registerBlocsFactory() {
       ));
   _getIt.registerFactory<RouteCardBloc>(() => RouteCardBloc());
   _getIt.registerFactory<CalendarBloc>(() => CalendarBloc());
+  _getIt.registerFactory<RouteSearchBloc>(() => RouteSearchBloc());
+  _getIt.registerFactory<RouteFoundCardBloc>(() => RouteFoundCardBloc());
 }
 
 class MyApp extends StatelessWidget {

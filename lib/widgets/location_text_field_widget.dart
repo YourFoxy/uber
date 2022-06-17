@@ -4,7 +4,7 @@ class LocationTextFieldWidget extends StatefulWidget {
   final bool isNumber;
   final String hintText;
   final TextEditingController controller;
-  final Color backgroundColor;
+  final Color borderColor;
   final Color textColor;
   final Function onTap;
 
@@ -14,7 +14,7 @@ class LocationTextFieldWidget extends StatefulWidget {
     required this.onTap,
     Key? key,
     this.isNumber = false,
-    this.backgroundColor = AppColors.plum,
+    this.borderColor = AppColors.plum,
     this.textColor = AppColors.orange,
   }) : super(key: key);
 
@@ -46,7 +46,11 @@ class _LocationTextFieldWidgetState extends State<LocationTextFieldWidget> {
         width: 300,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: widget.backgroundColor,
+          //color: widget.backgroundColor,
+          border: Border.all(
+            width: 2,
+            color: widget.borderColor,
+          ),
         ),
         child: TextField(
           focusNode: focusNode,

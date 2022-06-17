@@ -39,11 +39,32 @@ class _DrawerMenuState extends State<DrawerMenu> {
               ),
               InkWell(
                 onTap: () {
+                  widget.navigationService.navigatorToHomePage();
+                },
+                child: const IconAndTextForDrawerButton(
+                  iconData: Icons.home,
+                  text: 'Home page',
+                ),
+              ),
+              InkWell(
+                onTap: () {
                   widget.navigationService.navigatorToEditUserInformationPage();
                 },
                 child: const IconAndTextForDrawerButton(
                   iconData: Icons.edit,
                   text: 'Edit profile',
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  widget.navigationService.navigatorToSearchRoutePage();
+                  List<Map<String, String>> routesAndDates =
+                      await UserData.getRoutesWithParameters();
+                  print(routesAndDates.length);
+                },
+                child: const IconAndTextForDrawerButton(
+                  iconData: Icons.route,
+                  text: 'Search route',
                 ),
               ),
               const Divider(

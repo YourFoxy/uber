@@ -7,7 +7,7 @@ class ViewAvatarBloc extends Bloc<ViewAvatarEvent, ViewAvatarState> {
   _onUploadAvatarEvent(event, emit) async {
     emit(
       UploadViewAvatarState(
-        url: await UserData.getUrlImapeFromStorage(),
+        url: await UserData.getUrlImageFromStorage(),
       ),
     );
   }
