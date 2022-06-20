@@ -53,77 +53,75 @@ class _RouteSearchPageState extends State<RouteSearchPage> {
           text: '',
         ),
       ),
-      body: SingleChildScrollView(
-        child: BlocBuilder<RouteSearchBloc, RouteSearchState>(
-          builder: (context, state) {
-            return state.when(
-              initPage: () => Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: TextFieldWidget(
-                          hintText: 'from',
-                          borderColor: AppColors.orange,
-                          width: 160,
-                          textKey: _fromRouteKey,
-                          controller: TextEditingController(
-                            text: '',
-                          ),
+      body: BlocBuilder<RouteSearchBloc, RouteSearchState>(
+        builder: (context, state) {
+          return state.when(
+            initPage: () => Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: TextFieldWidget(
+                        hintText: 'from',
+                        borderColor: AppColors.orange,
+                        width: 160,
+                        textKey: _fromRouteKey,
+                        controller: TextEditingController(
+                          text: '',
                         ),
                       ),
-                      InkWell(
-                        onTap: () {},
-                        child: TextFieldWidget(
-                          hintText: 'to',
-                          borderColor: AppColors.orange,
-                          width: 160,
-                          textKey: _toRouteKey,
-                          controller: TextEditingController(
-                            text: '',
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  TextFieldWidget(
-                    hintText: 'date',
-                    borderColor: AppColors.orange,
-                    width: 360,
-                    textKey: _dateKey,
-                    controller: TextEditingController(
-                      text: '',
                     ),
-                  ),
-                  ButtonWidget(
-                    text: 'search',
-                    onTap: () => () {
-                      _routeSearchBloc.add(
-                        SearchRoutesEvent(
-                          fromRoute: _fromRouteController.text,
-                          toRoute: _toRouteController.text,
+                    InkWell(
+                      onTap: () {},
+                      child: TextFieldWidget(
+                        hintText: 'to',
+                        borderColor: AppColors.orange,
+                        width: 160,
+                        textKey: _toRouteKey,
+                        controller: TextEditingController(
+                          text: '',
                         ),
-                      );
-                    },
+                      ),
+                    ),
+                  ],
+                ),
+                TextFieldWidget(
+                  hintText: 'date',
+                  borderColor: AppColors.orange,
+                  width: 360,
+                  textKey: _dateKey,
+                  controller: TextEditingController(
+                    text: '',
                   ),
-                ],
-              ),
-              showRoutes: (routesAndDate) => ListView.builder(
-                itemCount: routesAndDate.length,
-                itemBuilder: (context, index) {
-                  return RouteFoundCardWidget(
-                    route:
-                        '${routesAndDate[index][fromRoute]} - ${routesAndDate[index][toRoute]}',
-                    date: '${routesAndDate[index][dateFieldInMap]}',
-                    phoneNumber: '${routesAndDate[index][phoneNubmer]}',
-                  ).createWithProvider<RouteFoundCardBloc>();
-                },
-              ),
-            );
-          },
-        ),
+                ),
+                ButtonWidget(
+                  text: 'search',
+                  onTap: () => () {
+                    _routeSearchBloc.add(
+                      SearchRoutesEvent(
+                        fromRoute: _fromRouteController.text,
+                        toRoute: _toRouteController.text,
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            showRoutes: (routesAndDate) => ListView.builder(
+              itemCount: routesAndDate.length,
+              itemBuilder: (context, index) {
+                return RouteFoundCardWidget(
+                  route:
+                      '${routesAndDate[index][fromRoute]} - ${routesAndDate[index][toRoute]}',
+                  date: '${routesAndDate[index][dateFieldInMap]}',
+                  phoneNumber: '${routesAndDate[index][phoneNubmer]}',
+                ).createWithProvider<RouteFoundCardBloc>();
+              },
+            ),
+          );
+        },
       ),
     );
   }
