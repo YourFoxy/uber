@@ -50,17 +50,8 @@ class RouteCreationBloc extends Bloc<RouteCreationEvent, RouteCreationState> {
   }
 
   _onShowCalendarEvent(event, emit) {
-    final month = <String>[];
-    final emptyCells = DateTime(event.year, event.month, 1).weekday - 1;
-    final monthLenght = DateUtil.daysInMonth(event.month, event.year);
-    for (int i = 0; i < emptyCells + monthLenght; i++) {
-      if (i < emptyCells) {
-        month.add('');
-      } else {
-        month.add('${i - emptyCells + 1}');
-      }
-    }
-
-    emit(_ShowCalendarState(month: month));
+    emit(
+      const _ShowCalendarState(),
+    );
   }
 }

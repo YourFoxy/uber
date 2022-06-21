@@ -83,3 +83,4 @@ export 'package:uber/bloc/page_bloc/route_search/route_search_bloc.dart';
 //export 'package:uber/bloc/widget_bloc/route_found_card/route_found_card_bloc.dart';
 export 'package:uber/bloc/widget_bloc/route_found_card/route_found_card_bloc.dart';
 export 'package:url_launcher/url_launcher.dart';
+export 'package:uber/extension/g.dart';

@@ -103,7 +103,10 @@ class _RouteCreationPageState extends State<RouteCreationPage> {
                           },
                         ),
                       ),
-                      showCalendar: (month) => Center(
+                      showCalendar: (
+                              //month
+                              ) =>
+                          Center(
                         child: Padding(
                           padding: const EdgeInsets.only(
                             top: 360.0,
@@ -193,8 +196,7 @@ class _PlaceForRouteTextFields extends StatelessWidget {
                     onTap: () {
                       routeCreationBloc.add(
                         RouteCreationEvent.showLocationForDeparturePoint(
-                          context: context,
-                        ),
+                            context: context),
                       );
                     },
                   ),
@@ -206,8 +208,7 @@ class _PlaceForRouteTextFields extends StatelessWidget {
                     onTap: () {
                       routeCreationBloc.add(
                         RouteCreationEvent.showLocationForArrivalPoint(
-                          context: context,
-                        ),
+                            context: context),
                       );
                     },
                   ),
@@ -215,9 +216,8 @@ class _PlaceForRouteTextFields extends StatelessWidget {
                     onTap: () {
                       routeCreationBloc.add(
                         const RouteCreationEvent.showCalendarEvent(
-                          month: 5,
-                          year: 5,
-                        ),
+              
+                            ),
                       );
                     },
                     child: OrangeButtonWidget(

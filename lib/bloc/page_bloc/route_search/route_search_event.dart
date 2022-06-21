@@ -8,5 +8,7 @@ class RouteSearchEvent with _$RouteSearchEvent {
   }) = SearchRoutesEvent;
   const factory RouteSearchEvent.changeSaveRouteStatus() =
       ChangeSaveRouteStatusEvent;
- 
+  const factory RouteSearchEvent.showLocation({required BuildContext context}) =
+      ShowLocationEvent;
+  const factory RouteSearchEvent.showCalendar() = ShowCalendarForSearchEvent;
 }

@@ -61,18 +61,15 @@ class _RouteSearchPageState extends State<RouteSearchPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    InkWell(
-                      onTap: () {},
-                      child: TextFieldWidget(
-                        hintText: 'from',
-                        borderColor: AppColors.orange,
-                        width: 160,
-                        textKey: _fromRouteKey,
-                        controller: TextEditingController(
-                          text: '',
-                        ),
+                    TextFieldWidget(
+                      hintText: 'from',
+                      borderColor: AppColors.orange,
+                      width: 160,
+                      textKey: _fromRouteKey,
+                      controller: TextEditingController(
+                        text: '',
                       ),
-                    ),
+                    ).createForLocation(),
                     InkWell(
                       onTap: () {},
                       child: TextFieldWidget(
@@ -108,6 +105,11 @@ class _RouteSearchPageState extends State<RouteSearchPage> {
                   },
                 ),
               ],
+            ),
+            showLocation: (locationMap) => Container(
+              height: 100,
+              width: 100,
+              color: AppColors.orange,
             ),
             showRoutes: (routesAndDate) => ListView.builder(
               itemCount: routesAndDate.length,

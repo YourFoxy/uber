@@ -49,11 +49,8 @@ class _$RouteCreationEventTearOff {
     );
   }
 
-  ShowCalendarEvent showCalendarEvent({required int month, required int year}) {
-    return ShowCalendarEvent(
-      month: month,
-      year: year,
-    );
+  ShowCalendarEvent showCalendarEvent() {
+    return const ShowCalendarEvent();
   }
 }
 
@@ -71,7 +68,7 @@ mixin _$RouteCreationEvent {
     required TResult Function(String departurePoint, String arrivalPoint,
             String date, BuildContext context)
         addRoute,
-    required TResult Function(int month, int year) showCalendarEvent,
+    required TResult Function() showCalendarEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,7 +79,7 @@ mixin _$RouteCreationEvent {
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,7 +90,7 @@ mixin _$RouteCreationEvent {
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -238,7 +235,7 @@ class _$ShowLocationForDeparturePointEvent
     required TResult Function(String departurePoint, String arrivalPoint,
             String date, BuildContext context)
         addRoute,
-    required TResult Function(int month, int year) showCalendarEvent,
+    required TResult Function() showCalendarEvent,
   }) {
     return showLocationForDeparturePoint(context);
   }
@@ -252,7 +249,7 @@ class _$ShowLocationForDeparturePointEvent
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
   }) {
     return showLocationForDeparturePoint?.call(context);
   }
@@ -266,7 +263,7 @@ class _$ShowLocationForDeparturePointEvent
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
     required TResult orElse(),
   }) {
     if (showLocationForDeparturePoint != null) {
@@ -421,7 +418,7 @@ class _$ShowLocationForArrivalPointEvent
     required TResult Function(String departurePoint, String arrivalPoint,
             String date, BuildContext context)
         addRoute,
-    required TResult Function(int month, int year) showCalendarEvent,
+    required TResult Function() showCalendarEvent,
   }) {
     return showLocationForArrivalPoint(context);
   }
@@ -435,7 +432,7 @@ class _$ShowLocationForArrivalPointEvent
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
   }) {
     return showLocationForArrivalPoint?.call(context);
   }
@@ -449,7 +446,7 @@ class _$ShowLocationForArrivalPointEvent
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
     required TResult orElse(),
   }) {
     if (showLocationForArrivalPoint != null) {
@@ -572,7 +569,7 @@ class _$CloseLocationEvent
     required TResult Function(String departurePoint, String arrivalPoint,
             String date, BuildContext context)
         addRoute,
-    required TResult Function(int month, int year) showCalendarEvent,
+    required TResult Function() showCalendarEvent,
   }) {
     return closeLocation();
   }
@@ -586,7 +583,7 @@ class _$CloseLocationEvent
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
   }) {
     return closeLocation?.call();
   }
@@ -600,7 +597,7 @@ class _$CloseLocationEvent
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
     required TResult orElse(),
   }) {
     if (closeLocation != null) {
@@ -781,7 +778,7 @@ class _$AddRouteEvent with DiagnosticableTreeMixin implements AddRouteEvent {
     required TResult Function(String departurePoint, String arrivalPoint,
             String date, BuildContext context)
         addRoute,
-    required TResult Function(int month, int year) showCalendarEvent,
+    required TResult Function() showCalendarEvent,
   }) {
     return addRoute(departurePoint, arrivalPoint, date, context);
   }
@@ -795,7 +792,7 @@ class _$AddRouteEvent with DiagnosticableTreeMixin implements AddRouteEvent {
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
   }) {
     return addRoute?.call(departurePoint, arrivalPoint, date, context);
   }
@@ -809,7 +806,7 @@ class _$AddRouteEvent with DiagnosticableTreeMixin implements AddRouteEvent {
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
     required TResult orElse(),
   }) {
     if (addRoute != null) {
@@ -886,7 +883,6 @@ abstract class $ShowCalendarEventCopyWith<$Res> {
   factory $ShowCalendarEventCopyWith(
           ShowCalendarEvent value, $Res Function(ShowCalendarEvent) then) =
       _$ShowCalendarEventCopyWithImpl<$Res>;
-  $Res call({int month, int year});
 }
 
 /// @nodoc
@@ -899,23 +895,6 @@ class _$ShowCalendarEventCopyWithImpl<$Res>
 
   @override
   ShowCalendarEvent get _value => super._value as ShowCalendarEvent;
-
-  @override
-  $Res call({
-    Object? month = freezed,
-    Object? year = freezed,
-  }) {
-    return _then(ShowCalendarEvent(
-      month: month == freezed
-          ? _value.month
-          : month // ignore: cast_nullable_to_non_nullable
-              as int,
-      year: year == freezed
-          ? _value.year
-          : year // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
@@ -923,46 +902,29 @@ class _$ShowCalendarEventCopyWithImpl<$Res>
 class _$ShowCalendarEvent
     with DiagnosticableTreeMixin
     implements ShowCalendarEvent {
-  const _$ShowCalendarEvent({required this.month, required this.year});
-
-  @override
-  final int month;
-  @override
-  final int year;
+  const _$ShowCalendarEvent();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteCreationEvent.showCalendarEvent(month: $month, year: $year)';
+    return 'RouteCreationEvent.showCalendarEvent()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'RouteCreationEvent.showCalendarEvent'))
-      ..add(DiagnosticsProperty('month', month))
-      ..add(DiagnosticsProperty('year', year));
+      ..add(
+          DiagnosticsProperty('type', 'RouteCreationEvent.showCalendarEvent'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is ShowCalendarEvent &&
-            const DeepCollectionEquality().equals(other.month, month) &&
-            const DeepCollectionEquality().equals(other.year, year));
+        (other.runtimeType == runtimeType && other is ShowCalendarEvent);
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(month),
-      const DeepCollectionEquality().hash(year));
-
-  @JsonKey(ignore: true)
-  @override
-  $ShowCalendarEventCopyWith<ShowCalendarEvent> get copyWith =>
-      _$ShowCalendarEventCopyWithImpl<ShowCalendarEvent>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -974,9 +936,9 @@ class _$ShowCalendarEvent
     required TResult Function(String departurePoint, String arrivalPoint,
             String date, BuildContext context)
         addRoute,
-    required TResult Function(int month, int year) showCalendarEvent,
+    required TResult Function() showCalendarEvent,
   }) {
-    return showCalendarEvent(month, year);
+    return showCalendarEvent();
   }
 
   @override
@@ -988,9 +950,9 @@ class _$ShowCalendarEvent
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
   }) {
-    return showCalendarEvent?.call(month, year);
+    return showCalendarEvent?.call();
   }
 
   @override
@@ -1002,11 +964,11 @@ class _$ShowCalendarEvent
     TResult Function(String departurePoint, String arrivalPoint, String date,
             BuildContext context)?
         addRoute,
-    TResult Function(int month, int year)? showCalendarEvent,
+    TResult Function()? showCalendarEvent,
     required TResult orElse(),
   }) {
     if (showCalendarEvent != null) {
-      return showCalendarEvent(month, year);
+      return showCalendarEvent();
     }
     return orElse();
   }
@@ -1059,14 +1021,7 @@ class _$ShowCalendarEvent
 }
 
 abstract class ShowCalendarEvent implements RouteCreationEvent {
-  const factory ShowCalendarEvent({required int month, required int year}) =
-      _$ShowCalendarEvent;
-
-  int get month;
-  int get year;
-  @JsonKey(ignore: true)
-  $ShowCalendarEventCopyWith<ShowCalendarEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory ShowCalendarEvent() = _$ShowCalendarEvent;
 }
 
 /// @nodoc
@@ -1095,10 +1050,8 @@ class _$RouteCreationStateTearOff {
     return const _CloseLocationState();
   }
 
-  _ShowCalendarState showCalendar({required List<String> month}) {
-    return _ShowCalendarState(
-      month: month,
-    );
+  _ShowCalendarState showCalendar() {
+    return const _ShowCalendarState();
   }
 }
 
@@ -1115,7 +1068,7 @@ mixin _$RouteCreationState {
     required TResult Function(List<List<String>> locationMap)
         showLocationForDeparturePoint,
     required TResult Function() closeLocation,
-    required TResult Function(List<String> month) showCalendar,
+    required TResult Function() showCalendar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1126,7 +1079,7 @@ mixin _$RouteCreationState {
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1137,7 +1090,7 @@ mixin _$RouteCreationState {
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1247,7 +1200,7 @@ class _$_PageInitState with DiagnosticableTreeMixin implements _PageInitState {
     required TResult Function(List<List<String>> locationMap)
         showLocationForDeparturePoint,
     required TResult Function() closeLocation,
-    required TResult Function(List<String> month) showCalendar,
+    required TResult Function() showCalendar,
   }) {
     return pageInit();
   }
@@ -1261,7 +1214,7 @@ class _$_PageInitState with DiagnosticableTreeMixin implements _PageInitState {
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
   }) {
     return pageInit?.call();
   }
@@ -1275,7 +1228,7 @@ class _$_PageInitState with DiagnosticableTreeMixin implements _PageInitState {
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
     required TResult orElse(),
   }) {
     if (pageInit != null) {
@@ -1422,7 +1375,7 @@ class _$_ShowLocationForArrivalPointState
     required TResult Function(List<List<String>> locationMap)
         showLocationForDeparturePoint,
     required TResult Function() closeLocation,
-    required TResult Function(List<String> month) showCalendar,
+    required TResult Function() showCalendar,
   }) {
     return showLocationForArrivalPoint(locationMap);
   }
@@ -1436,7 +1389,7 @@ class _$_ShowLocationForArrivalPointState
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
   }) {
     return showLocationForArrivalPoint?.call(locationMap);
   }
@@ -1450,7 +1403,7 @@ class _$_ShowLocationForArrivalPointState
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
     required TResult orElse(),
   }) {
     if (showLocationForArrivalPoint != null) {
@@ -1605,7 +1558,7 @@ class _$_ShowLocationForDeparturePointState
     required TResult Function(List<List<String>> locationMap)
         showLocationForDeparturePoint,
     required TResult Function() closeLocation,
-    required TResult Function(List<String> month) showCalendar,
+    required TResult Function() showCalendar,
   }) {
     return showLocationForDeparturePoint(locationMap);
   }
@@ -1619,7 +1572,7 @@ class _$_ShowLocationForDeparturePointState
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
   }) {
     return showLocationForDeparturePoint?.call(locationMap);
   }
@@ -1633,7 +1586,7 @@ class _$_ShowLocationForDeparturePointState
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
     required TResult orElse(),
   }) {
     if (showLocationForDeparturePoint != null) {
@@ -1758,7 +1711,7 @@ class _$_CloseLocationState
     required TResult Function(List<List<String>> locationMap)
         showLocationForDeparturePoint,
     required TResult Function() closeLocation,
-    required TResult Function(List<String> month) showCalendar,
+    required TResult Function() showCalendar,
   }) {
     return closeLocation();
   }
@@ -1772,7 +1725,7 @@ class _$_CloseLocationState
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
   }) {
     return closeLocation?.call();
   }
@@ -1786,7 +1739,7 @@ class _$_CloseLocationState
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
     required TResult orElse(),
   }) {
     if (closeLocation != null) {
@@ -1851,7 +1804,6 @@ abstract class _$ShowCalendarStateCopyWith<$Res> {
   factory _$ShowCalendarStateCopyWith(
           _ShowCalendarState value, $Res Function(_ShowCalendarState) then) =
       __$ShowCalendarStateCopyWithImpl<$Res>;
-  $Res call({List<String> month});
 }
 
 /// @nodoc
@@ -1864,18 +1816,6 @@ class __$ShowCalendarStateCopyWithImpl<$Res>
 
   @override
   _ShowCalendarState get _value => super._value as _ShowCalendarState;
-
-  @override
-  $Res call({
-    Object? month = freezed,
-  }) {
-    return _then(_ShowCalendarState(
-      month: month == freezed
-          ? _value.month
-          : month // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
-  }
 }
 
 /// @nodoc
@@ -1883,40 +1823,28 @@ class __$ShowCalendarStateCopyWithImpl<$Res>
 class _$_ShowCalendarState
     with DiagnosticableTreeMixin
     implements _ShowCalendarState {
-  const _$_ShowCalendarState({required this.month});
-
-  @override
-  final List<String> month;
+  const _$_ShowCalendarState();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteCreationState.showCalendar(month: $month)';
+    return 'RouteCreationState.showCalendar()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'RouteCreationState.showCalendar'))
-      ..add(DiagnosticsProperty('month', month));
+      ..add(DiagnosticsProperty('type', 'RouteCreationState.showCalendar'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _ShowCalendarState &&
-            const DeepCollectionEquality().equals(other.month, month));
+        (other.runtimeType == runtimeType && other is _ShowCalendarState);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(month));
-
-  @JsonKey(ignore: true)
-  @override
-  _$ShowCalendarStateCopyWith<_ShowCalendarState> get copyWith =>
-      __$ShowCalendarStateCopyWithImpl<_ShowCalendarState>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -1927,9 +1855,9 @@ class _$_ShowCalendarState
     required TResult Function(List<List<String>> locationMap)
         showLocationForDeparturePoint,
     required TResult Function() closeLocation,
-    required TResult Function(List<String> month) showCalendar,
+    required TResult Function() showCalendar,
   }) {
-    return showCalendar(month);
+    return showCalendar();
   }
 
   @override
@@ -1941,9 +1869,9 @@ class _$_ShowCalendarState
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
   }) {
-    return showCalendar?.call(month);
+    return showCalendar?.call();
   }
 
   @override
@@ -1955,11 +1883,11 @@ class _$_ShowCalendarState
     TResult Function(List<List<String>> locationMap)?
         showLocationForDeparturePoint,
     TResult Function()? closeLocation,
-    TResult Function(List<String> month)? showCalendar,
+    TResult Function()? showCalendar,
     required TResult orElse(),
   }) {
     if (showCalendar != null) {
-      return showCalendar(month);
+      return showCalendar();
     }
     return orElse();
   }
@@ -2012,11 +1940,5 @@ class _$_ShowCalendarState
 }
 
 abstract class _ShowCalendarState implements RouteCreationState {
-  const factory _ShowCalendarState({required List<String> month}) =
-      _$_ShowCalendarState;
-
-  List<String> get month;
-  @JsonKey(ignore: true)
-  _$ShowCalendarStateCopyWith<_ShowCalendarState> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _ShowCalendarState() = _$_ShowCalendarState;
 }
