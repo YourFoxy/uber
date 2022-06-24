@@ -69,7 +69,8 @@ class _RouteSearchPageState extends State<RouteSearchPage> {
                       controller: TextEditingController(
                         text: '',
                       ),
-                    ).createForLocation(),
+                    ).createForLocation().createWithProvider<
+                        TextFieldForLocationExpensionBloc>(),
                     InkWell(
                       onTap: () {},
                       child: TextFieldWidget(

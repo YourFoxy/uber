@@ -43,6 +43,8 @@ void registerBlocsFactory() {
   _getIt.registerFactory<CalendarBloc>(() => CalendarBloc());
   _getIt.registerFactory<RouteSearchBloc>(() => RouteSearchBloc());
   _getIt.registerFactory<RouteFoundCardBloc>(() => RouteFoundCardBloc());
+  _getIt.registerFactory<TextFieldForLocationExpensionBloc>(
+      () => TextFieldForLocationExpensionBloc());
 }
 
 class MyApp extends StatelessWidget {
