@@ -9,7 +9,18 @@ extension TextFieldForLocationExpension on TextFieldWidget {
           onTap: () {
             print('....................');
           },
-          child: this,
+          child: Stack(
+            children: [
+              this,
+              Center(
+                child: Container(
+                  height: 500,
+                  width: 100,
+                  color: AppColors.dark,
+                ),
+              ),
+            ],
+          ),
         );
       },
     );

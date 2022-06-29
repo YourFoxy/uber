@@ -69,75 +69,77 @@ class _RouteCreationPageState extends State<RouteCreationPage> {
           ),
           backgroundColor: AppColors.dark,
           body: SingleChildScrollView(
-            child: InkWell(
-              onTap: () {
-                _routeCreationBloc
-                    .add(const RouteCreationEvent.closeLocation());
-              },
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              child: Stack(
-                children: [
-                  SingleChildScrollView(
-                    child: _PlaceForRouteTextFields(
-                      arrivalPointController: _arrivalPointController,
-                      departurePointController: _departurePointController,
-                      routeCreationBloc: _routeCreationBloc,
-                      date: _date,
-                    ),
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  child: _PlaceForRouteTextFields(
+                    arrivalPointController: _arrivalPointController,
+                    departurePointController: _departurePointController,
+                    routeCreationBloc: _routeCreationBloc,
+                    date: _date,
                   ),
-                  SafeArea(
-                    child: state.when(
-                      pageInit: () => Container(),
-                      showLocationForArrivalPoint: (locationMap) => Padding(
-                        padding: const EdgeInsets.only(
-                          top: 235.0,
-                        ),
-                        child: ListOfLocationWidget(
-                          locations: locationMap,
-                          searchLocationString: _arrivalPoint,
-                          onRouteChanged: (location) {
-                            _arrivalPointController.text = location;
-                            _routeCreationBloc
-                                .add(const RouteCreationEvent.closeLocation());
-                          },
-                        ),
+                ),
+                SafeArea(
+                  child: state.when(
+                    pageInit: () => Container(),
+                    showLocationForArrivalPoint: (locationMap) => Padding(
+                      padding: const EdgeInsets.only(
+                        top: 235.0,
                       ),
-                      showCalendar: (
-                              //month
-                              ) =>
-                          Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            top: 360.0,
-                          ),
-                          child: CalendarWidget(
-                            onDateSet: (date) {
-                              _date = date;
-                              setState(() {});
-                            },
-                          ).createWithProvider<CalendarBloc>(),
-                        ),
+                      child: ListOfLocationWidget(
+                        locations: locationMap,
+                        searchLocationString: _arrivalPoint,
+                        onRouteChanged: (location) {
+                          _arrivalPointController.text = location;
+                          _routeCreationBloc
+                              .add(const RouteCreationEvent.closeLocation());
+                        },
+                        onClose: () {
+                          print('ddddddddddddddddddddddd');
+                          _routeCreationBloc
+                              .add(const RouteCreationEvent.closeLocation());
+                        },
                       ),
-                      showLocationForDeparturePoint: (locationMap) => Padding(
-                        padding: const EdgeInsets.only(
-                          top: 120.0,
-                        ),
-                        child: ListOfLocationWidget(
-                          locations: locationMap,
-                          searchLocationString: _departurePoint,
-                          onRouteChanged: (location) {
-                            _departurePointController.text = location;
-                            _routeCreationBloc
-                                .add(const RouteCreationEvent.closeLocation());
-                          },
-                        ),
-                      ),
-                      closeLocation: () => Container(),
                     ),
+                    showCalendar: (
+                            //month
+                            ) =>
+                        Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 360.0,
+                        ),
+                        child: CalendarWidget(
+                          onDateSet: (date) {
+                            _date = date;
+                            setState(() {});
+                          },
+                        ).createWithProvider<CalendarBloc>(),
+                      ),
+                    ),
+                    showLocationForDeparturePoint: (locationMap) => Padding(
+                      padding: const EdgeInsets.only(
+                        top: 120.0,
+                      ),
+                      child: ListOfLocationWidget(
+                        locations: locationMap,
+                        searchLocationString: _departurePoint,
+                        onRouteChanged: (location) {
+                          _departurePointController.text = location;
+                          _routeCreationBloc
+                              .add(const RouteCreationEvent.closeLocation());
+                        },
+                        onClose: () {
+                          print('ddddddddddddddddddddddd');
+                          _routeCreationBloc
+                              .add(const RouteCreationEvent.closeLocation());
+                        },
+                      ),
+                    ),
+                    closeLocation: () => Container(),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           floatingActionButton: FloatingActionButton(
@@ -215,9 +217,7 @@ class _PlaceForRouteTextFields extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       routeCreationBloc.add(
-                        const RouteCreationEvent.showCalendarEvent(
-              
-                            ),
+                        const RouteCreationEvent.showCalendarEvent(),
                       );
                     },
                     child: OrangeButtonWidget(

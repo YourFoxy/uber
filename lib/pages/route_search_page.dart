@@ -8,124 +8,226 @@ class RouteSearchPage extends StatefulWidget {
 }
 
 class _RouteSearchPageState extends State<RouteSearchPage> {
-  final _navigationService = GetIt.instance.get<NavigationService>();
-
-  final _fromRouteKey = GlobalKey();
-  final _toRouteKey = GlobalKey();
-  final _dateKey = GlobalKey();
-
   late final RouteSearchBloc _routeSearchBloc;
 
-  TextEditingController get _fromRouteController =>
-      (_fromRouteKey.currentWidget as TextField).controller!;
-  TextEditingController get _toRouteController =>
-      (_toRouteKey.currentWidget as TextField).controller!;
-  TextEditingController get _dateController =>
-      (_dateKey.currentWidget as TextField).controller!;
+  final TextEditingController _departurePointController =
+      TextEditingController();
+  final TextEditingController _arrivalPointController = TextEditingController();
+
+  String _date = 'Дата';
+
+  String _departurePoint = '';
+  String _arrivalPoint = '';
 
   @override
   void initState() {
     super.initState();
+    _departurePointController.addListener(
+      () {
+        setState(
+          () {
+            _departurePoint = _departurePointController.text;
+          },
+        );
+      },
+    );
+    _arrivalPointController.addListener(
+      () {
+        setState(
+          () {
+            _arrivalPoint = _arrivalPointController.text;
+          },
+        );
+      },
+    );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     _routeSearchBloc = BlocProvider.of<RouteSearchBloc>(context);
   }
 
   @override
   void dispose() {
     super.dispose();
-    _fromRouteController.dispose();
-    _toRouteController.dispose();
-    _dateController.dispose();
+    _departurePointController.dispose();
+    _arrivalPointController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.plum2,
-      drawer: DrawerMenu(
-        navigationService: _navigationService,
-      ).createWithProvider<DrawerWidgetBloc>(),
-      appBar: AppBar(
-        backgroundColor: AppColors.plum,
-        iconTheme: const IconThemeData(
-          color: AppColors.orange,
-        ),
-        title: const AppLargeText(
-          text: '',
-        ),
-      ),
-      body: BlocBuilder<RouteSearchBloc, RouteSearchState>(
-        builder: (context, state) {
-          return state.when(
-            initPage: () => Column(
+    return BlocBuilder<RouteSearchBloc, RouteSearchState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: AppColors.plum,
+            iconTheme: const IconThemeData(color: AppColors.orange),
+            title: const AppLargeText(
+              text: '',
+            ),
+          ),
+          backgroundColor: AppColors.dark,
+          body: SingleChildScrollView(
+            child: Stack(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextFieldWidget(
-                      hintText: 'from',
-                      borderColor: AppColors.orange,
-                      width: 160,
-                      textKey: _fromRouteKey,
-                      controller: TextEditingController(
-                        text: '',
-                      ),
-                    ).createForLocation().createWithProvider<
-                        TextFieldForLocationExpensionBloc>(),
-                    InkWell(
-                      onTap: () {},
-                      child: TextFieldWidget(
-                        hintText: 'to',
-                        borderColor: AppColors.orange,
-                        width: 160,
-                        textKey: _toRouteKey,
-                        controller: TextEditingController(
-                          text: '',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                TextFieldWidget(
-                  hintText: 'date',
-                  borderColor: AppColors.orange,
-                  width: 360,
-                  textKey: _dateKey,
-                  controller: TextEditingController(
-                    text: '',
+                SingleChildScrollView(
+                  child: _PlaceForRouteTextFields(
+                    arrivalPointController: _arrivalPointController,
+                    departurePointController: _departurePointController,
+                    routeCreationBloc: _routeSearchBloc,
+                    date: _date,
                   ),
                 ),
-                ButtonWidget(
-                  text: 'search',
-                  onTap: () => () {
-                    _routeSearchBloc.add(
-                      SearchRoutesEvent(
-                        fromRoute: _fromRouteController.text,
-                        toRoute: _toRouteController.text,
+                SafeArea(
+                  child: state.when(
+                    initPage: () => Container(),
+                    showRouteList: (locationMap) => Padding(
+                      padding: const EdgeInsets.only(
+                        top: 235.0,
                       ),
-                    );
-                  },
+                      child: ListOfLocationWidget(
+                        locations: locationMap,
+                        searchLocationString: _arrivalPoint,
+                        onRouteChanged: (location) {
+                          _arrivalPointController.text = location;
+                          _routeSearchBloc.add(CloseWidgetEvent());
+                        },
+                        onClose: () {
+                          print('ddddddddddddddddddddddd');
+                          _routeSearchBloc.add(CloseWidgetEvent());
+                        },
+                      ),
+                    ),
+                    showRoute: () => FoundedRoutesPage(),
+                    closeWidget: () => Container(),
+                    showCalendar: (
+                            //month
+                            ) =>
+                        Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 360.0,
+                        ),
+                        child: CalendarWidget(
+                          onDateSet: (date) {
+                            _date = date;
+                            setState(() {});
+                          },
+                        ).createWithProvider<CalendarBloc>(),
+                      ),
+                    ),
+                    // showLocationForDeparturePoint: (locationMap) => Padding(
+                    //   padding: const EdgeInsets.only(
+                    //     top: 120.0,
+                    //   ),
+                    //   child: ListOfLocationWidget(
+                    //     locations: locationMap,
+                    //     searchLocationString: _departurePoint,
+                    //     onRouteChanged: (location) {
+                    //       _departurePointController.text = location;
+                    //       _routeSearchBloc
+                    //           .add(const RouteCreationEvent.closeLocation());
+                    //     },
+                    //     onClose: () {
+                    //       print('ddddddddddddddddddddddd');
+                    //       _routeSearchBloc
+                    //           .add(const RouteCreationEvent.closeLocation());
+                    //     },
+                    //   ),
+                    // ),
+                    // closeLocation: () => Container(),
+                  ),
                 ),
               ],
             ),
-            showLocation: (locationMap) => Container(
-              height: 100,
-              width: 100,
-              color: AppColors.orange,
+          ),
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: AppColors.orange,
+            onPressed: () async {
+              // _routeSearchBloc.add(
+              //   // RouteCreationEvent.addRoute(
+              //   //   departurePoint: _departurePointController.text,
+              //   //   arrivalPoint: _arrivalPointController.text,
+              //   //   date: _date,
+              //   //   context: context,
+              //   //),
+              // );
+            },
+            child: const Icon(
+              Icons.save,
+              color: AppColors.dark,
             ),
-            showRoutes: (routesAndDate) => ListView.builder(
-              itemCount: routesAndDate.length,
-              itemBuilder: (context, index) {
-                return RouteFoundCardWidget(
-                  route:
-                      '${routesAndDate[index][fromRoute]} - ${routesAndDate[index][toRoute]}',
-                  date: '${routesAndDate[index][dateFieldInMap]}',
-                  phoneNumber: '${routesAndDate[index][phoneNubmer]}',
-                ).createWithProvider<RouteFoundCardBloc>();
-              },
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _PlaceForRouteTextFields extends StatelessWidget {
+  final TextEditingController departurePointController;
+  final TextEditingController arrivalPointController;
+  final Bloc routeCreationBloc;
+  final String date;
+  const _PlaceForRouteTextFields({
+    Key? key,
+    required this.departurePointController,
+    required this.routeCreationBloc,
+    required this.arrivalPointController,
+    required this.date,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Stack(
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  LocationTextFieldWidget(
+                    hintText: 'откуда',
+                    controller: departurePointController,
+                    borderColor: AppColors.orange,
+                    textColor: AppColors.orange,
+                    onTap: () {
+                      routeCreationBloc.add(
+                        ShowRouteListEvent(context: context),
+                      );
+                    },
+                  ),
+                  LocationTextFieldWidget(
+                    hintText: 'куда',
+                    controller: arrivalPointController,
+                    borderColor: AppColors.orange,
+                    textColor: AppColors.orange,
+                    onTap: () {
+                      routeCreationBloc.add(
+                        ShowRouteListEvent(context: context),
+                      );
+                    },
+                  ),
+                  InkWell(
+                    onTap: () {
+                      routeCreationBloc.add(
+                        const ShowCalendarForSearchEvent(),
+                      );
+                    },
+                    child: OrangeButtonWidget(
+                      textButton: date,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          );
-        },
-      ),
+          ],
+        ),
+      ],
     );
   }
 }
