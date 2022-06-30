@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:uber/scripts/index.dart';
 
 class LocationTextFieldWidget extends StatefulWidget {
@@ -7,6 +9,8 @@ class LocationTextFieldWidget extends StatefulWidget {
   final Color borderColor;
   final Color textColor;
   final Function onTap;
+  final double height;
+  final double width;
 
   const LocationTextFieldWidget({
     required this.hintText,
@@ -16,6 +20,8 @@ class LocationTextFieldWidget extends StatefulWidget {
     this.isNumber = false,
     this.borderColor = AppColors.plum,
     this.textColor = AppColors.orange,
+    this.height = 75.0,
+    this.width = 300.0,
   }) : super(key: key);
 
   @override
@@ -42,8 +48,8 @@ class _LocationTextFieldWidgetState extends State<LocationTextFieldWidget> {
           horizontal: 20.0,
           vertical: 10.0,
         ),
-        height: 75.0,
-        width: 300,
+        height: widget.height,
+        width: widget.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           //color: widget.backgroundColor,

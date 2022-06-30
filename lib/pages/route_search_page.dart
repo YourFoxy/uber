@@ -1,4 +1,5 @@
 import 'package:uber/scripts/index.dart';
+import 'package:uber/widgets/search_routes_dialog_widget.dart';
 
 class RouteSearchPage extends StatefulWidget {
   const RouteSearchPage({Key? key}) : super(key: key);
@@ -201,6 +202,7 @@ class _PlaceForRouteTextFields extends StatelessWidget {
                       );
                     },
                   ),
+                  SearchRoutesDialogWidget(),
                   LocationTextFieldWidget(
                     hintText: 'куда',
                     controller: arrivalPointController,
