@@ -187,43 +187,43 @@ class _PlaceForRouteTextFields extends StatelessWidget {
           children: [
             Center(
               child: Column(
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  LocationTextFieldWidget(
-                    hintText: 'откуда',
-                    controller: departurePointController,
-                    borderColor: AppColors.orange,
-                    textColor: AppColors.orange,
-                    onTap: () {
-                      routeCreationBloc.add(
-                        ShowRouteListEvent(context: context),
-                      );
-                    },
-                  ),
+                children: const [
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // LocationTextFieldWidget(
+                  //   hintText: 'откуда',
+                  //   controller: departurePointController,
+                  //   borderColor: AppColors.orange,
+                  //   textColor: AppColors.orange,
+                  //   onTap: () {
+                  //     routeCreationBloc.add(
+                  //       ShowRouteListEvent(context: context),
+                  //     );
+                  //   },
+                  // ),
                   SearchRoutesDialogWidget(),
-                  LocationTextFieldWidget(
-                    hintText: 'куда',
-                    controller: arrivalPointController,
-                    borderColor: AppColors.orange,
-                    textColor: AppColors.orange,
-                    onTap: () {
-                      routeCreationBloc.add(
-                        ShowRouteListEvent(context: context),
-                      );
-                    },
-                  ),
-                  InkWell(
-                    onTap: () {
-                      routeCreationBloc.add(
-                        const ShowCalendarForSearchEvent(),
-                      );
-                    },
-                    child: OrangeButtonWidget(
-                      textButton: date,
-                    ),
-                  ),
+                  // LocationTextFieldWidget(
+                  //   hintText: 'куда',
+                  //   controller: arrivalPointController,
+                  //   borderColor: AppColors.orange,
+                  //   textColor: AppColors.orange,
+                  //   onTap: () {
+                  //     routeCreationBloc.add(
+                  //       ShowRouteListEvent(context: context),
+                  //     );
+                  //   },
+                  // ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     routeCreationBloc.add(
+                  //       const ShowCalendarForSearchEvent(),
+                  //     );
+                  //   },
+                  //   child: OrangeButtonWidget(
+                  //     textButton: date,
+                  //   ),
+                  // ),
                 ],
               ),
             ),

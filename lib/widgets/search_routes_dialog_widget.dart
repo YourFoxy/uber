@@ -49,7 +49,10 @@ class _SearchRoutesDialogWidgetState extends State<SearchRoutesDialogWidget> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: AppLargeText(text: 'Search'),
+      title: const AppLargeText(
+        text: 'Search',
+        color: AppColors.orange,
+      ),
       backgroundColor: AppColors.plum,
       content: Column(
         children: [
@@ -91,10 +94,17 @@ class _SearchRoutesDialogWidgetState extends State<SearchRoutesDialogWidget> {
       ),
       actions: [
         InkWell(
+          onTap: () {
+          },
           child: Container(
             width: double.infinity,
             height: 50,
             color: AppColors.orange,
+            child: const Center(
+                child: Icon(
+              Icons.search,
+              color: AppColors.dark,
+            )),
           ),
         )
       ],
