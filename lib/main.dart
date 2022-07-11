@@ -45,6 +45,8 @@ void registerBlocsFactory() {
   _getIt.registerFactory<RouteFoundCardBloc>(() => RouteFoundCardBloc());
   _getIt.registerFactory<TextFieldForLocationExpensionBloc>(
       () => TextFieldForLocationExpensionBloc());
+  _getIt
+      .registerFactory<SearchRoutesDialogBloc>(() => SearchRoutesDialogBloc());
 }
 
 class MyApp extends StatelessWidget {

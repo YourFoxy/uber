@@ -47,6 +47,7 @@ class _RouteSearchPageState extends State<RouteSearchPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _routeSearchBloc = BlocProvider.of<RouteSearchBloc>(context);
+    _routeSearchBloc.add(OpenSearchDialogEvent());
   }
 
   @override
@@ -70,79 +71,93 @@ class _RouteSearchPageState extends State<RouteSearchPage> {
           ),
           backgroundColor: AppColors.dark,
           body: SingleChildScrollView(
-            child: Stack(
-              children: [
-                SingleChildScrollView(
-                  child: _PlaceForRouteTextFields(
-                    arrivalPointController: _arrivalPointController,
-                    departurePointController: _departurePointController,
-                    routeCreationBloc: _routeSearchBloc,
-                    date: _date,
-                  ),
-                ),
+            child:
+                //Stack(
+                // children: [
+                // SingleChildScrollView(
+                //   child: _PlaceForRouteTextFields(
+                //     arrivalPointController: _arrivalPointController,
+                //     departurePointController: _departurePointController,
+                //     routeCreationBloc: _routeSearchBloc,
+                //     date: _date,
+                //   ),
+                // ),
                 SafeArea(
-                  child: state.when(
-                    initPage: () => Container(),
-                    showRouteList: (locationMap) => Padding(
-                      padding: const EdgeInsets.only(
-                        top: 235.0,
-                      ),
-                      child: ListOfLocationWidget(
-                        locations: locationMap,
-                        searchLocationString: _arrivalPoint,
-                        onRouteChanged: (location) {
-                          _arrivalPointController.text = location;
-                          _routeSearchBloc.add(CloseWidgetEvent());
-                        },
-                        onClose: () {
-                          print('ddddddddddddddddddddddd');
-                          _routeSearchBloc.add(CloseWidgetEvent());
-                        },
-                      ),
-                    ),
-                    showRoute: () => FoundedRoutesPage(),
-                    closeWidget: () => Container(),
-                    showCalendar: (
-                            //month
-                            ) =>
-                        Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: 360.0,
-                        ),
-                        child: CalendarWidget(
-                          onDateSet: (date) {
-                            _date = date;
-                            setState(() {});
-                          },
-                        ).createWithProvider<CalendarBloc>(),
-                      ),
-                    ),
-                    // showLocationForDeparturePoint: (locationMap) => Padding(
-                    //   padding: const EdgeInsets.only(
-                    //     top: 120.0,
-                    //   ),
-                    //   child: ListOfLocationWidget(
-                    //     locations: locationMap,
-                    //     searchLocationString: _departurePoint,
-                    //     onRouteChanged: (location) {
-                    //       _departurePointController.text = location;
-                    //       _routeSearchBloc
-                    //           .add(const RouteCreationEvent.closeLocation());
-                    //     },
-                    //     onClose: () {
-                    //       print('ddddddddddddddddddddddd');
-                    //       _routeSearchBloc
-                    //           .add(const RouteCreationEvent.closeLocation());
-                    //     },
-                    //   ),
-                    // ),
-                    // closeLocation: () => Container(),
-                  ),
+              child: state.when(
+                initPage: () => Container(),
+                showRoute: (routesAndDates) => ListView.builder(
+                  itemCount: routesAndDates.length,
+                  itemBuilder: (context, index) {
+                    return RouteFoundCardWidget(
+                      date: '${routesAndDates[index][dateFieldInMap]}',
+                      route:
+                          '${routesAndDates[index][fromRoute]} - ${routesAndDates[index][toRoute]}',
+                      phoneNumber: '{routesAndDates[index][phoneNubmer]}',
+                    );
+                  },
                 ),
-              ],
+                openSearchDialog: () => const SearchRoutesDialogWidget()
+                    .createWithProvider<SearchRoutesDialogBloc>(),
+                // showRouteList: (locationMap) => Padding(
+                //   padding: const EdgeInsets.only(
+                //     top: 235.0,
+                //   ),
+                //   child: ListOfLocationWidget(
+                //     locations: locationMap,
+                //     searchLocationString: _arrivalPoint,
+                //     onRouteChanged: (location) {
+                //       _arrivalPointController.text = location;
+                //       _routeSearchBloc.add(CloseWidgetEvent());
+                //     },
+                //     onClose: () {
+                //       print('ddddddddddddddddddddddd');
+                //       _routeSearchBloc.add(CloseWidgetEvent());
+                //     },
+                //   ),
+                // ),
+                // showRoute: () => FoundedRoutesPage(),
+                // closeWidget: () => Container(),
+                // showCalendar: (
+                //         //month
+                //         ) =>
+                //     Center(
+                //   child: Padding(
+                //     padding: const EdgeInsets.only(
+                //       top: 360.0,
+                //     ),
+                //     child: CalendarWidget(
+                //       onDateSet: (date) {
+                //         _date = date;
+                //         setState(() {});
+                //       },
+                //     ).createWithProvider<CalendarBloc>(),
+                //   ),
+                // ),
+                // showLocationForDeparturePoint: (locationMap) => Padding(
+                //   padding: const EdgeInsets.only(
+                //     top: 120.0,
+                //   ),
+                //   child: ListOfLocationWidget(
+                //     locations: locationMap,
+                //     searchLocationString: _departurePoint,
+                //     onRouteChanged: (location) {
+                //       _departurePointController.text = location;
+                //       _routeSearchBloc
+                //           .add(const RouteCreationEvent.closeLocation());
+                //     },
+                //     onClose: () {
+                //       print('ddddddddddddddddddddddd');
+                //       _routeSearchBloc
+                //           .add(const RouteCreationEvent.closeLocation());
+                //     },
+                //   ),
+                // ),
+                // closeLocation: () => Container(),
+              ),
             ),
+            // ],
           ),
+          //),
           floatingActionButton: FloatingActionButton(
             backgroundColor: AppColors.orange,
             onPressed: () async {
@@ -187,7 +202,7 @@ class _PlaceForRouteTextFields extends StatelessWidget {
           children: [
             Center(
               child: Column(
-                children: const [
+                children: [
                   // SizedBox(
                   //   height: 20,
                   // ),
@@ -202,7 +217,8 @@ class _PlaceForRouteTextFields extends StatelessWidget {
                   //     );
                   //   },
                   // ),
-                  SearchRoutesDialogWidget(),
+                  const SearchRoutesDialogWidget()
+                      .createWithProvider<SearchRoutesDialogBloc>(),
                   // LocationTextFieldWidget(
                   //   hintText: 'куда',
                   //   controller: arrivalPointController,

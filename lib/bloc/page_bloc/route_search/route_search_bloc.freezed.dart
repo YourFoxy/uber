@@ -18,22 +18,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$RouteSearchEventTearOff {
   const _$RouteSearchEventTearOff();
 
-  ShowFoundeRouteEvent showRoute() {
-    return const ShowFoundeRouteEvent();
-  }
-
-  ShowRouteListEvent showRouteList({required BuildContext context}) {
-    return ShowRouteListEvent(
-      context: context,
+  ShowFoundeRouteEvent showRoute(
+      {required String fromRoute, required String toRoute}) {
+    return ShowFoundeRouteEvent(
+      fromRoute: fromRoute,
+      toRoute: toRoute,
     );
   }
 
-  ShowCalendarForSearchEvent showCalendar() {
-    return const ShowCalendarForSearchEvent();
-  }
-
-  CloseWidgetEvent closeWidget() {
-    return const CloseWidgetEvent();
+  OpenSearchDialogEvent openSearchDialog() {
+    return const OpenSearchDialogEvent();
   }
 }
 
@@ -44,51 +38,39 @@ const $RouteSearchEvent = _$RouteSearchEventTearOff();
 mixin _$RouteSearchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() showRoute,
-    required TResult Function(BuildContext context) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
+    required TResult Function(String fromRoute, String toRoute) showRoute,
+    required TResult Function() openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? showRoute,
-    TResult Function(BuildContext context)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(String fromRoute, String toRoute)? showRoute,
+    TResult Function()? openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? showRoute,
-    TResult Function(BuildContext context)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(String fromRoute, String toRoute)? showRoute,
+    TResult Function()? openSearchDialog,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ShowFoundeRouteEvent value) showRoute,
-    required TResult Function(ShowRouteListEvent value) showRouteList,
-    required TResult Function(ShowCalendarForSearchEvent value) showCalendar,
-    required TResult Function(CloseWidgetEvent value) closeWidget,
+    required TResult Function(OpenSearchDialogEvent value) openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(ShowRouteListEvent value)? showRouteList,
-    TResult Function(ShowCalendarForSearchEvent value)? showCalendar,
-    TResult Function(CloseWidgetEvent value)? closeWidget,
+    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(ShowRouteListEvent value)? showRouteList,
-    TResult Function(ShowCalendarForSearchEvent value)? showCalendar,
-    TResult Function(CloseWidgetEvent value)? closeWidget,
+    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -116,6 +98,7 @@ abstract class $ShowFoundeRouteEventCopyWith<$Res> {
   factory $ShowFoundeRouteEventCopyWith(ShowFoundeRouteEvent value,
           $Res Function(ShowFoundeRouteEvent) then) =
       _$ShowFoundeRouteEventCopyWithImpl<$Res>;
+  $Res call({String fromRoute, String toRoute});
 }
 
 /// @nodoc
@@ -128,6 +111,23 @@ class _$ShowFoundeRouteEventCopyWithImpl<$Res>
 
   @override
   ShowFoundeRouteEvent get _value => super._value as ShowFoundeRouteEvent;
+
+  @override
+  $Res call({
+    Object? fromRoute = freezed,
+    Object? toRoute = freezed,
+  }) {
+    return _then(ShowFoundeRouteEvent(
+      fromRoute: fromRoute == freezed
+          ? _value.fromRoute
+          : fromRoute // ignore: cast_nullable_to_non_nullable
+              as String,
+      toRoute: toRoute == freezed
+          ? _value.toRoute
+          : toRoute // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
@@ -135,61 +135,76 @@ class _$ShowFoundeRouteEventCopyWithImpl<$Res>
 class _$ShowFoundeRouteEvent
     with DiagnosticableTreeMixin
     implements ShowFoundeRouteEvent {
-  const _$ShowFoundeRouteEvent();
+  const _$ShowFoundeRouteEvent(
+      {required this.fromRoute, required this.toRoute});
+
+  @override
+  final String fromRoute;
+  @override
+  final String toRoute;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteSearchEvent.showRoute()';
+    return 'RouteSearchEvent.showRoute(fromRoute: $fromRoute, toRoute: $toRoute)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'RouteSearchEvent.showRoute'));
+    properties
+      ..add(DiagnosticsProperty('type', 'RouteSearchEvent.showRoute'))
+      ..add(DiagnosticsProperty('fromRoute', fromRoute))
+      ..add(DiagnosticsProperty('toRoute', toRoute));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ShowFoundeRouteEvent);
+        (other.runtimeType == runtimeType &&
+            other is ShowFoundeRouteEvent &&
+            const DeepCollectionEquality().equals(other.fromRoute, fromRoute) &&
+            const DeepCollectionEquality().equals(other.toRoute, toRoute));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(fromRoute),
+      const DeepCollectionEquality().hash(toRoute));
+
+  @JsonKey(ignore: true)
+  @override
+  $ShowFoundeRouteEventCopyWith<ShowFoundeRouteEvent> get copyWith =>
+      _$ShowFoundeRouteEventCopyWithImpl<ShowFoundeRouteEvent>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() showRoute,
-    required TResult Function(BuildContext context) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
+    required TResult Function(String fromRoute, String toRoute) showRoute,
+    required TResult Function() openSearchDialog,
   }) {
-    return showRoute();
+    return showRoute(fromRoute, toRoute);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? showRoute,
-    TResult Function(BuildContext context)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(String fromRoute, String toRoute)? showRoute,
+    TResult Function()? openSearchDialog,
   }) {
-    return showRoute?.call();
+    return showRoute?.call(fromRoute, toRoute);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? showRoute,
-    TResult Function(BuildContext context)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(String fromRoute, String toRoute)? showRoute,
+    TResult Function()? openSearchDialog,
     required TResult orElse(),
   }) {
     if (showRoute != null) {
-      return showRoute();
+      return showRoute(fromRoute, toRoute);
     }
     return orElse();
   }
@@ -198,9 +213,7 @@ class _$ShowFoundeRouteEvent
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ShowFoundeRouteEvent value) showRoute,
-    required TResult Function(ShowRouteListEvent value) showRouteList,
-    required TResult Function(ShowCalendarForSearchEvent value) showCalendar,
-    required TResult Function(CloseWidgetEvent value) closeWidget,
+    required TResult Function(OpenSearchDialogEvent value) openSearchDialog,
   }) {
     return showRoute(this);
   }
@@ -209,9 +222,7 @@ class _$ShowFoundeRouteEvent
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(ShowRouteListEvent value)? showRouteList,
-    TResult Function(ShowCalendarForSearchEvent value)? showCalendar,
-    TResult Function(CloseWidgetEvent value)? closeWidget,
+    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
   }) {
     return showRoute?.call(this);
   }
@@ -220,9 +231,7 @@ class _$ShowFoundeRouteEvent
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(ShowRouteListEvent value)? showRouteList,
-    TResult Function(ShowCalendarForSearchEvent value)? showCalendar,
-    TResult Function(CloseWidgetEvent value)? closeWidget,
+    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
     required TResult orElse(),
   }) {
     if (showRoute != null) {
@@ -233,210 +242,59 @@ class _$ShowFoundeRouteEvent
 }
 
 abstract class ShowFoundeRouteEvent implements RouteSearchEvent {
-  const factory ShowFoundeRouteEvent() = _$ShowFoundeRouteEvent;
-}
+  const factory ShowFoundeRouteEvent(
+      {required String fromRoute,
+      required String toRoute}) = _$ShowFoundeRouteEvent;
 
-/// @nodoc
-abstract class $ShowRouteListEventCopyWith<$Res> {
-  factory $ShowRouteListEventCopyWith(
-          ShowRouteListEvent value, $Res Function(ShowRouteListEvent) then) =
-      _$ShowRouteListEventCopyWithImpl<$Res>;
-  $Res call({BuildContext context});
-}
-
-/// @nodoc
-class _$ShowRouteListEventCopyWithImpl<$Res>
-    extends _$RouteSearchEventCopyWithImpl<$Res>
-    implements $ShowRouteListEventCopyWith<$Res> {
-  _$ShowRouteListEventCopyWithImpl(
-      ShowRouteListEvent _value, $Res Function(ShowRouteListEvent) _then)
-      : super(_value, (v) => _then(v as ShowRouteListEvent));
-
-  @override
-  ShowRouteListEvent get _value => super._value as ShowRouteListEvent;
-
-  @override
-  $Res call({
-    Object? context = freezed,
-  }) {
-    return _then(ShowRouteListEvent(
-      context: context == freezed
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ShowRouteListEvent
-    with DiagnosticableTreeMixin
-    implements ShowRouteListEvent {
-  const _$ShowRouteListEvent({required this.context});
-
-  @override
-  final BuildContext context;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteSearchEvent.showRouteList(context: $context)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RouteSearchEvent.showRouteList'))
-      ..add(DiagnosticsProperty('context', context));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is ShowRouteListEvent &&
-            const DeepCollectionEquality().equals(other.context, context));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
-
+  String get fromRoute;
+  String get toRoute;
   @JsonKey(ignore: true)
-  @override
-  $ShowRouteListEventCopyWith<ShowRouteListEvent> get copyWith =>
-      _$ShowRouteListEventCopyWithImpl<ShowRouteListEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() showRoute,
-    required TResult Function(BuildContext context) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
-  }) {
-    return showRouteList(context);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? showRoute,
-    TResult Function(BuildContext context)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
-  }) {
-    return showRouteList?.call(context);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? showRoute,
-    TResult Function(BuildContext context)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
-    required TResult orElse(),
-  }) {
-    if (showRouteList != null) {
-      return showRouteList(context);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ShowFoundeRouteEvent value) showRoute,
-    required TResult Function(ShowRouteListEvent value) showRouteList,
-    required TResult Function(ShowCalendarForSearchEvent value) showCalendar,
-    required TResult Function(CloseWidgetEvent value) closeWidget,
-  }) {
-    return showRouteList(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(ShowRouteListEvent value)? showRouteList,
-    TResult Function(ShowCalendarForSearchEvent value)? showCalendar,
-    TResult Function(CloseWidgetEvent value)? closeWidget,
-  }) {
-    return showRouteList?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(ShowRouteListEvent value)? showRouteList,
-    TResult Function(ShowCalendarForSearchEvent value)? showCalendar,
-    TResult Function(CloseWidgetEvent value)? closeWidget,
-    required TResult orElse(),
-  }) {
-    if (showRouteList != null) {
-      return showRouteList(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ShowRouteListEvent implements RouteSearchEvent {
-  const factory ShowRouteListEvent({required BuildContext context}) =
-      _$ShowRouteListEvent;
-
-  BuildContext get context;
-  @JsonKey(ignore: true)
-  $ShowRouteListEventCopyWith<ShowRouteListEvent> get copyWith =>
+  $ShowFoundeRouteEventCopyWith<ShowFoundeRouteEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShowCalendarForSearchEventCopyWith<$Res> {
-  factory $ShowCalendarForSearchEventCopyWith(ShowCalendarForSearchEvent value,
-          $Res Function(ShowCalendarForSearchEvent) then) =
-      _$ShowCalendarForSearchEventCopyWithImpl<$Res>;
+abstract class $OpenSearchDialogEventCopyWith<$Res> {
+  factory $OpenSearchDialogEventCopyWith(OpenSearchDialogEvent value,
+          $Res Function(OpenSearchDialogEvent) then) =
+      _$OpenSearchDialogEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ShowCalendarForSearchEventCopyWithImpl<$Res>
+class _$OpenSearchDialogEventCopyWithImpl<$Res>
     extends _$RouteSearchEventCopyWithImpl<$Res>
-    implements $ShowCalendarForSearchEventCopyWith<$Res> {
-  _$ShowCalendarForSearchEventCopyWithImpl(ShowCalendarForSearchEvent _value,
-      $Res Function(ShowCalendarForSearchEvent) _then)
-      : super(_value, (v) => _then(v as ShowCalendarForSearchEvent));
+    implements $OpenSearchDialogEventCopyWith<$Res> {
+  _$OpenSearchDialogEventCopyWithImpl(
+      OpenSearchDialogEvent _value, $Res Function(OpenSearchDialogEvent) _then)
+      : super(_value, (v) => _then(v as OpenSearchDialogEvent));
 
   @override
-  ShowCalendarForSearchEvent get _value =>
-      super._value as ShowCalendarForSearchEvent;
+  OpenSearchDialogEvent get _value => super._value as OpenSearchDialogEvent;
 }
 
 /// @nodoc
 
-class _$ShowCalendarForSearchEvent
+class _$OpenSearchDialogEvent
     with DiagnosticableTreeMixin
-    implements ShowCalendarForSearchEvent {
-  const _$ShowCalendarForSearchEvent();
+    implements OpenSearchDialogEvent {
+  const _$OpenSearchDialogEvent();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteSearchEvent.showCalendar()';
+    return 'RouteSearchEvent.openSearchDialog()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'RouteSearchEvent.showCalendar'));
+      ..add(DiagnosticsProperty('type', 'RouteSearchEvent.openSearchDialog'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is ShowCalendarForSearchEvent);
+        (other.runtimeType == runtimeType && other is OpenSearchDialogEvent);
   }
 
   @override
@@ -445,36 +303,30 @@ class _$ShowCalendarForSearchEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() showRoute,
-    required TResult Function(BuildContext context) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
+    required TResult Function(String fromRoute, String toRoute) showRoute,
+    required TResult Function() openSearchDialog,
   }) {
-    return showCalendar();
+    return openSearchDialog();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? showRoute,
-    TResult Function(BuildContext context)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(String fromRoute, String toRoute)? showRoute,
+    TResult Function()? openSearchDialog,
   }) {
-    return showCalendar?.call();
+    return openSearchDialog?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? showRoute,
-    TResult Function(BuildContext context)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(String fromRoute, String toRoute)? showRoute,
+    TResult Function()? openSearchDialog,
     required TResult orElse(),
   }) {
-    if (showCalendar != null) {
-      return showCalendar();
+    if (openSearchDialog != null) {
+      return openSearchDialog();
     }
     return orElse();
   }
@@ -483,168 +335,36 @@ class _$ShowCalendarForSearchEvent
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ShowFoundeRouteEvent value) showRoute,
-    required TResult Function(ShowRouteListEvent value) showRouteList,
-    required TResult Function(ShowCalendarForSearchEvent value) showCalendar,
-    required TResult Function(CloseWidgetEvent value) closeWidget,
+    required TResult Function(OpenSearchDialogEvent value) openSearchDialog,
   }) {
-    return showCalendar(this);
+    return openSearchDialog(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(ShowRouteListEvent value)? showRouteList,
-    TResult Function(ShowCalendarForSearchEvent value)? showCalendar,
-    TResult Function(CloseWidgetEvent value)? closeWidget,
+    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
   }) {
-    return showCalendar?.call(this);
+    return openSearchDialog?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(ShowRouteListEvent value)? showRouteList,
-    TResult Function(ShowCalendarForSearchEvent value)? showCalendar,
-    TResult Function(CloseWidgetEvent value)? closeWidget,
+    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
     required TResult orElse(),
   }) {
-    if (showCalendar != null) {
-      return showCalendar(this);
+    if (openSearchDialog != null) {
+      return openSearchDialog(this);
     }
     return orElse();
   }
 }
 
-abstract class ShowCalendarForSearchEvent implements RouteSearchEvent {
-  const factory ShowCalendarForSearchEvent() = _$ShowCalendarForSearchEvent;
-}
-
-/// @nodoc
-abstract class $CloseWidgetEventCopyWith<$Res> {
-  factory $CloseWidgetEventCopyWith(
-          CloseWidgetEvent value, $Res Function(CloseWidgetEvent) then) =
-      _$CloseWidgetEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$CloseWidgetEventCopyWithImpl<$Res>
-    extends _$RouteSearchEventCopyWithImpl<$Res>
-    implements $CloseWidgetEventCopyWith<$Res> {
-  _$CloseWidgetEventCopyWithImpl(
-      CloseWidgetEvent _value, $Res Function(CloseWidgetEvent) _then)
-      : super(_value, (v) => _then(v as CloseWidgetEvent));
-
-  @override
-  CloseWidgetEvent get _value => super._value as CloseWidgetEvent;
-}
-
-/// @nodoc
-
-class _$CloseWidgetEvent
-    with DiagnosticableTreeMixin
-    implements CloseWidgetEvent {
-  const _$CloseWidgetEvent();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteSearchEvent.closeWidget()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RouteSearchEvent.closeWidget'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CloseWidgetEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() showRoute,
-    required TResult Function(BuildContext context) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
-  }) {
-    return closeWidget();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? showRoute,
-    TResult Function(BuildContext context)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
-  }) {
-    return closeWidget?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? showRoute,
-    TResult Function(BuildContext context)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
-    required TResult orElse(),
-  }) {
-    if (closeWidget != null) {
-      return closeWidget();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ShowFoundeRouteEvent value) showRoute,
-    required TResult Function(ShowRouteListEvent value) showRouteList,
-    required TResult Function(ShowCalendarForSearchEvent value) showCalendar,
-    required TResult Function(CloseWidgetEvent value) closeWidget,
-  }) {
-    return closeWidget(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(ShowRouteListEvent value)? showRouteList,
-    TResult Function(ShowCalendarForSearchEvent value)? showCalendar,
-    TResult Function(CloseWidgetEvent value)? closeWidget,
-  }) {
-    return closeWidget?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(ShowRouteListEvent value)? showRouteList,
-    TResult Function(ShowCalendarForSearchEvent value)? showCalendar,
-    TResult Function(CloseWidgetEvent value)? closeWidget,
-    required TResult orElse(),
-  }) {
-    if (closeWidget != null) {
-      return closeWidget(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CloseWidgetEvent implements RouteSearchEvent {
-  const factory CloseWidgetEvent() = _$CloseWidgetEvent;
+abstract class OpenSearchDialogEvent implements RouteSearchEvent {
+  const factory OpenSearchDialogEvent() = _$OpenSearchDialogEvent;
 }
 
 /// @nodoc
@@ -655,22 +375,15 @@ class _$RouteSearchStateTearOff {
     return const InitSearchRouteState();
   }
 
-  ShowFoundeRouteState showRoute() {
-    return const ShowFoundeRouteState();
-  }
-
-  ShowRouteListState showRouteList({required List<List<String>> locationMap}) {
-    return ShowRouteListState(
-      locationMap: locationMap,
+  ShowFoundeRouteState showRoute(
+      {required List<Map<String, String>> routesAndDates}) {
+    return ShowFoundeRouteState(
+      routesAndDates: routesAndDates,
     );
   }
 
-  ShowCalendarForSearchState showCalendar() {
-    return const ShowCalendarForSearchState();
-  }
-
-  CloseWidgetState closeWidget() {
-    return const CloseWidgetState();
+  OpenSearchDialogState openSearchDialog() {
+    return const OpenSearchDialogState();
   }
 }
 
@@ -682,28 +395,23 @@ mixin _$RouteSearchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initPage,
-    required TResult Function() showRoute,
-    required TResult Function(List<List<String>> locationMap) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
+    required TResult Function(List<Map<String, String>> routesAndDates)
+        showRoute,
+    required TResult Function() openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(List<Map<String, String>> routesAndDates)? showRoute,
+    TResult Function()? openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(List<Map<String, String>> routesAndDates)? showRoute,
+    TResult Function()? openSearchDialog,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -711,27 +419,21 @@ mixin _$RouteSearchState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchRouteState value) initPage,
     required TResult Function(ShowFoundeRouteState value) showRoute,
-    required TResult Function(ShowRouteListState value) showRouteList,
-    required TResult Function(ShowCalendarForSearchState value) showCalendar,
-    required TResult Function(CloseWidgetState value) closeWidget,
+    required TResult Function(OpenSearchDialogState value) openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitSearchRouteState value)? initPage,
     TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
+    TResult Function(OpenSearchDialogState value)? openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchRouteState value)? initPage,
     TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
+    TResult Function(OpenSearchDialogState value)? openSearchDialog,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -804,10 +506,9 @@ class _$InitSearchRouteState
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initPage,
-    required TResult Function() showRoute,
-    required TResult Function(List<List<String>> locationMap) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
+    required TResult Function(List<Map<String, String>> routesAndDates)
+        showRoute,
+    required TResult Function() openSearchDialog,
   }) {
     return initPage();
   }
@@ -816,10 +517,8 @@ class _$InitSearchRouteState
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(List<Map<String, String>> routesAndDates)? showRoute,
+    TResult Function()? openSearchDialog,
   }) {
     return initPage?.call();
   }
@@ -828,10 +527,8 @@ class _$InitSearchRouteState
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(List<Map<String, String>> routesAndDates)? showRoute,
+    TResult Function()? openSearchDialog,
     required TResult orElse(),
   }) {
     if (initPage != null) {
@@ -845,9 +542,7 @@ class _$InitSearchRouteState
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchRouteState value) initPage,
     required TResult Function(ShowFoundeRouteState value) showRoute,
-    required TResult Function(ShowRouteListState value) showRouteList,
-    required TResult Function(ShowCalendarForSearchState value) showCalendar,
-    required TResult Function(CloseWidgetState value) closeWidget,
+    required TResult Function(OpenSearchDialogState value) openSearchDialog,
   }) {
     return initPage(this);
   }
@@ -857,9 +552,7 @@ class _$InitSearchRouteState
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitSearchRouteState value)? initPage,
     TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
+    TResult Function(OpenSearchDialogState value)? openSearchDialog,
   }) {
     return initPage?.call(this);
   }
@@ -869,9 +562,7 @@ class _$InitSearchRouteState
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchRouteState value)? initPage,
     TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
+    TResult Function(OpenSearchDialogState value)? openSearchDialog,
     required TResult orElse(),
   }) {
     if (initPage != null) {
@@ -890,6 +581,7 @@ abstract class $ShowFoundeRouteStateCopyWith<$Res> {
   factory $ShowFoundeRouteStateCopyWith(ShowFoundeRouteState value,
           $Res Function(ShowFoundeRouteState) then) =
       _$ShowFoundeRouteStateCopyWithImpl<$Res>;
+  $Res call({List<Map<String, String>> routesAndDates});
 }
 
 /// @nodoc
@@ -902,6 +594,18 @@ class _$ShowFoundeRouteStateCopyWithImpl<$Res>
 
   @override
   ShowFoundeRouteState get _value => super._value as ShowFoundeRouteState;
+
+  @override
+  $Res call({
+    Object? routesAndDates = freezed,
+  }) {
+    return _then(ShowFoundeRouteState(
+      routesAndDates: routesAndDates == freezed
+          ? _value.routesAndDates
+          : routesAndDates // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, String>>,
+    ));
+  }
 }
 
 /// @nodoc
@@ -909,64 +613,74 @@ class _$ShowFoundeRouteStateCopyWithImpl<$Res>
 class _$ShowFoundeRouteState
     with DiagnosticableTreeMixin
     implements ShowFoundeRouteState {
-  const _$ShowFoundeRouteState();
+  const _$ShowFoundeRouteState({required this.routesAndDates});
+
+  @override
+  final List<Map<String, String>> routesAndDates;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteSearchState.showRoute()';
+    return 'RouteSearchState.showRoute(routesAndDates: $routesAndDates)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'RouteSearchState.showRoute'));
+    properties
+      ..add(DiagnosticsProperty('type', 'RouteSearchState.showRoute'))
+      ..add(DiagnosticsProperty('routesAndDates', routesAndDates));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ShowFoundeRouteState);
+        (other.runtimeType == runtimeType &&
+            other is ShowFoundeRouteState &&
+            const DeepCollectionEquality()
+                .equals(other.routesAndDates, routesAndDates));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(routesAndDates));
+
+  @JsonKey(ignore: true)
+  @override
+  $ShowFoundeRouteStateCopyWith<ShowFoundeRouteState> get copyWith =>
+      _$ShowFoundeRouteStateCopyWithImpl<ShowFoundeRouteState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initPage,
-    required TResult Function() showRoute,
-    required TResult Function(List<List<String>> locationMap) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
+    required TResult Function(List<Map<String, String>> routesAndDates)
+        showRoute,
+    required TResult Function() openSearchDialog,
   }) {
-    return showRoute();
+    return showRoute(routesAndDates);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(List<Map<String, String>> routesAndDates)? showRoute,
+    TResult Function()? openSearchDialog,
   }) {
-    return showRoute?.call();
+    return showRoute?.call(routesAndDates);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(List<Map<String, String>> routesAndDates)? showRoute,
+    TResult Function()? openSearchDialog,
     required TResult orElse(),
   }) {
     if (showRoute != null) {
-      return showRoute();
+      return showRoute(routesAndDates);
     }
     return orElse();
   }
@@ -976,9 +690,7 @@ class _$ShowFoundeRouteState
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchRouteState value) initPage,
     required TResult Function(ShowFoundeRouteState value) showRoute,
-    required TResult Function(ShowRouteListState value) showRouteList,
-    required TResult Function(ShowCalendarForSearchState value) showCalendar,
-    required TResult Function(CloseWidgetState value) closeWidget,
+    required TResult Function(OpenSearchDialogState value) openSearchDialog,
   }) {
     return showRoute(this);
   }
@@ -988,9 +700,7 @@ class _$ShowFoundeRouteState
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitSearchRouteState value)? initPage,
     TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
+    TResult Function(OpenSearchDialogState value)? openSearchDialog,
   }) {
     return showRoute?.call(this);
   }
@@ -1000,9 +710,7 @@ class _$ShowFoundeRouteState
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchRouteState value)? initPage,
     TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
+    TResult Function(OpenSearchDialogState value)? openSearchDialog,
     required TResult orElse(),
   }) {
     if (showRoute != null) {
@@ -1013,217 +721,58 @@ class _$ShowFoundeRouteState
 }
 
 abstract class ShowFoundeRouteState implements RouteSearchState {
-  const factory ShowFoundeRouteState() = _$ShowFoundeRouteState;
-}
+  const factory ShowFoundeRouteState(
+          {required List<Map<String, String>> routesAndDates}) =
+      _$ShowFoundeRouteState;
 
-/// @nodoc
-abstract class $ShowRouteListStateCopyWith<$Res> {
-  factory $ShowRouteListStateCopyWith(
-          ShowRouteListState value, $Res Function(ShowRouteListState) then) =
-      _$ShowRouteListStateCopyWithImpl<$Res>;
-  $Res call({List<List<String>> locationMap});
-}
-
-/// @nodoc
-class _$ShowRouteListStateCopyWithImpl<$Res>
-    extends _$RouteSearchStateCopyWithImpl<$Res>
-    implements $ShowRouteListStateCopyWith<$Res> {
-  _$ShowRouteListStateCopyWithImpl(
-      ShowRouteListState _value, $Res Function(ShowRouteListState) _then)
-      : super(_value, (v) => _then(v as ShowRouteListState));
-
-  @override
-  ShowRouteListState get _value => super._value as ShowRouteListState;
-
-  @override
-  $Res call({
-    Object? locationMap = freezed,
-  }) {
-    return _then(ShowRouteListState(
-      locationMap: locationMap == freezed
-          ? _value.locationMap
-          : locationMap // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ShowRouteListState
-    with DiagnosticableTreeMixin
-    implements ShowRouteListState {
-  const _$ShowRouteListState({required this.locationMap});
-
-  @override
-  final List<List<String>> locationMap;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteSearchState.showRouteList(locationMap: $locationMap)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RouteSearchState.showRouteList'))
-      ..add(DiagnosticsProperty('locationMap', locationMap));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is ShowRouteListState &&
-            const DeepCollectionEquality()
-                .equals(other.locationMap, locationMap));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(locationMap));
-
+  List<Map<String, String>> get routesAndDates;
   @JsonKey(ignore: true)
-  @override
-  $ShowRouteListStateCopyWith<ShowRouteListState> get copyWith =>
-      _$ShowRouteListStateCopyWithImpl<ShowRouteListState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initPage,
-    required TResult Function() showRoute,
-    required TResult Function(List<List<String>> locationMap) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
-  }) {
-    return showRouteList(locationMap);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
-  }) {
-    return showRouteList?.call(locationMap);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
-    required TResult orElse(),
-  }) {
-    if (showRouteList != null) {
-      return showRouteList(locationMap);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(InitSearchRouteState value) initPage,
-    required TResult Function(ShowFoundeRouteState value) showRoute,
-    required TResult Function(ShowRouteListState value) showRouteList,
-    required TResult Function(ShowCalendarForSearchState value) showCalendar,
-    required TResult Function(CloseWidgetState value) closeWidget,
-  }) {
-    return showRouteList(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitSearchRouteState value)? initPage,
-    TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
-  }) {
-    return showRouteList?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitSearchRouteState value)? initPage,
-    TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
-    required TResult orElse(),
-  }) {
-    if (showRouteList != null) {
-      return showRouteList(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ShowRouteListState implements RouteSearchState {
-  const factory ShowRouteListState({required List<List<String>> locationMap}) =
-      _$ShowRouteListState;
-
-  List<List<String>> get locationMap;
-  @JsonKey(ignore: true)
-  $ShowRouteListStateCopyWith<ShowRouteListState> get copyWith =>
+  $ShowFoundeRouteStateCopyWith<ShowFoundeRouteState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShowCalendarForSearchStateCopyWith<$Res> {
-  factory $ShowCalendarForSearchStateCopyWith(ShowCalendarForSearchState value,
-          $Res Function(ShowCalendarForSearchState) then) =
-      _$ShowCalendarForSearchStateCopyWithImpl<$Res>;
+abstract class $OpenSearchDialogStateCopyWith<$Res> {
+  factory $OpenSearchDialogStateCopyWith(OpenSearchDialogState value,
+          $Res Function(OpenSearchDialogState) then) =
+      _$OpenSearchDialogStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ShowCalendarForSearchStateCopyWithImpl<$Res>
+class _$OpenSearchDialogStateCopyWithImpl<$Res>
     extends _$RouteSearchStateCopyWithImpl<$Res>
-    implements $ShowCalendarForSearchStateCopyWith<$Res> {
-  _$ShowCalendarForSearchStateCopyWithImpl(ShowCalendarForSearchState _value,
-      $Res Function(ShowCalendarForSearchState) _then)
-      : super(_value, (v) => _then(v as ShowCalendarForSearchState));
+    implements $OpenSearchDialogStateCopyWith<$Res> {
+  _$OpenSearchDialogStateCopyWithImpl(
+      OpenSearchDialogState _value, $Res Function(OpenSearchDialogState) _then)
+      : super(_value, (v) => _then(v as OpenSearchDialogState));
 
   @override
-  ShowCalendarForSearchState get _value =>
-      super._value as ShowCalendarForSearchState;
+  OpenSearchDialogState get _value => super._value as OpenSearchDialogState;
 }
 
 /// @nodoc
 
-class _$ShowCalendarForSearchState
+class _$OpenSearchDialogState
     with DiagnosticableTreeMixin
-    implements ShowCalendarForSearchState {
-  const _$ShowCalendarForSearchState();
+    implements OpenSearchDialogState {
+  const _$OpenSearchDialogState();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteSearchState.showCalendar()';
+    return 'RouteSearchState.openSearchDialog()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'RouteSearchState.showCalendar'));
+      ..add(DiagnosticsProperty('type', 'RouteSearchState.openSearchDialog'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is ShowCalendarForSearchState);
+        (other.runtimeType == runtimeType && other is OpenSearchDialogState);
   }
 
   @override
@@ -1233,38 +782,33 @@ class _$ShowCalendarForSearchState
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initPage,
-    required TResult Function() showRoute,
-    required TResult Function(List<List<String>> locationMap) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
+    required TResult Function(List<Map<String, String>> routesAndDates)
+        showRoute,
+    required TResult Function() openSearchDialog,
   }) {
-    return showCalendar();
+    return openSearchDialog();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(List<Map<String, String>> routesAndDates)? showRoute,
+    TResult Function()? openSearchDialog,
   }) {
-    return showCalendar?.call();
+    return openSearchDialog?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
+    TResult Function(List<Map<String, String>> routesAndDates)? showRoute,
+    TResult Function()? openSearchDialog,
     required TResult orElse(),
   }) {
-    if (showCalendar != null) {
-      return showCalendar();
+    if (openSearchDialog != null) {
+      return openSearchDialog();
     }
     return orElse();
   }
@@ -1274,11 +818,9 @@ class _$ShowCalendarForSearchState
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchRouteState value) initPage,
     required TResult Function(ShowFoundeRouteState value) showRoute,
-    required TResult Function(ShowRouteListState value) showRouteList,
-    required TResult Function(ShowCalendarForSearchState value) showCalendar,
-    required TResult Function(CloseWidgetState value) closeWidget,
+    required TResult Function(OpenSearchDialogState value) openSearchDialog,
   }) {
-    return showCalendar(this);
+    return openSearchDialog(this);
   }
 
   @override
@@ -1286,11 +828,9 @@ class _$ShowCalendarForSearchState
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitSearchRouteState value)? initPage,
     TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
+    TResult Function(OpenSearchDialogState value)? openSearchDialog,
   }) {
-    return showCalendar?.call(this);
+    return openSearchDialog?.call(this);
   }
 
   @override
@@ -1298,150 +838,16 @@ class _$ShowCalendarForSearchState
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchRouteState value)? initPage,
     TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
+    TResult Function(OpenSearchDialogState value)? openSearchDialog,
     required TResult orElse(),
   }) {
-    if (showCalendar != null) {
-      return showCalendar(this);
+    if (openSearchDialog != null) {
+      return openSearchDialog(this);
     }
     return orElse();
   }
 }
 
-abstract class ShowCalendarForSearchState implements RouteSearchState {
-  const factory ShowCalendarForSearchState() = _$ShowCalendarForSearchState;
-}
-
-/// @nodoc
-abstract class $CloseWidgetStateCopyWith<$Res> {
-  factory $CloseWidgetStateCopyWith(
-          CloseWidgetState value, $Res Function(CloseWidgetState) then) =
-      _$CloseWidgetStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$CloseWidgetStateCopyWithImpl<$Res>
-    extends _$RouteSearchStateCopyWithImpl<$Res>
-    implements $CloseWidgetStateCopyWith<$Res> {
-  _$CloseWidgetStateCopyWithImpl(
-      CloseWidgetState _value, $Res Function(CloseWidgetState) _then)
-      : super(_value, (v) => _then(v as CloseWidgetState));
-
-  @override
-  CloseWidgetState get _value => super._value as CloseWidgetState;
-}
-
-/// @nodoc
-
-class _$CloseWidgetState
-    with DiagnosticableTreeMixin
-    implements CloseWidgetState {
-  const _$CloseWidgetState();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteSearchState.closeWidget()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RouteSearchState.closeWidget'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CloseWidgetState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initPage,
-    required TResult Function() showRoute,
-    required TResult Function(List<List<String>> locationMap) showRouteList,
-    required TResult Function() showCalendar,
-    required TResult Function() closeWidget,
-  }) {
-    return closeWidget();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
-  }) {
-    return closeWidget?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initPage,
-    TResult Function()? showRoute,
-    TResult Function(List<List<String>> locationMap)? showRouteList,
-    TResult Function()? showCalendar,
-    TResult Function()? closeWidget,
-    required TResult orElse(),
-  }) {
-    if (closeWidget != null) {
-      return closeWidget();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(InitSearchRouteState value) initPage,
-    required TResult Function(ShowFoundeRouteState value) showRoute,
-    required TResult Function(ShowRouteListState value) showRouteList,
-    required TResult Function(ShowCalendarForSearchState value) showCalendar,
-    required TResult Function(CloseWidgetState value) closeWidget,
-  }) {
-    return closeWidget(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InitSearchRouteState value)? initPage,
-    TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
-  }) {
-    return closeWidget?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitSearchRouteState value)? initPage,
-    TResult Function(ShowFoundeRouteState value)? showRoute,
-    TResult Function(ShowRouteListState value)? showRouteList,
-    TResult Function(ShowCalendarForSearchState value)? showCalendar,
-    TResult Function(CloseWidgetState value)? closeWidget,
-    required TResult orElse(),
-  }) {
-    if (closeWidget != null) {
-      return closeWidget(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CloseWidgetState implements RouteSearchState {
-  const factory CloseWidgetState() = _$CloseWidgetState;
+abstract class OpenSearchDialogState implements RouteSearchState {
+  const factory OpenSearchDialogState() = _$OpenSearchDialogState;
 }

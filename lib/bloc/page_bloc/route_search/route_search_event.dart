@@ -2,12 +2,15 @@ part of 'route_search_bloc.dart';
 
 @freezed
 class RouteSearchEvent with _$RouteSearchEvent {
-  const factory RouteSearchEvent.showRoute() = ShowFoundeRouteEvent;
-  const factory RouteSearchEvent.showRouteList(
-      {required BuildContext context}) = ShowRouteListEvent;
-  const factory RouteSearchEvent.showCalendar() = ShowCalendarForSearchEvent;
+  const factory RouteSearchEvent.showRoute(
+      {required String fromRoute,
+      required String toRoute}) = ShowFoundeRouteEvent;
+  const factory RouteSearchEvent.openSearchDialog() = OpenSearchDialogEvent;
+  // const factory RouteSearchEvent.showRouteList(
+  //     {required BuildContext context}) = ShowRouteListEvent;
+  // const factory RouteSearchEvent.showCalendar() = ShowCalendarForSearchEvent;
 
-  const factory RouteSearchEvent.closeWidget() = CloseWidgetEvent;
+  //const factory RouteSearchEvent.closeWidget() = CloseWidgetEvent;
   // const factory RouteSearchEvent.searchRoutes({
   //   required String fromRoute,
   //   required String toRoute,

@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:flutter/material.dart';
 import 'package:uber/scripts/index.dart';
 
 class ListOfLocationWidget extends StatelessWidget {
