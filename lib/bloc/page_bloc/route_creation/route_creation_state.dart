@@ -10,8 +10,5 @@ class RouteCreationState with _$RouteCreationState {
           {required List<List<String>> locationMap}) =
       _ShowLocationForDeparturePointState;
   const factory RouteCreationState.closeLocation() = _CloseLocationState;
-  const factory RouteCreationState.showCalendar(
-    //{required List<String> month}
-    ) =
-      _ShowCalendarState;
+  const factory RouteCreationState.showCalendar() = _ShowCalendarState;
 }

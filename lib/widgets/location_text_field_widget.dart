@@ -50,7 +50,6 @@ class _LocationTextFieldWidgetState extends State<LocationTextFieldWidget> {
         width: widget.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          //color: widget.backgroundColor,
           border: Border.all(
             width: 2,
             color: widget.borderColor,

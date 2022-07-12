@@ -68,7 +68,6 @@ class ListOfLocationWidget extends StatelessWidget {
                   );
                 },
               ),
-
               Align(
                 alignment: Alignment.topRight,
                 child: Container(
@@ -88,7 +87,6 @@ class ListOfLocationWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              // IconB),
             ],
           ),
         ),

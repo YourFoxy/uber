@@ -57,8 +57,8 @@ class _RouteSearchPageState extends State<RouteSearchPage> {
                   );
                 },
                 onRouteSet: (route) {
-                  _departurePoint = route[0];
-                  _arrivalPoint = route[1];
+                  _departurePoint = route[fromRouteIndex];
+                  _arrivalPoint = route[toRouteIndex];
                 },
               ).createWithProvider<SearchRoutesDialogBloc>(),
             ),
