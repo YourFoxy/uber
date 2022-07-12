@@ -1,7 +1,13 @@
 import '../scripts/index.dart';
 
 class SearchRoutesDialogWidget extends StatefulWidget {
-  const SearchRoutesDialogWidget({Key? key}) : super(key: key);
+  final ValueChanged<List<String>> onRouteSet;
+  final Function onTap;
+  const SearchRoutesDialogWidget({
+    Key? key,
+    required this.onTap,
+    required this.onRouteSet,
+  }) : super(key: key);
 
   @override
   State<SearchRoutesDialogWidget> createState() =>
@@ -22,7 +28,6 @@ class _SearchRoutesDialogWidgetState extends State<SearchRoutesDialogWidget> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     _searchRoutesDialogBloc = BlocProvider.of<SearchRoutesDialogBloc>(context);
   }
@@ -79,15 +84,10 @@ class _SearchRoutesDialogWidgetState extends State<SearchRoutesDialogWidget> {
                   controller: _departurePointController,
                   borderColor: AppColors.orange,
                   textColor: AppColors.orange,
-                  // width: 180,
-                  // height: 60,
                   onTap: () {
                     _searchRoutesDialogBloc.add(
                       ShowAllDeparturePointsEvent(context: context),
                     );
-                    // routeCreationBloc.add(
-                    //   ShowRouteListEvent(context: context),
-                    // );
                   },
                 ),
                 LocationTextFieldWidget(
@@ -99,16 +99,10 @@ class _SearchRoutesDialogWidgetState extends State<SearchRoutesDialogWidget> {
                     _searchRoutesDialogBloc.add(
                       ShowAllArrivalPointsEvent(context: context),
                     );
-                    // routeCreationBloc.add(
-                    //   ShowRouteListEvent(context: context),
-                    // );
                   },
                 ),
                 InkWell(
                   onTap: () {
-                    // routeCreationBloc.add(
-                    //   const ShowCalendarForSearchEvent(),
-                    // );
                     _searchRoutesDialogBloc
                         .add(const ShowCalendarForSearchEvent());
                   },
@@ -160,11 +154,15 @@ class _SearchRoutesDialogWidgetState extends State<SearchRoutesDialogWidget> {
                   ),
                   showCalendar: () => Padding(
                     padding: const EdgeInsets.only(top: 340),
-                    child: CalendarWidget(onDateSet: (onDateSet) {
-                      setState(() {
-                        _date = onDateSet;
-                      });
-                    }).createWithProvider<CalendarBloc>(),
+                    child: CalendarWidget(
+                      onDateSet: (onDateSet) {
+                        setState(
+                          () {
+                            _date = onDateSet;
+                          },
+                        );
+                      },
+                    ).createWithProvider<CalendarBloc>(),
                   ),
                   closeWidget: () => const SizedBox(),
                 );
@@ -174,7 +172,10 @@ class _SearchRoutesDialogWidgetState extends State<SearchRoutesDialogWidget> {
         ),
         actions: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              widget.onRouteSet.call([_departurePoint, _arrivalPoint]);
+              widget.onTap();
+            },
             child: Container(
               width: double.infinity,
               height: 50,

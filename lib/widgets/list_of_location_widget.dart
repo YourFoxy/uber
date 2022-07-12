@@ -29,7 +29,7 @@ class ListOfLocationWidget extends StatelessWidget {
             children: [
               ListView.builder(
                 itemCount: locations.length,
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 15,
                 ),
                 itemBuilder: (context, index) {
@@ -68,21 +68,20 @@ class ListOfLocationWidget extends StatelessWidget {
                   );
                 },
               ),
-              // Padding(
-              //  padding: const EdgeInsets.all(10.0),
+
               Align(
                 alignment: Alignment.topRight,
                 child: Container(
                   height: 35,
                   width: 35,
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: AppColors.dark,
                   ),
                   child: IconButton(
                     onPressed: () => onClose(),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.close,
                       color: AppColors.red,
                     ),

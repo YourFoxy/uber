@@ -58,9 +58,6 @@ class _DrawerMenuState extends State<DrawerMenu> {
               InkWell(
                 onTap: () async {
                   widget.navigationService.navigatorToSearchRoutePage();
-                  List<Map<String, String>> routesAndDates =
-                      await UserData.getRoutesWithParameters();
-                  print(routesAndDates.length);
                 },
                 child: const IconAndTextForDrawerButton(
                   iconData: Icons.route,

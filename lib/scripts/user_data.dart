@@ -75,7 +75,6 @@ class UserData {
         }
       },
     );
-    print(userPhones);
     return userPhones;
   }
 
@@ -84,7 +83,6 @@ class UserData {
     final routesAndDates = <Map<String, String>>[];
     final userPhones = await getUserPhones();
 
-    print('xxxxxxxxxxxx ${fromRoute}');
     for (int i = 0; i < userPhones.length; i++) {
       await Auth.fbd
           .collection(collectionNameWithRoutes)
@@ -109,8 +107,6 @@ class UserData {
         },
       );
     }
-    // print('ccccccccccc ${routesAndDates[0][fromRoute]}');
-
     return routesAndDates;
   }
 

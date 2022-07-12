@@ -31,7 +31,6 @@ class SearchRoutesDialogBloc
 
   _onShowCalendarForSearchEvent(event, emit) {
     emit(
-      //const _ShowCalendarState(),
       const ShowCalendarForSearchState(),
     );
   }

@@ -132,7 +132,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               width: 32,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                //color: _getColor(index, daysList),
                 border: Border.all(
                   width: 2,
                   color: _getColor(index, daysList),

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:uber/scripts/index.dart';
 
 class LocationTextFieldWidget extends StatefulWidget {

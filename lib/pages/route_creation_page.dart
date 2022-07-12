@@ -95,16 +95,12 @@ class _RouteCreationPageState extends State<RouteCreationPage> {
                               .add(const RouteCreationEvent.closeLocation());
                         },
                         onClose: () {
-                          print('ddddddddddddddddddddddd');
                           _routeCreationBloc
                               .add(const RouteCreationEvent.closeLocation());
                         },
                       ),
                     ),
-                    showCalendar: (
-                            //month
-                            ) =>
-                        Center(
+                    showCalendar: () => Center(
                       child: Padding(
                         padding: const EdgeInsets.only(
                           top: 360.0,
@@ -130,7 +126,6 @@ class _RouteCreationPageState extends State<RouteCreationPage> {
                               .add(const RouteCreationEvent.closeLocation());
                         },
                         onClose: () {
-                          print('ddddddddddddddddddddddd');
                           _routeCreationBloc
                               .add(const RouteCreationEvent.closeLocation());
                         },
