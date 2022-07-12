@@ -1,19 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:get_it/get_it.dart';
-// import 'package:uber/bloc/page_bloc/home_page/home_bloc.dart';
-// import 'package:uber/bloc/page_bloc/home_page/home_event.dart';
-// import 'package:uber/bloc/page_bloc/home_page/home_state.dart';
-// import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
-// import 'package:uber/bloc/widget_bloc/view_avatar/view_avatar_bloc.dart';
-// import 'package:uber/extension/bloc_widget_extension.dart';
-// import 'package:uber/service/navigation_service.dart';
-// import 'package:uber/style/colors.dart';
-// import 'package:uber/widgets/app_large_text.dart';
-// import 'package:uber/widgets/avatar_widget_for_view.dart';
-// import 'package:uber/widgets/drawer_widget.dart';
-// import 'package:uber/widgets/place_for_card_widget.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,7 +18,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     _homeBloc = BlocProvider.of<HomeBloc>(context);
-    _homeBloc.add(LoadedUserInformationEvent());
+    _homeBloc.add(const LoadedUserInformationEvent());
   }
 
   @override
@@ -53,7 +37,9 @@ class _HomePageState extends State<HomePage> {
           ).createWithProvider<DrawerWidgetBloc>(),
           appBar: AppBar(
             backgroundColor: AppColors.plum,
-            iconTheme: const IconThemeData(color: AppColors.orange),
+            iconTheme: const IconThemeData(
+              color: AppColors.orange,
+            ),
             title: const AppLargeText(
               text: '',
             ),
@@ -117,9 +103,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const PlaceForCardWidget(
                     text: 'Save',
+                    nameCollection: '',
                   ),
                   const PlaceForCardWidget(
                     text: 'My',
+                    nameCollection: collectionNameWithRoutes,
                   ),
                 ],
               ),

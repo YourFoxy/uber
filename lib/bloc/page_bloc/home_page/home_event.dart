@@ -1,3 +1,6 @@
-abstract class HomeEvent {}
+part of 'home_bloc.dart';
 
-class LoadedUserInformationEvent extends HomeEvent {}
+@freezed
+class HomeEvent with _$HomeEvent {
+  const factory HomeEvent.loadedUserInformation() = LoadedUserInformationEvent;
+}

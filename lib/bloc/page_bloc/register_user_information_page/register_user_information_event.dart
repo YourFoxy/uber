@@ -1,5 +1,3 @@
-//import 'package:flutter/material.dart';
-
 import 'package:uber/scripts/index.dart';
 
 abstract class RegisterUserInformationEvent {}

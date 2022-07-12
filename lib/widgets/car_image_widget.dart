@@ -1,7 +1,3 @@
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-// import 'package:uber/scripts/const.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class Car extends StatelessWidget {

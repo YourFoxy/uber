@@ -1,17 +1,3 @@
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/foundation.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:uber/domain/auth.dart';
-// import 'package:uber/scripts/const.dart';
-// import 'package:uber/scripts/date_util.dart';
-// import 'package:uber/scripts/location.dart';
-// import 'package:uber/scripts/user_data.dart';
-// import 'package:freezed_annotation/freezed_annotation.dart';
-// import 'package:uber/service/navigation_service.dart';
-// part 'route_creation_event.dart';
-// part 'route_creation_state.dart';
-// part 'route_creation_bloc.freezed.dart';
-
 import 'package:flutter/foundation.dart';
 import 'package:uber/scripts/index.dart';
 
@@ -64,17 +50,8 @@ class RouteCreationBloc extends Bloc<RouteCreationEvent, RouteCreationState> {
   }
 
   _onShowCalendarEvent(event, emit) {
-    final month = <String>[];
-    final emptyCells = DateTime(event.year, event.month, 1).weekday - 1;
-    final monthLenght = DateUtil.daysInMonth(event.month, event.year);
-    for (int i = 0; i < emptyCells + monthLenght; i++) {
-      if (i < emptyCells) {
-        month.add('');
-      } else {
-        month.add('${i - emptyCells + 1}');
-      }
-    }
-
-    emit(_ShowCalendarState(month: month));
+    emit(
+      const _ShowCalendarState(),
+    );
   }
 }

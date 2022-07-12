@@ -1,8 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:pin_code_fields/pin_code_fields.dart';
-// import 'package:uber/scripts/const.dart';
-// import 'package:uber/style/colors.dart';
 import 'package:uber/scripts/index.dart';
 
 class TextFieldForCodeWidget extends StatelessWidget {

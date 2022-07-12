@@ -1,8 +1,3 @@
-// import 'dart:io';
-// import 'package:uber/domain/auth.dart';
-// import 'package:uber/scripts/const.dart';
-// import 'package:uber/scripts/text.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class UserData {
@@ -33,7 +28,7 @@ class UserData {
     await saveCurrentUserPhoto(pickImageUrl, currentUserPhoneNumber);
   }
 
-  static Future<String> getUrlImapeFromStorage() async {
+  static Future<String> getUrlImageFromStorage() async {
     return await Auth.fStorage
         .ref('avatars/${UserData.currentUserPhoneNumber}')
         .getDownloadURL();
@@ -45,6 +40,74 @@ class UserData {
         .doc(UserData.currentUserPhoneNumber)
         .get();
     return snapshot[fieldName];
+  }
+
+  static Future<List<Map<String, String>>> getUserRoutesFromDatabase(
+      String nameCollection) async {
+    final routesAndDates = <Map<String, String>>[];
+    await Auth.fbd
+        .collection(collectionNameWithRoutes)
+        .doc(currentUserPhoneNumber)
+        .collection(nameCollection)
+        .get()
+        .then(
+      (value) {
+        for (var element in value.docs) {
+          routesAndDates.add({
+            routeFieldInMap:
+                '${element[routeFieldInCollection][fromRouteIndex]} -> ${element[routeFieldInCollection][toRouteIndex]}',
+            dateFieldInMap: element[dateFieldInCollection],
+            routeId: element.id,
+          });
+        }
+      },
+    );
+    return routesAndDates;
+  }
+
+  static Future<List<String>> getUserPhones() async {
+    final userPhones = <String>[];
+
+    await Auth.fbd.collection('Routes').get().then(
+      (value) {
+        for (var element in value.docs) {
+          userPhones.add(element.id);
+        }
+      },
+    );
+    return userPhones;
+  }
+
+  static Future<List<Map<String, String>>> getRoutesWithParameters(
+      {String fromSearchRoute = '', String toSearchRoute = ''}) async {
+    final routesAndDates = <Map<String, String>>[];
+    final userPhones = await getUserPhones();
+
+    for (int i = 0; i < userPhones.length; i++) {
+      await Auth.fbd
+          .collection(collectionNameWithRoutes)
+          .doc(userPhones[i])
+          .collection(collectionNameWithRoutes)
+          .get()
+          .then(
+        (value) {
+          for (var elem in value.docs.where((element) =>
+              element[routeFieldInCollection][fromRouteIndex] ==
+                  fromSearchRoute &&
+              element[routeFieldInCollection][toRouteIndex] == toSearchRoute)) {
+            routesAndDates.add(
+              {
+                fromRoute: '${elem[routeFieldInCollection][fromRouteIndex]}',
+                toRoute: '${elem[routeFieldInCollection][toRouteIndex]}',
+                dateFieldInMap: elem[dateFieldInCollection],
+                phoneNubmer: userPhones[i],
+              },
+            );
+          }
+        },
+      );
+    }
+    return routesAndDates;
   }
 
   static Future<bool> checkPhoneNumberInDatabase(String phoneNumber) async {

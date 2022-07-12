@@ -11,3 +11,4 @@ class EditUserInformationEvent with _$EditUserInformationEvent {
     required BuildContext context,
   }) = SaveUserInformationEvent;
 }
+ 

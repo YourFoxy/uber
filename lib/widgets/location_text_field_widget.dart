@@ -1,17 +1,14 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:uber/scripts/const.dart';
-// import 'package:uber/scripts/input.dart';
-// import 'package:uber/style/colors.dart';
 import 'package:uber/scripts/index.dart';
 
 class LocationTextFieldWidget extends StatefulWidget {
   final bool isNumber;
   final String hintText;
   final TextEditingController controller;
-  final Color backgroundColor;
+  final Color borderColor;
   final Color textColor;
   final Function onTap;
+  final double height;
+  final double width;
 
   const LocationTextFieldWidget({
     required this.hintText,
@@ -19,8 +16,10 @@ class LocationTextFieldWidget extends StatefulWidget {
     required this.onTap,
     Key? key,
     this.isNumber = false,
-    this.backgroundColor = AppColors.plum,
+    this.borderColor = AppColors.plum,
     this.textColor = AppColors.orange,
+    this.height = 75.0,
+    this.width = 300.0,
   }) : super(key: key);
 
   @override
@@ -47,11 +46,14 @@ class _LocationTextFieldWidgetState extends State<LocationTextFieldWidget> {
           horizontal: 20.0,
           vertical: 10.0,
         ),
-        height: 75.0,
-        width: 300,
+        height: widget.height,
+        width: widget.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: widget.backgroundColor,
+          border: Border.all(
+            width: 2,
+            color: widget.borderColor,
+          ),
         ),
         child: TextField(
           focusNode: focusNode,

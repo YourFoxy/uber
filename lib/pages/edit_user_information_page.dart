@@ -1,14 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:uber/bloc/page_bloc/edit_user_information/edit_user_information_bloc.dart';
-// import 'package:uber/bloc/widget_bloc/editable_rectangular_avatar/editable_rectangular_avatar_bloc.dart';
-// import 'package:uber/extension/bloc_widget_extension.dart';
-// import 'package:uber/style/colors.dart';
-// import 'package:uber/widgets/app_text.dart';
-// import 'package:uber/widgets/editable_rectangular_avatar_widget.dart';
-// import 'package:uber/widgets/long_save_button_widget.dart';
-// import 'package:uber/widgets/text_field_widget.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class EditUserInformationPage extends StatefulWidget {
@@ -85,8 +74,8 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                       height: 30,
                     ),
                     TextFieldWidget(
-                      backgroundColor: AppColors.orange,
-                      textColor: AppColors.plum,
+                      borderColor: AppColors.orange,
+                      textColor: AppColors.orange,
                       hintText: 'Nickname',
                       textKey: _nicknameTextKey,
                       controller: TextEditingController(
@@ -96,8 +85,8 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                       ),
                     ),
                     TextFieldWidget(
-                      backgroundColor: AppColors.orange,
-                      textColor: AppColors.plum,
+                      borderColor: AppColors.orange,
+                      textColor: AppColors.orange,
                       hintText: 'City',
                       textKey: _cityTextKey,
                       controller: TextEditingController(

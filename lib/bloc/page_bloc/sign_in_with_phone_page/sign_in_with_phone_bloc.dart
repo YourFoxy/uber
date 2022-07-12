@@ -1,12 +1,3 @@
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_event.dart';
-// import 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_state.dart';
-// import 'package:uber/domain/auth.dart';
-// import 'package:uber/scripts/const.dart';
-// import 'package:uber/scripts/user_data.dart';
-// import 'package:uber/service/navigation_service.dart';
-// import 'package:uber/service/toast_service.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class SignInWithPhoneBloc

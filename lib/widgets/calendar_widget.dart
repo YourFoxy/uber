@@ -1,10 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:uber/bloc/widget_bloc/calendar_widget/calendar_bloc.dart';
-// import 'package:uber/scripts/const.dart';
-// import 'package:uber/scripts/date_util.dart';
-// import 'package:uber/style/colors.dart';
-// import 'package:uber/widgets/app_large_text.dart';
 import 'package:uber/scripts/index.dart';
 
 class CalendarWidget extends StatefulWidget {
@@ -139,13 +132,16 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               width: 32,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                color: _getColor(index, daysList),
+                border: Border.all(
+                  width: 2,
+                  color: _getColor(index, daysList),
+                ),
               ),
               child: Center(
                 child: AppLargeText(
                   text: daysList[index],
                   size: 18,
-                  color: AppColors.dark,
+                  color: _getColor(index, daysList),
                 ),
               ),
             ),

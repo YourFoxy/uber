@@ -1,9 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:uber/service/navigation_service.dart';
-// import 'package:uber/style/colors.dart';
-// import 'package:uber/widgets/button_widget.dart';
-// import 'package:uber/widgets/car_image_widget.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class LoginOrRegister extends StatelessWidget {

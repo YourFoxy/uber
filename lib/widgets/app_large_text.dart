@@ -1,6 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:uber/scripts/const.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class AppLargeText extends StatelessWidget {

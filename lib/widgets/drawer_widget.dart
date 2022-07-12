@@ -1,13 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_bloc.dart';
-// import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_event.dart';
-// import 'package:uber/bloc/widget_bloc/drawer_widget/drawer_widget_state.dart';
-// import 'package:uber/service/navigation_service.dart';
-// import 'package:uber/style/colors.dart';
-// import 'package:uber/widgets/app_text.dart';
-// import 'package:uber/widgets/icon_and_text_for_drawer_button.dart';
-
 import 'package:uber/scripts/index.dart';
 
 class DrawerMenu extends StatefulWidget {
@@ -49,11 +39,29 @@ class _DrawerMenuState extends State<DrawerMenu> {
               ),
               InkWell(
                 onTap: () {
+                  widget.navigationService.navigatorToHomePage();
+                },
+                child: const IconAndTextForDrawerButton(
+                  iconData: Icons.home,
+                  text: 'Home page',
+                ),
+              ),
+              InkWell(
+                onTap: () {
                   widget.navigationService.navigatorToEditUserInformationPage();
                 },
                 child: const IconAndTextForDrawerButton(
                   iconData: Icons.edit,
                   text: 'Edit profile',
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  widget.navigationService.navigatorToSearchRoutePage();
+                },
+                child: const IconAndTextForDrawerButton(
+                  iconData: Icons.route,
+                  text: 'Search route',
                 ),
               ),
               const Divider(

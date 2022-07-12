@@ -1,16 +1,11 @@
-//import 'package:flutter/material.dart';
+part of 'home_bloc.dart';
 
-import 'package:uber/scripts/index.dart';
+@freezed
+class HomeState with _$HomeState {
+  const factory HomeState.pageInit() = PageHomeInitState;
 
-@immutable
-abstract class HomeState {}
-
-class PageHomeInitState extends HomeState {}
-
-class LoadedUserInformationState extends HomeState {
-  final String nicknameAndCity;
-  final String currentUserPhoneNumber;
-
-  LoadedUserInformationState(
-      {required this.nicknameAndCity, required this.currentUserPhoneNumber});
+  const factory HomeState.loadedUserInformation({
+    required String nicknameAndCity,
+    required String currentUserPhoneNumber,
+  }) = LoadedUserInformationState;
 }
