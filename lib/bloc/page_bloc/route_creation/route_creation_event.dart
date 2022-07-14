@@ -16,6 +16,5 @@ class RouteCreationEvent with _$RouteCreationEvent {
     required String date,
     required BuildContext context,
   }) = AddRouteEvent;
-  const factory RouteCreationEvent.showCalendarEvent(
-      ) = ShowCalendarEvent;
+  const factory RouteCreationEvent.showCalendar() = ShowCalendarEvent;
 }

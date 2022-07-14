@@ -51,7 +51,7 @@ class RouteCreationBloc extends Bloc<RouteCreationEvent, RouteCreationState> {
 
   _onShowCalendarEvent(event, emit) {
     emit(
-      const _ShowCalendarState(),
+      const RouteCreationState.showCalendar(),
     );
   }
 }

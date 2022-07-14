@@ -25,10 +25,6 @@ class _$RouteSearchEventTearOff {
       toRoute: toRoute,
     );
   }
-
-  OpenSearchDialogEvent openSearchDialog() {
-    return const OpenSearchDialogEvent();
-  }
 }
 
 /// @nodoc
@@ -36,43 +32,44 @@ const $RouteSearchEvent = _$RouteSearchEventTearOff();
 
 /// @nodoc
 mixin _$RouteSearchEvent {
+  String get fromRoute => throw _privateConstructorUsedError;
+  String get toRoute => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String fromRoute, String toRoute) showRoute,
-    required TResult Function() openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String fromRoute, String toRoute)? showRoute,
-    TResult Function()? openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String fromRoute, String toRoute)? showRoute,
-    TResult Function()? openSearchDialog,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ShowFoundeRouteEvent value) showRoute,
-    required TResult Function(OpenSearchDialogEvent value) openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $RouteSearchEventCopyWith<RouteSearchEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -81,6 +78,7 @@ abstract class $RouteSearchEventCopyWith<$Res> {
   factory $RouteSearchEventCopyWith(
           RouteSearchEvent value, $Res Function(RouteSearchEvent) then) =
       _$RouteSearchEventCopyWithImpl<$Res>;
+  $Res call({String fromRoute, String toRoute});
 }
 
 /// @nodoc
@@ -91,13 +89,32 @@ class _$RouteSearchEventCopyWithImpl<$Res>
   final RouteSearchEvent _value;
   // ignore: unused_field
   final $Res Function(RouteSearchEvent) _then;
+
+  @override
+  $Res call({
+    Object? fromRoute = freezed,
+    Object? toRoute = freezed,
+  }) {
+    return _then(_value.copyWith(
+      fromRoute: fromRoute == freezed
+          ? _value.fromRoute
+          : fromRoute // ignore: cast_nullable_to_non_nullable
+              as String,
+      toRoute: toRoute == freezed
+          ? _value.toRoute
+          : toRoute // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class $ShowFoundeRouteEventCopyWith<$Res> {
+abstract class $ShowFoundeRouteEventCopyWith<$Res>
+    implements $RouteSearchEventCopyWith<$Res> {
   factory $ShowFoundeRouteEventCopyWith(ShowFoundeRouteEvent value,
           $Res Function(ShowFoundeRouteEvent) then) =
       _$ShowFoundeRouteEventCopyWithImpl<$Res>;
+  @override
   $Res call({String fromRoute, String toRoute});
 }
 
@@ -182,7 +199,6 @@ class _$ShowFoundeRouteEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String fromRoute, String toRoute) showRoute,
-    required TResult Function() openSearchDialog,
   }) {
     return showRoute(fromRoute, toRoute);
   }
@@ -191,7 +207,6 @@ class _$ShowFoundeRouteEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String fromRoute, String toRoute)? showRoute,
-    TResult Function()? openSearchDialog,
   }) {
     return showRoute?.call(fromRoute, toRoute);
   }
@@ -200,7 +215,6 @@ class _$ShowFoundeRouteEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String fromRoute, String toRoute)? showRoute,
-    TResult Function()? openSearchDialog,
     required TResult orElse(),
   }) {
     if (showRoute != null) {
@@ -213,7 +227,6 @@ class _$ShowFoundeRouteEvent
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ShowFoundeRouteEvent value) showRoute,
-    required TResult Function(OpenSearchDialogEvent value) openSearchDialog,
   }) {
     return showRoute(this);
   }
@@ -222,7 +235,6 @@ class _$ShowFoundeRouteEvent
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
   }) {
     return showRoute?.call(this);
   }
@@ -231,7 +243,6 @@ class _$ShowFoundeRouteEvent
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
     required TResult orElse(),
   }) {
     if (showRoute != null) {
@@ -246,125 +257,14 @@ abstract class ShowFoundeRouteEvent implements RouteSearchEvent {
       {required String fromRoute,
       required String toRoute}) = _$ShowFoundeRouteEvent;
 
+  @override
   String get fromRoute;
+  @override
   String get toRoute;
+  @override
   @JsonKey(ignore: true)
   $ShowFoundeRouteEventCopyWith<ShowFoundeRouteEvent> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OpenSearchDialogEventCopyWith<$Res> {
-  factory $OpenSearchDialogEventCopyWith(OpenSearchDialogEvent value,
-          $Res Function(OpenSearchDialogEvent) then) =
-      _$OpenSearchDialogEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$OpenSearchDialogEventCopyWithImpl<$Res>
-    extends _$RouteSearchEventCopyWithImpl<$Res>
-    implements $OpenSearchDialogEventCopyWith<$Res> {
-  _$OpenSearchDialogEventCopyWithImpl(
-      OpenSearchDialogEvent _value, $Res Function(OpenSearchDialogEvent) _then)
-      : super(_value, (v) => _then(v as OpenSearchDialogEvent));
-
-  @override
-  OpenSearchDialogEvent get _value => super._value as OpenSearchDialogEvent;
-}
-
-/// @nodoc
-
-class _$OpenSearchDialogEvent
-    with DiagnosticableTreeMixin
-    implements OpenSearchDialogEvent {
-  const _$OpenSearchDialogEvent();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteSearchEvent.openSearchDialog()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RouteSearchEvent.openSearchDialog'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is OpenSearchDialogEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String fromRoute, String toRoute) showRoute,
-    required TResult Function() openSearchDialog,
-  }) {
-    return openSearchDialog();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String fromRoute, String toRoute)? showRoute,
-    TResult Function()? openSearchDialog,
-  }) {
-    return openSearchDialog?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String fromRoute, String toRoute)? showRoute,
-    TResult Function()? openSearchDialog,
-    required TResult orElse(),
-  }) {
-    if (openSearchDialog != null) {
-      return openSearchDialog();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ShowFoundeRouteEvent value) showRoute,
-    required TResult Function(OpenSearchDialogEvent value) openSearchDialog,
-  }) {
-    return openSearchDialog(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
-  }) {
-    return openSearchDialog?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ShowFoundeRouteEvent value)? showRoute,
-    TResult Function(OpenSearchDialogEvent value)? openSearchDialog,
-    required TResult orElse(),
-  }) {
-    if (openSearchDialog != null) {
-      return openSearchDialog(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class OpenSearchDialogEvent implements RouteSearchEvent {
-  const factory OpenSearchDialogEvent() = _$OpenSearchDialogEvent;
 }
 
 /// @nodoc
