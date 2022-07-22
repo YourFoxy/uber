@@ -6,4 +6,5 @@ class RouteSearchEvent with _$RouteSearchEvent {
     required String fromRoute,
     required String toRoute,
   }) = ShowFoundeRouteEvent;
+  const factory RouteSearchEvent.openSearchDialog() = OpenSearchDialogEvent;
 }

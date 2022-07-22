@@ -8,7 +8,7 @@ class EditUserInformationEvent with _$EditUserInformationEvent {
     required String nickname,
     required String city,
     required String pickImageUrl,
-    required BuildContext context,
+    //required BuildContext context,
   }) = SaveUserInformationEvent;
 }
- 
+

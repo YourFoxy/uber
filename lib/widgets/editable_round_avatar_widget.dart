@@ -69,7 +69,7 @@ class _EditableRoundAvatarWidgetState extends State<EditableRoundAvatarWidget> {
                           )
                         : const DecorationImage(
                             image: AssetImage(
-                              carUrl,
+                              mapUrl,
                             ),
                             fit: BoxFit.cover,
                           ),

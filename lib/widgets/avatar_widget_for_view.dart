@@ -53,7 +53,7 @@ class _AvatarWidgetForViewState extends State<AvatarWidgetForView> {
                           fit: BoxFit.cover,
                         )
                       : const DecorationImage(
-                          image: AssetImage(carUrl),
+                          image: AssetImage(mapUrl),
                           fit: BoxFit.cover,
                         ),
                 ),

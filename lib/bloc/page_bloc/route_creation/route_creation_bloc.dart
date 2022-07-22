@@ -17,15 +17,13 @@ class RouteCreationBloc extends Bloc<RouteCreationEvent, RouteCreationState> {
     on<ShowCalendarEvent>(_onShowCalendarEvent);
   }
   _onShowLocationForArrivalPointEvent(event, emit) async {
-    List<List<String>> locationMap =
-        await LocationData.createLocationMap(event.context);
+    List<List<String>> locationMap = await LocationData.createLocationMap();
     emit(RouteCreationState.showLocationForArrivalPoint(
         locationMap: locationMap));
   }
 
   _onShowLocationForDeparturePointEvent(event, emit) async {
-    List<List<String>> locationMap =
-        await LocationData.createLocationMap(event.context);
+    List<List<String>> locationMap = await LocationData.createLocationMap();
 
     emit(RouteCreationState.showLocationForDeparturePoint(
         locationMap: locationMap));

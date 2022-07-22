@@ -24,7 +24,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         daysList.add('${i - emptyCells + 1}');
       }
     }
-    emit(ShowMonthState(month: monthString, year: year, daysList: daysList));
+    emit(CalendarState.showMonth(
+        month: monthString, year: year, daysList: daysList));
   }
 
   _onGoToNextMonthEvent(event, emit) {
@@ -45,8 +46,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         daysList.add('${i - emptyCells + 1}');
       }
     }
-    emit(
-        GoToNextMonthState(month: monthString, year: year, daysList: daysList));
+    emit(CalendarState.goToNextMonth(
+        month: monthString, year: year, daysList: daysList));
   }
 
   _onGoToPreviousMonthEvent(event, emit) {
@@ -67,7 +68,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         daysList.add('${i - emptyCells + 1}');
       }
     }
-    emit(GoToPreviousMonthState(
+    emit(CalendarState.goToPreviousMonth(
         month: monthString, year: year, daysList: daysList));
   }
 }

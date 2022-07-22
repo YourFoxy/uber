@@ -36,6 +36,7 @@ export 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_b
 export 'package:uber/bloc/page_bloc/sign_in_with_phone_page/sign_in_with_phone_event.dart';
 export 'dart:core';
 export 'package:image_picker/image_picker.dart';
+export 'package:flutter/services.dart' show rootBundle;
 export 'package:flutter/services.dart';
 export 'package:csv/csv.dart';
 export 'package:uber/pages/edit_user_information_page.dart';
@@ -84,3 +85,4 @@ export 'package:uber/bloc/widget_bloc/route_found_card/route_found_card_bloc.dar
 export 'package:url_launcher/url_launcher.dart';
 export 'package:uber/bloc/widget_bloc/search_routes_dialog/search_routes_dialog_bloc.dart';
 export 'package:uber/widgets/search_routes_dialog_widget.dart';
+export 'package:uber/widgets/belgrano_text_widget.dart';

@@ -13,7 +13,7 @@ class RouteSearchBloc extends Bloc<RouteSearchEvent, RouteSearchState> {
 
   _onShowFoundeRouteEvent(event, emit) async {
     emit(
-      ShowFoundeRouteState(
+      RouteSearchState.showRoute(
         routesAndDates: await UserData.getRoutesWithParameters(
           fromSearchRoute: '${event.fromRoute}',
           toSearchRoute: '${event.toRoute}',
@@ -23,6 +23,6 @@ class RouteSearchBloc extends Bloc<RouteSearchEvent, RouteSearchState> {
   }
 
   _onOpenSearchDialogEvent(event, emit) {
-    emit(const OpenSearchDialogState());
+    emit(const RouteSearchState.openSearchDialog());
   }
 }

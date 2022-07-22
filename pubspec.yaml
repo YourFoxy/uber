@@ -75,6 +75,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
       - assets/picture/car.png
+      - assets/picture/map.png
       - assets/by.txt
 
   #   - images/a_dot_burr.jpeg
@@ -102,7 +103,11 @@ flutter:
           - asset: assets/fonts/BebasNeue_Bold.ttf   
             #weight: 700  
           - asset: assets/fonts/BebasNeue_Thin.ttf   
-           # weight: 100           
+           # weight: 100  
+      - family: Belgrano 
+        fonts:            
+          - asset: assets/fonts/Belgrano-Regular.ttf
+           # weight: 400 
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

@@ -18,7 +18,7 @@ class RouteCardBloc extends Bloc<RouteCardEvent, RouteCardState> {
         .delete();
 
     emit(
-      RemoveRouteState(
+      RouteCardState.removeRoute(
         routesAndDates:
             await UserData.getUserRoutesFromDatabase(event.nameCollection),
       ),
@@ -27,7 +27,7 @@ class RouteCardBloc extends Bloc<RouteCardEvent, RouteCardState> {
 
   _onLoadedRoutesEvent(event, emit) async {
     emit(
-      LoadedUserRoutesState(
+      RouteCardState.loadedRoutes(
         routesAndDates:
             await UserData.getUserRoutesFromDatabase(event.nameCollection),
       ),

@@ -14,24 +14,26 @@ class SearchRoutesDialogBloc
   }
   _onShowAllDeparturePointsEvent(event, emit) async {
     List<List<String>> locationMap =
-        await LocationData.createLocationMap(event.context);
-    emit(ShowAllDeparturePointsState(locationMap: locationMap));
+        await LocationData.createLocationMap();
+    emit(SearchRoutesDialogState.showAllDeparturePoints(
+        locationMap: locationMap));
   }
 
   _onShowAllArrivalPointsEvent(event, emit) async {
     List<List<String>> locationMap =
-        await LocationData.createLocationMap(event.context);
+        await LocationData.createLocationMap();
 
-    emit(ShowAllArrivalPointsState(locationMap: locationMap));
+    emit(
+        SearchRoutesDialogState.showAllArrivalPoints(locationMap: locationMap));
   }
 
   _onCloseWidgetEvent(event, emit) {
-    emit(const CloseAllWidgetState());
+    emit(const SearchRoutesDialogState.closeWidget());
   }
 
   _onShowCalendarForSearchEvent(event, emit) {
     emit(
-      const ShowCalendarForSearchState(),
+      const SearchRoutesDialogState.showCalendar(),
     );
   }
 }

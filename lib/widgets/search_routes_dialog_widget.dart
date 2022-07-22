@@ -86,7 +86,7 @@ class _SearchRoutesDialogWidgetState extends State<SearchRoutesDialogWidget> {
                   textColor: AppColors.orange,
                   onTap: () {
                     _searchRoutesDialogBloc.add(
-                      ShowAllDeparturePointsEvent(context: context),
+                      const ShowAllDeparturePointsEvent(),
                     );
                   },
                 ),
@@ -97,7 +97,7 @@ class _SearchRoutesDialogWidgetState extends State<SearchRoutesDialogWidget> {
                   textColor: AppColors.orange,
                   onTap: () {
                     _searchRoutesDialogBloc.add(
-                      ShowAllArrivalPointsEvent(context: context),
+                      const ShowAllArrivalPointsEvent(),
                     );
                   },
                 ),

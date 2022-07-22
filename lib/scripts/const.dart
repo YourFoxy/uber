@@ -30,7 +30,8 @@ const noNumberInDatabase = 'There is no user with this number!';
 const incorrectCode = 'Incorrect code';
 const emptyField = 'The text field is empty';
 
-const carUrl = 'assets/picture/car.png';
+//const carUrl = 'assets/picture/car.png';
+const mapUrl = 'assets/picture/map.png';
 const csvPath = 'assets/by.csv';
 
 const districtIndex = 2;
@@ -38,6 +39,7 @@ const regionIndex = 1;
 const locationIndex = 3;
 
 const font = 'BebasNeue';
+const belgranoFont = 'Belgrano';
 
 const newMonth = <String, String>{
   'Январь': 'Января',

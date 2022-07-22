@@ -13,11 +13,11 @@ class RouteFoundCardBloc
   }
 
   _onShowRouteEvent(event, emit) {
-    emit(const ShowRouteState());
+    emit(const RouteFoundCardState.showRoute());
   }
 
   _onShowPhoneNumberEvent(event, emit) {
-    emit(const ShowPhoneNumberState());
+    emit(const RouteFoundCardState.showPhoneNumber());
   }
 
   _onCallEvent(event, emit) async {

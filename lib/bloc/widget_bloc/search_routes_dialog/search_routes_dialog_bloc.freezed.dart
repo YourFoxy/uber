@@ -18,18 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SearchRoutesDialogEventTearOff {
   const _$SearchRoutesDialogEventTearOff();
 
-  ShowAllDeparturePointsEvent showAllDeparturePoints(
-      {required BuildContext context}) {
-    return ShowAllDeparturePointsEvent(
-      context: context,
-    );
+  ShowAllDeparturePointsEvent showAllDeparturePoints() {
+    return const ShowAllDeparturePointsEvent();
   }
 
-  ShowAllArrivalPointsEvent showAllArrivalPoints(
-      {required BuildContext context}) {
-    return ShowAllArrivalPointsEvent(
-      context: context,
-    );
+  ShowAllArrivalPointsEvent showAllArrivalPoints() {
+    return const ShowAllArrivalPointsEvent();
   }
 
   ShowCalendarForSearchEvent showCalendar() {
@@ -48,24 +42,24 @@ const $SearchRoutesDialogEvent = _$SearchRoutesDialogEventTearOff();
 mixin _$SearchRoutesDialogEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildContext context) showAllDeparturePoints,
-    required TResult Function(BuildContext context) showAllArrivalPoints,
+    required TResult Function() showAllDeparturePoints,
+    required TResult Function() showAllArrivalPoints,
     required TResult Function() showCalendar,
     required TResult Function() closeWidget,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BuildContext context)? showAllDeparturePoints,
-    TResult Function(BuildContext context)? showAllArrivalPoints,
+    TResult Function()? showAllDeparturePoints,
+    TResult Function()? showAllArrivalPoints,
     TResult Function()? showCalendar,
     TResult Function()? closeWidget,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildContext context)? showAllDeparturePoints,
-    TResult Function(BuildContext context)? showAllArrivalPoints,
+    TResult Function()? showAllDeparturePoints,
+    TResult Function()? showAllArrivalPoints,
     TResult Function()? showCalendar,
     TResult Function()? closeWidget,
     required TResult orElse(),
@@ -123,7 +117,6 @@ abstract class $ShowAllDeparturePointsEventCopyWith<$Res> {
           ShowAllDeparturePointsEvent value,
           $Res Function(ShowAllDeparturePointsEvent) then) =
       _$ShowAllDeparturePointsEventCopyWithImpl<$Res>;
-  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -137,84 +130,61 @@ class _$ShowAllDeparturePointsEventCopyWithImpl<$Res>
   @override
   ShowAllDeparturePointsEvent get _value =>
       super._value as ShowAllDeparturePointsEvent;
-
-  @override
-  $Res call({
-    Object? context = freezed,
-  }) {
-    return _then(ShowAllDeparturePointsEvent(
-      context: context == freezed
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$ShowAllDeparturePointsEvent implements ShowAllDeparturePointsEvent {
-  const _$ShowAllDeparturePointsEvent({required this.context});
-
-  @override
-  final BuildContext context;
+  const _$ShowAllDeparturePointsEvent();
 
   @override
   String toString() {
-    return 'SearchRoutesDialogEvent.showAllDeparturePoints(context: $context)';
+    return 'SearchRoutesDialogEvent.showAllDeparturePoints()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ShowAllDeparturePointsEvent &&
-            const DeepCollectionEquality().equals(other.context, context));
+            other is ShowAllDeparturePointsEvent);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
-
-  @JsonKey(ignore: true)
-  @override
-  $ShowAllDeparturePointsEventCopyWith<ShowAllDeparturePointsEvent>
-      get copyWith => _$ShowAllDeparturePointsEventCopyWithImpl<
-          ShowAllDeparturePointsEvent>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildContext context) showAllDeparturePoints,
-    required TResult Function(BuildContext context) showAllArrivalPoints,
+    required TResult Function() showAllDeparturePoints,
+    required TResult Function() showAllArrivalPoints,
     required TResult Function() showCalendar,
     required TResult Function() closeWidget,
   }) {
-    return showAllDeparturePoints(context);
+    return showAllDeparturePoints();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BuildContext context)? showAllDeparturePoints,
-    TResult Function(BuildContext context)? showAllArrivalPoints,
+    TResult Function()? showAllDeparturePoints,
+    TResult Function()? showAllArrivalPoints,
     TResult Function()? showCalendar,
     TResult Function()? closeWidget,
   }) {
-    return showAllDeparturePoints?.call(context);
+    return showAllDeparturePoints?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildContext context)? showAllDeparturePoints,
-    TResult Function(BuildContext context)? showAllArrivalPoints,
+    TResult Function()? showAllDeparturePoints,
+    TResult Function()? showAllArrivalPoints,
     TResult Function()? showCalendar,
     TResult Function()? closeWidget,
     required TResult orElse(),
   }) {
     if (showAllDeparturePoints != null) {
-      return showAllDeparturePoints(context);
+      return showAllDeparturePoints();
     }
     return orElse();
   }
@@ -260,13 +230,7 @@ class _$ShowAllDeparturePointsEvent implements ShowAllDeparturePointsEvent {
 }
 
 abstract class ShowAllDeparturePointsEvent implements SearchRoutesDialogEvent {
-  const factory ShowAllDeparturePointsEvent({required BuildContext context}) =
-      _$ShowAllDeparturePointsEvent;
-
-  BuildContext get context;
-  @JsonKey(ignore: true)
-  $ShowAllDeparturePointsEventCopyWith<ShowAllDeparturePointsEvent>
-      get copyWith => throw _privateConstructorUsedError;
+  const factory ShowAllDeparturePointsEvent() = _$ShowAllDeparturePointsEvent;
 }
 
 /// @nodoc
@@ -274,7 +238,6 @@ abstract class $ShowAllArrivalPointsEventCopyWith<$Res> {
   factory $ShowAllArrivalPointsEventCopyWith(ShowAllArrivalPointsEvent value,
           $Res Function(ShowAllArrivalPointsEvent) then) =
       _$ShowAllArrivalPointsEventCopyWithImpl<$Res>;
-  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -288,84 +251,61 @@ class _$ShowAllArrivalPointsEventCopyWithImpl<$Res>
   @override
   ShowAllArrivalPointsEvent get _value =>
       super._value as ShowAllArrivalPointsEvent;
-
-  @override
-  $Res call({
-    Object? context = freezed,
-  }) {
-    return _then(ShowAllArrivalPointsEvent(
-      context: context == freezed
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$ShowAllArrivalPointsEvent implements ShowAllArrivalPointsEvent {
-  const _$ShowAllArrivalPointsEvent({required this.context});
-
-  @override
-  final BuildContext context;
+  const _$ShowAllArrivalPointsEvent();
 
   @override
   String toString() {
-    return 'SearchRoutesDialogEvent.showAllArrivalPoints(context: $context)';
+    return 'SearchRoutesDialogEvent.showAllArrivalPoints()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ShowAllArrivalPointsEvent &&
-            const DeepCollectionEquality().equals(other.context, context));
+            other is ShowAllArrivalPointsEvent);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
-
-  @JsonKey(ignore: true)
-  @override
-  $ShowAllArrivalPointsEventCopyWith<ShowAllArrivalPointsEvent> get copyWith =>
-      _$ShowAllArrivalPointsEventCopyWithImpl<ShowAllArrivalPointsEvent>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildContext context) showAllDeparturePoints,
-    required TResult Function(BuildContext context) showAllArrivalPoints,
+    required TResult Function() showAllDeparturePoints,
+    required TResult Function() showAllArrivalPoints,
     required TResult Function() showCalendar,
     required TResult Function() closeWidget,
   }) {
-    return showAllArrivalPoints(context);
+    return showAllArrivalPoints();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BuildContext context)? showAllDeparturePoints,
-    TResult Function(BuildContext context)? showAllArrivalPoints,
+    TResult Function()? showAllDeparturePoints,
+    TResult Function()? showAllArrivalPoints,
     TResult Function()? showCalendar,
     TResult Function()? closeWidget,
   }) {
-    return showAllArrivalPoints?.call(context);
+    return showAllArrivalPoints?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildContext context)? showAllDeparturePoints,
-    TResult Function(BuildContext context)? showAllArrivalPoints,
+    TResult Function()? showAllDeparturePoints,
+    TResult Function()? showAllArrivalPoints,
     TResult Function()? showCalendar,
     TResult Function()? closeWidget,
     required TResult orElse(),
   }) {
     if (showAllArrivalPoints != null) {
-      return showAllArrivalPoints(context);
+      return showAllArrivalPoints();
     }
     return orElse();
   }
@@ -411,13 +351,7 @@ class _$ShowAllArrivalPointsEvent implements ShowAllArrivalPointsEvent {
 }
 
 abstract class ShowAllArrivalPointsEvent implements SearchRoutesDialogEvent {
-  const factory ShowAllArrivalPointsEvent({required BuildContext context}) =
-      _$ShowAllArrivalPointsEvent;
-
-  BuildContext get context;
-  @JsonKey(ignore: true)
-  $ShowAllArrivalPointsEventCopyWith<ShowAllArrivalPointsEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory ShowAllArrivalPointsEvent() = _$ShowAllArrivalPointsEvent;
 }
 
 /// @nodoc
@@ -463,8 +397,8 @@ class _$ShowCalendarForSearchEvent implements ShowCalendarForSearchEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildContext context) showAllDeparturePoints,
-    required TResult Function(BuildContext context) showAllArrivalPoints,
+    required TResult Function() showAllDeparturePoints,
+    required TResult Function() showAllArrivalPoints,
     required TResult Function() showCalendar,
     required TResult Function() closeWidget,
   }) {
@@ -474,8 +408,8 @@ class _$ShowCalendarForSearchEvent implements ShowCalendarForSearchEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BuildContext context)? showAllDeparturePoints,
-    TResult Function(BuildContext context)? showAllArrivalPoints,
+    TResult Function()? showAllDeparturePoints,
+    TResult Function()? showAllArrivalPoints,
     TResult Function()? showCalendar,
     TResult Function()? closeWidget,
   }) {
@@ -485,8 +419,8 @@ class _$ShowCalendarForSearchEvent implements ShowCalendarForSearchEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildContext context)? showAllDeparturePoints,
-    TResult Function(BuildContext context)? showAllArrivalPoints,
+    TResult Function()? showAllDeparturePoints,
+    TResult Function()? showAllArrivalPoints,
     TResult Function()? showCalendar,
     TResult Function()? closeWidget,
     required TResult orElse(),
@@ -582,8 +516,8 @@ class _$CloseAllWidgetEvent implements CloseAllWidgetEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BuildContext context) showAllDeparturePoints,
-    required TResult Function(BuildContext context) showAllArrivalPoints,
+    required TResult Function() showAllDeparturePoints,
+    required TResult Function() showAllArrivalPoints,
     required TResult Function() showCalendar,
     required TResult Function() closeWidget,
   }) {
@@ -593,8 +527,8 @@ class _$CloseAllWidgetEvent implements CloseAllWidgetEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BuildContext context)? showAllDeparturePoints,
-    TResult Function(BuildContext context)? showAllArrivalPoints,
+    TResult Function()? showAllDeparturePoints,
+    TResult Function()? showAllArrivalPoints,
     TResult Function()? showCalendar,
     TResult Function()? closeWidget,
   }) {
@@ -604,8 +538,8 @@ class _$CloseAllWidgetEvent implements CloseAllWidgetEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildContext context)? showAllDeparturePoints,
-    TResult Function(BuildContext context)? showAllArrivalPoints,
+    TResult Function()? showAllDeparturePoints,
+    TResult Function()? showAllArrivalPoints,
     TResult Function()? showCalendar,
     TResult Function()? closeWidget,
     required TResult orElse(),

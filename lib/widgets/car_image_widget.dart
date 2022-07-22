@@ -5,13 +5,24 @@ class Car extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AssetImage assetImage = const AssetImage(carUrl);
-    Image car = Image(image: assetImage);
+    AssetImage assetImage = const AssetImage(mapUrl);
+    Image map = Image(image: assetImage);
     return Container(
       margin: const EdgeInsets.only(top: 150),
-      height: 190,
-      width: 190,
-      child: car,
+      height: 170,
+      width: 220,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100.0),
+        boxShadow: const [
+          BoxShadow(
+            offset: Offset(25, 24),
+            blurRadius: 50,
+            spreadRadius: -50,
+            // color: AppColors.textColor,
+          ),
+        ],
+      ),
+      child: map,
     );
   }
 }

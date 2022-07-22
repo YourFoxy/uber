@@ -21,24 +21,24 @@ class ButtonWidget extends StatelessWidget {
       child: InkWell(
         onTap: onTap(),
         child: Container(
-          height: 75.0,
-          width: 300,
+          height: 50.0,
+          width: 220.0,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30.0),
-            color: buttonColor,
+            borderRadius: BorderRadius.circular(20.0),
+            color: AppColors.buttonColor,
             boxShadow: const [
               BoxShadow(
-                offset: Offset(0, 12),
+                offset: Offset(0, 5),
                 blurRadius: 15,
                 spreadRadius: -13,
-                color: AppColors.plum,
+                // color: AppColors.textColor,
               ),
             ],
           ),
           child: Center(
             child: AppLargeText(
               text: text,
-              color: textColor,
+              color: AppColors.textColor,
             ),
           ),
         ),

@@ -25,13 +25,11 @@ class _$EditUserInformationEventTearOff {
   SaveUserInformationEvent saveUserInformation(
       {required String nickname,
       required String city,
-      required String pickImageUrl,
-      required BuildContext context}) {
+      required String pickImageUrl}) {
     return SaveUserInformationEvent(
       nickname: nickname,
       city: city,
       pickImageUrl: pickImageUrl,
-      context: context,
     );
   }
 }
@@ -44,24 +42,21 @@ mixin _$EditUserInformationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() uploadNicknameAndCity,
-    required TResult Function(String nickname, String city, String pickImageUrl,
-            BuildContext context)
+    required TResult Function(String nickname, String city, String pickImageUrl)
         saveUserInformation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? uploadNicknameAndCity,
-    TResult Function(String nickname, String city, String pickImageUrl,
-            BuildContext context)?
+    TResult Function(String nickname, String city, String pickImageUrl)?
         saveUserInformation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? uploadNicknameAndCity,
-    TResult Function(String nickname, String city, String pickImageUrl,
-            BuildContext context)?
+    TResult Function(String nickname, String city, String pickImageUrl)?
         saveUserInformation,
     required TResult orElse(),
   }) =>
@@ -150,8 +145,7 @@ class _$UploadNicknameAndCityEvent implements UploadNicknameAndCityEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() uploadNicknameAndCity,
-    required TResult Function(String nickname, String city, String pickImageUrl,
-            BuildContext context)
+    required TResult Function(String nickname, String city, String pickImageUrl)
         saveUserInformation,
   }) {
     return uploadNicknameAndCity();
@@ -161,8 +155,7 @@ class _$UploadNicknameAndCityEvent implements UploadNicknameAndCityEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? uploadNicknameAndCity,
-    TResult Function(String nickname, String city, String pickImageUrl,
-            BuildContext context)?
+    TResult Function(String nickname, String city, String pickImageUrl)?
         saveUserInformation,
   }) {
     return uploadNicknameAndCity?.call();
@@ -172,8 +165,7 @@ class _$UploadNicknameAndCityEvent implements UploadNicknameAndCityEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? uploadNicknameAndCity,
-    TResult Function(String nickname, String city, String pickImageUrl,
-            BuildContext context)?
+    TResult Function(String nickname, String city, String pickImageUrl)?
         saveUserInformation,
     required TResult orElse(),
   }) {
@@ -226,11 +218,7 @@ abstract class $SaveUserInformationEventCopyWith<$Res> {
   factory $SaveUserInformationEventCopyWith(SaveUserInformationEvent value,
           $Res Function(SaveUserInformationEvent) then) =
       _$SaveUserInformationEventCopyWithImpl<$Res>;
-  $Res call(
-      {String nickname,
-      String city,
-      String pickImageUrl,
-      BuildContext context});
+  $Res call({String nickname, String city, String pickImageUrl});
 }
 
 /// @nodoc
@@ -250,7 +238,6 @@ class _$SaveUserInformationEventCopyWithImpl<$Res>
     Object? nickname = freezed,
     Object? city = freezed,
     Object? pickImageUrl = freezed,
-    Object? context = freezed,
   }) {
     return _then(SaveUserInformationEvent(
       nickname: nickname == freezed
@@ -265,10 +252,6 @@ class _$SaveUserInformationEventCopyWithImpl<$Res>
           ? _value.pickImageUrl
           : pickImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      context: context == freezed
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
     ));
   }
 }
@@ -277,10 +260,7 @@ class _$SaveUserInformationEventCopyWithImpl<$Res>
 
 class _$SaveUserInformationEvent implements SaveUserInformationEvent {
   const _$SaveUserInformationEvent(
-      {required this.nickname,
-      required this.city,
-      required this.pickImageUrl,
-      required this.context});
+      {required this.nickname, required this.city, required this.pickImageUrl});
 
   @override
   final String nickname;
@@ -288,12 +268,10 @@ class _$SaveUserInformationEvent implements SaveUserInformationEvent {
   final String city;
   @override
   final String pickImageUrl;
-  @override
-  final BuildContext context;
 
   @override
   String toString() {
-    return 'EditUserInformationEvent.saveUserInformation(nickname: $nickname, city: $city, pickImageUrl: $pickImageUrl, context: $context)';
+    return 'EditUserInformationEvent.saveUserInformation(nickname: $nickname, city: $city, pickImageUrl: $pickImageUrl)';
   }
 
   @override
@@ -304,8 +282,7 @@ class _$SaveUserInformationEvent implements SaveUserInformationEvent {
             const DeepCollectionEquality().equals(other.nickname, nickname) &&
             const DeepCollectionEquality().equals(other.city, city) &&
             const DeepCollectionEquality()
-                .equals(other.pickImageUrl, pickImageUrl) &&
-            const DeepCollectionEquality().equals(other.context, context));
+                .equals(other.pickImageUrl, pickImageUrl));
   }
 
   @override
@@ -313,8 +290,7 @@ class _$SaveUserInformationEvent implements SaveUserInformationEvent {
       runtimeType,
       const DeepCollectionEquality().hash(nickname),
       const DeepCollectionEquality().hash(city),
-      const DeepCollectionEquality().hash(pickImageUrl),
-      const DeepCollectionEquality().hash(context));
+      const DeepCollectionEquality().hash(pickImageUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -326,35 +302,32 @@ class _$SaveUserInformationEvent implements SaveUserInformationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() uploadNicknameAndCity,
-    required TResult Function(String nickname, String city, String pickImageUrl,
-            BuildContext context)
+    required TResult Function(String nickname, String city, String pickImageUrl)
         saveUserInformation,
   }) {
-    return saveUserInformation(nickname, city, pickImageUrl, context);
+    return saveUserInformation(nickname, city, pickImageUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? uploadNicknameAndCity,
-    TResult Function(String nickname, String city, String pickImageUrl,
-            BuildContext context)?
+    TResult Function(String nickname, String city, String pickImageUrl)?
         saveUserInformation,
   }) {
-    return saveUserInformation?.call(nickname, city, pickImageUrl, context);
+    return saveUserInformation?.call(nickname, city, pickImageUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? uploadNicknameAndCity,
-    TResult Function(String nickname, String city, String pickImageUrl,
-            BuildContext context)?
+    TResult Function(String nickname, String city, String pickImageUrl)?
         saveUserInformation,
     required TResult orElse(),
   }) {
     if (saveUserInformation != null) {
-      return saveUserInformation(nickname, city, pickImageUrl, context);
+      return saveUserInformation(nickname, city, pickImageUrl);
     }
     return orElse();
   }
@@ -397,13 +370,11 @@ abstract class SaveUserInformationEvent implements EditUserInformationEvent {
   const factory SaveUserInformationEvent(
       {required String nickname,
       required String city,
-      required String pickImageUrl,
-      required BuildContext context}) = _$SaveUserInformationEvent;
+      required String pickImageUrl}) = _$SaveUserInformationEvent;
 
   String get nickname;
   String get city;
   String get pickImageUrl;
-  BuildContext get context;
   @JsonKey(ignore: true)
   $SaveUserInformationEventCopyWith<SaveUserInformationEvent> get copyWith =>
       throw _privateConstructorUsedError;

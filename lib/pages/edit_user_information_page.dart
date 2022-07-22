@@ -109,7 +109,7 @@ class _EditUserInformationPageState extends State<EditUserInformationPage> {
                         nickname: _nicknameController.text,
                         city: _cityController.text,
                         pickImageUrl: _pickImageUrl,
-                        context: context,
+                        // context: context,
                       ),
                     );
                   },

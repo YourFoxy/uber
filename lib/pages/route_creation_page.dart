@@ -212,7 +212,7 @@ class _PlaceForRouteTextFields extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       routeCreationBloc.add(
-                        const RouteCreationEvent.showCalendarEvent(),
+                        const RouteCreationEvent.showCalendar(),
                       );
                     },
                     child: OrangeButtonWidget(
