@@ -129,7 +129,6 @@
 //   }
 // }
 
-import 'package:flutter/cupertino.dart';
 import 'package:uber/scripts/index.dart';
 
 class HomePage extends StatefulWidget {
@@ -145,7 +144,7 @@ class _HomePageState extends State<HomePage> {
   late final HomeBloc _homeBloc;
   final _navigationService = GetIt.instance.get<NavigationService>();
 
-  final PageController cardRoureController = PageController();
+  // final PageController cardRoureController = PageController();
 
   @override
   void initState() {
@@ -154,7 +153,7 @@ class _HomePageState extends State<HomePage> {
     _homeBloc = BlocProvider.of<HomeBloc>(context);
     _homeBloc.add(const LoadedUserInformationEvent());
 
-    cardRoureController.addListener(() {});
+    //cardRoureController.addListener(() {});
   }
 
   @override
@@ -246,6 +245,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
+
+                Container(
+                  height: 300,
+                  width: 400,
+                  child: CardList(),
+                ),
                 // Container(
                 //   height: 250,
                 //   width: double.infinity,
@@ -308,49 +313,51 @@ class _HomePageState extends State<HomePage> {
                 //   text: 'My',
                 //   nameCollection: collectionNameWithRoutes,
                 // ),
-                Container(
-                  height: 400,
-                  width: 400,
-                  child: PageView(
-                    controller: cardRoureController,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          print('........${cardRoureController.page}');
-                          cardRoureController.page;
-                        },
-                        child: Container(
-                          margin: EdgeInsets.all(30.0),
-                          height: 100,
-                          width: 200,
-                          color: AppColors.dark,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          print('........${cardRoureController.page}');
-                          cardRoureController.page;
-                        },
-                        child: Container(
-                          height: 100,
-                          width: 200,
-                          color: AppColors.orange,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  children: [
-                    Container(
-                      height: 10,
-                      width: 10,
-                      color: cardRoureController.page == 0.0
-                          ? AppColors.dark
-                          : AppColors.orange,
-                    ),
-                  ],
-                )
+
+                // Container(
+                //   height: 400,
+                //   width: 400,
+                //   child: PageView(
+                //     controller: cardRoureController,
+                //     children: [
+                //       InkWell(
+                //         onTap: () {
+                //           print('........${cardRoureController.page}');
+                //           cardRoureController.page;
+                //         },
+                //         child: Container(
+                //           margin: EdgeInsets.all(30.0),
+                //           height: 100,
+                //           width: 200,
+                //           color: AppColors.dark,
+                //         ),
+                //       ),
+                //       InkWell(
+                //         onTap: () {
+                //           print('........${cardRoureController.page}');
+                //           cardRoureController.page;
+                //         },
+                //         child: Container(
+                //           height: 100,
+                //           width: 200,
+                //           color: AppColors.orange,
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+
+                // Row(
+                //   children: [
+                //     Container(
+                //       height: 10,
+                //       width: 10,
+                //       color: cardRoureController.page == 0.0
+                //           ? AppColors.dark
+                //           : AppColors.orange,
+                //     ),
+                //   ],
+                // )
               ],
             ),
           ),

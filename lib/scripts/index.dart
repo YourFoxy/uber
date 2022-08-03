@@ -86,3 +86,4 @@ export 'package:url_launcher/url_launcher.dart';
 export 'package:uber/bloc/widget_bloc/search_routes_dialog/search_routes_dialog_bloc.dart';
 export 'package:uber/widgets/search_routes_dialog_widget.dart';
 export 'package:uber/widgets/belgrano_text_widget.dart';
+export 'package:uber/widgets/card_list.dart';

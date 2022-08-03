@@ -32,6 +32,7 @@ const emptyField = 'The text field is empty';
 
 //const carUrl = 'assets/picture/car.png';
 const mapUrl = 'assets/picture/map.png';
+const routeCardUrl = 'assets/picture/route_card.png';
 const csvPath = 'assets/by.csv';
 
 const districtIndex = 2;

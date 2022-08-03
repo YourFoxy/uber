@@ -76,6 +76,7 @@ flutter:
   assets:
       - assets/picture/car.png
       - assets/picture/map.png
+      - assets/picture/route_card.png
       - assets/by.txt
 
   #   - images/a_dot_burr.jpeg
