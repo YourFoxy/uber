@@ -247,8 +247,8 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 Container(
-                  height: 300,
-                  width: 400,
+                  height: 450,
+                  width: 600,
                   child: CardList(),
                 ),
                 // Container(
