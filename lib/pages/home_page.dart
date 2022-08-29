@@ -130,6 +130,7 @@
 // }
 
 import 'package:uber/scripts/index.dart';
+import 'package:uber/widgets/route_list.dart';
 
 class HomePage extends StatefulWidget {
   final NavigationService navigationService;
@@ -247,9 +248,11 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 Container(
-                  height: 450,
-                  width: 600,
-                  child: CardList(),
+                  height: 400,
+                  width: double.infinity,
+                  child: RouteList(
+                    nameCollection: collectionNameWithRoutes,
+                  ).createWithProvider<RouteCardBloc>(),
                 ),
                 // Container(
                 //   height: 250,

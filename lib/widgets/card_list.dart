@@ -13,6 +13,7 @@ class _CardListState extends State<CardList> {
   double _viewportFraction = 0.75;
 
   late final _cardController;
+  late AnimationController _anCont;
   var _currCardValue = 0.0;
 
   final double _scaleFactor = 0.7;
@@ -25,6 +26,7 @@ class _CardListState extends State<CardList> {
   void initState() {
     super.initState();
     _cardController = PageController(viewportFraction: _viewportFraction);
+
     _cardController.addListener(() {
       setState(() {
         _currCardValue = _cardController.page!;
@@ -50,29 +52,32 @@ class _CardListState extends State<CardList> {
       child: PageView.builder(
         controller: _cardController,
         itemBuilder: ((context, index) {
-          double pad = 20.0;
-          if (_cardController.page == index) {
-            pad = 0.0;
-          } else {
-            pad = 20.0;
-          }
-          //  double scale = max(_viewportFraction,
-          //    (2.0 - (_cardController.page - index).abs()) + _viewportFraction);
-          return
-              //Padding(
-              // padding: EdgeInsets.symmetric(
-              // vertical: 100 - scale * 20, horizontal: 10),
-              //child:
-              Padding(
-            padding: EdgeInsets.all(pad),
-            child: Container(child: routeCard),
-          );
-          // Container(
-          //   //height: 100,
-          //   // width: 100,
-          //   color: AppColors.buttonColor,
-          // ),
-          //  );
+          return _cardController.page == index
+              ? MyRouteCard(tr: false)
+              : MyRouteCard(tr: true);
+          // double pad = 20.0;
+          // if (_cardController.page == index) {
+          //   pad = 0.0;
+          // } else {
+          //   pad = 30.0;
+          // }
+          // //  double scale = max(_viewportFraction,
+          // //    (2.0 - (_cardController.page - index).abs()) + _viewportFraction);
+          // return
+          //     //Padding(
+          //     // padding: EdgeInsets.symmetric(
+          //     // vertical: 100 - scale * 20, horizontal: 10),
+          //     //child:
+          //     Padding(
+          //   padding: EdgeInsets.all(pad),
+          //   child: Container(child: routeCard),
+          // );
+          // // Container(
+          // //   //height: 100,
+          // //   // width: 100,
+          // //   color: AppColors.buttonColor,
+          // // ),
+          // //  );
         }),
       ),
     );
@@ -196,5 +201,28 @@ class _CardListState extends State<CardList> {
     //     );
     //   },
     // );
+  }
+}
+
+class MyRouteCard extends StatelessWidget {
+  bool tr;
+  MyRouteCard({Key? key, required this.tr}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = const AssetImage(routeCardUrl);
+    Image routeCard = Image(
+      image: assetImage,
+      //height: 100,
+    );
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 150),
+      //color: tr ? AppColors.dark : AppColors.orange,
+      padding: tr ? EdgeInsets.all(20) : EdgeInsets.all(0),
+      child: Container(
+        //  height: 100,
+        child: routeCard,
+      ),
+    );
   }
 }
