@@ -20,7 +20,6 @@ class _RouteListState extends State<RouteList> {
   void initState() {
     super.initState();
     _cardController = PageController(viewportFraction: _viewportFraction);
-
     _cardController.addListener(() {
       setState(() {
         // _currCardValue = _cardController.page!;
@@ -60,40 +59,27 @@ class _RouteListState extends State<RouteList> {
             loadedRoutes: (list) => list.length,
             removeRoute: (list) => list.length,
           ),
+          // onPageChanged: (index){
+
+          // },
           itemBuilder: ((context, index) {
-            return Column(
-              children: [
-                _cardController.page == index
-                    ? MyRouteCard(tr: false)
-                    : MyRouteCard(tr: true),
-              ],
+            var scale = _cardController.page == index ? 1.0 : 0.8;
+            return TweenAnimationBuilder<double>(
+              duration: const Duration(milliseconds: 150),
+              tween: Tween(begin: scale, end: scale),
+              builder: (BuildContext context, double value, Widget? child) {
+                return Transform.scale(
+                  scale: value,
+                  child: child,
+                );
+              },
+              child: Container(
+                child: routeCard,
+              ),
             );
           }),
         ),
       );
     });
-  }
-}
-
-class MyRouteCard extends StatelessWidget {
-  bool tr;
-  MyRouteCard({Key? key, required this.tr}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = const AssetImage(routeCardUrl);
-    Image routeCard = Image(
-      image: assetImage,
-      //height: 100,
-    );
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 50),
-      //color: tr ? AppColors.dark : AppColors.orange,
-      padding: tr ? EdgeInsets.all(20) : EdgeInsets.all(0),
-      child: Container(
-        //  height: 100,
-        child: routeCard,
-      ),
-    );
   }
 }
