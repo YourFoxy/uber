@@ -7,7 +7,7 @@ class BelgranoText extends StatelessWidget {
 
   const BelgranoText({
     Key? key,
-    this.size = 15.0,
+    this.size = 14.0,
     required this.text,
     this.color = AppColors.orange,
   }) : super(key: key);

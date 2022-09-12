@@ -199,8 +199,62 @@ class _HomePageState extends State<HomePage> {
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 RR(),
-
-                SwitchBar(),
+                Stack(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.all(45),
+                      height: 40,
+                      width: 280,
+                      decoration: BoxDecoration(
+                        color: AppColors.inactiveWidgetColor,
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: const [
+                          BelgranoText(
+                            text: 'SAVED ROUTES',
+                            color: AppColors.inactiveTextColor,
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          BelgranoText(
+                            text: 'MY ROUTES',
+                            color: AppColors.inactiveTextColor,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.all(45),
+                      height: 40,
+                      width: 155,
+                      decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: -15,
+                            // color: AppColors.textColor,
+                          ),
+                        ],
+                        color: AppColors.buttonColor,
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: const BelgranoText(
+                        text: 'SAVED ROUTES',
+                        color: AppColors.textColor,
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SwitchBar(),
+                ),
                 SwipingButton(
                   onSwipeCallback: () {},
                   text: '',
